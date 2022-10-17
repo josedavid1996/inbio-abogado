@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SideMultistep, { Step } from '../components/shared/SideMultistep'
 import DatosPersonalesForm from '../components/shared/SideMultistep/DatosPersonalesForm'
 import IconMoon from '../icons/IconMoon'
+import Navbar from '../components/layout/Navbar'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -64,20 +65,24 @@ const Home = () => {
   ]
 
   return (
-    <section className='z-0'>
-      <SideMultistep
-        title="Titulo"
-        desc="Lorem ipsum dolor sit."
-        steps={steps}
-        stepper={stepper}
-      />
-      <SideMultistep
-        title="Titulo"
-        desc="Lorem ipsum dolor sit."
-        steps={steps}
-        stepper={stepper}
-      />
-    </section>
+
+    <div style={{ backgroundImage: `url('/images/bgbanner.jpg')` }}>
+      <Navbar />
+      <section>
+        <SideMultistep
+          title="Titulo"
+          desc="Lorem ipsum dolor sit."
+          steps={steps}
+          stepper={stepper}
+        />
+        <SideMultistep
+          title="Titulo"
+          desc="Lorem ipsum dolor sit."
+          steps={steps}
+          stepper={stepper}
+        />
+      </section>
+    </div>
   )
 }
 

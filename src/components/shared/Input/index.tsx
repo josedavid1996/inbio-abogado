@@ -34,7 +34,7 @@ const Input = ({ label, icon: Icon, rightElement, ...props }: Props) => {
 
   return (
     <div className={props.className}>
-      <div className="relative bg-gray-200 dark:bg-slate-700 bg-opacity-50 h-[60px] rounded shadow w-full">
+      <div className="relative bg-gray-200 dark:bg-slate-700 bg-opacity-50 h-[60px] rounded shadow w-full ">
         <input
           {...props}
           id={`input-${uid}`}

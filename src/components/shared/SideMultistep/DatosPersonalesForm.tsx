@@ -10,10 +10,10 @@ const DatosPersonalesForm = ({
 }: Props) => {
   return (
     <div className="flex flex-col gap-6">
+      {/* <Input label="Nombre" />
       <Input label="Nombre" />
       <Input label="Nombre" />
-      <Input label="Nombre" />
-      <Input label="Nombre" />
+      <Input label="Nombre" /> */}
 
       {stepper === 0 && (
         <button

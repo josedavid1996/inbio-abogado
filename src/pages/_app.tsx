@@ -5,7 +5,6 @@ import { AppProps } from 'next/app'
 import { ToastContainer } from 'react-toastify'
 
 import useLoadTheme from '../hooks/useLoadTheme'
-import Navbar from '../components/layout/Navbar'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // Servicio para cargar el theme desde el LocalStorage
@@ -13,7 +12,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <main>
-      <Navbar />
       <Component {...pageProps} />
       <ToastContainer />
     </main>
