@@ -64,7 +64,13 @@ const Home = () => {
   ]
 
   return (
-    <section>
+    <section className='z-0'>
+      <SideMultistep
+        title="Titulo"
+        desc="Lorem ipsum dolor sit."
+        steps={steps}
+        stepper={stepper}
+      />
       <SideMultistep
         title="Titulo"
         desc="Lorem ipsum dolor sit."
