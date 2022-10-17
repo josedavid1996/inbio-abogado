@@ -1,0 +1,41 @@
+{
+  "name": "platilla-next",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "test": "echo 'Test no configurado'"
+  },
+  "dependencies": {
+    "formik": "^2.2.9",
+    "moment": "^2.29.3",
+    "nanoid": "^4.0.0",
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-toastify": "^9.0.4",
+    "zustand": "3.7.2"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.6",
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "autoprefixer": "^10.4.3",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "11.1.2",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
+    "postcss": "^8.4.11",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^4.7.4",
+    "husky": "^8.0.0"
+  }
+}
