@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
 
         <div className='lg:hidden '>
-          <FiMenu className='w-8 h-8' />
+          <FiMenu className='w-8 h-8 text-white' />
         </div>
         {/* <ToggleTheme className="text-white" /> */}
       </nav >
