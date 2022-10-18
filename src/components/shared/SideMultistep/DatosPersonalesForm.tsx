@@ -1,5 +1,4 @@
 import { SideMultistepComponentProps as Props } from '../../../pages'
-import Input from '../Input'
 
 const DatosPersonalesForm = ({
   isLast,

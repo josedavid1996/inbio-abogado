@@ -16,3 +16,9 @@ body.dark {
   }
 }
 
+.imgBannerNabar {
+  background-image: url('/images/bgbanner.jpg');
+  background-position: center;
+  background-size: cover;
+
+}
