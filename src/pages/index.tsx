@@ -3,6 +3,7 @@ import SideMultistep, { Step } from '../components/shared/SideMultistep'
 import DatosPersonalesForm from '../components/shared/SideMultistep/DatosPersonalesForm'
 import IconMoon from '../icons/IconMoon'
 import Navbar from '../components/layout/Navbar'
+import NextImage from 'next/image'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -68,8 +69,21 @@ const Home = () => {
 
     <div style={{ backgroundImage: `url('/images/bgbanner.jpg')` }}>
       <Navbar />
-      <section>
-        <SideMultistep
+      <section className='h-auto w-[90%] flex flex-col md:flex-row mx-auto justify-center items-center'>
+        <div className=''>
+          <h4 className='text-white text-sm'>YOUR LEGAL PARTNER</h4>
+          <div className='text-white'>
+            Hi, I´m <span className='text-[#AD8E6D]'>Alberto Kyros</span> a
+          </div>
+        </div>
+        <div className='relative w-60 h-60'>
+          <NextImage
+            src='/images/personbanner.png'
+            className='absolute w-full h-full'
+            layout='fill'
+          />
+        </div>
+        {/* <SideMultistep
           title="Titulo"
           desc="Lorem ipsum dolor sit."
           steps={steps}
@@ -80,7 +94,7 @@ const Home = () => {
           desc="Lorem ipsum dolor sit."
           steps={steps}
           stepper={stepper}
-        />
+        /> */}
       </section>
     </div>
   )
