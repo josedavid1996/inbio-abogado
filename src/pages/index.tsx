@@ -76,9 +76,9 @@ const Home = () => {
             <div className='text-white'>
               Hi, I´m <span className='text-[#AD8E6D]'>Alberto Kyros</span> a
             </div>
-            <div className='text-[#999187] '>
+            <p className='text-[#999187] '>
               In quis amet ex veniam in irure est culpa veniam velit fugiat cupidatat duis anim commodo elit in occaecat cupidatat eu et sunt commodo voluptate ullamco magna nulla amet. Lorem ipsum officia
-            </div>
+            </p>
           </div>
           <div className='w-full md:w-1/2 flex items-center justify-center '>
             <div>
