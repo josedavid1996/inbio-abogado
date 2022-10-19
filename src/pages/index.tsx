@@ -81,7 +81,7 @@ const Home = () => {
             </p>
           </div>
           <div className='w-full md:w-1/2 flex items-center justify-center '>
-            <div>
+            <div className='animate-renderimgabanner'>
               <NextImage
                 src='/images/personbanner.png'
                 // className='absolute w-full h-full object-cover'

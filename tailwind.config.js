@@ -4,7 +4,41 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        renderprogresbar: 'renderprogresbarframe 0.6s linear forwards',
+        renderimgabout: 'renderimgaboutframe 0.7s linear forwards',
+        renderimgabanner: 'renderimgaboutframe 1.4s linear forwards',
+        renderaboutme: 'renderimgaboutframe 1s linear forwards'
+
+      },
+      keyframes: {
+        renderprogresbarframe: {
+          '0%': {
+            transform: "scale(0)"
+          },
+          '100%': {
+            transform: "scale(1)"
+          }
+        }
+        ,
+        renderimgaboutframe: {
+          '0%': {
+            opacity: "0",
+            transform: "translateY(200px)"
+          },
+          '70%': {
+            opacity: "0",
+            transform: "translateY(40px)"
+          },
+          '100%': {
+            opacity: "1",
+            transform: "translateY(0)"
+          }
+        },
+
+      }
+    },
   },
   plugins: [
     require("daisyui")
