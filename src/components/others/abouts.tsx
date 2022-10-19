@@ -17,7 +17,7 @@ export const About = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 flex items-center justify-center ">
-        <div>
+        <div className='flex flex-col gap-4'>
           <h4 className="text-white text-[34px] font-semibold">About Me</h4>
           <p className="text-[#999187]">
             In quis amet ex veniam in irure est culpa veniam velit fugiat
