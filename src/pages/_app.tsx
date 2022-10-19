@@ -1,4 +1,4 @@
-import '../assets/fonts/dm-sans/dm-sans.css'
+// import '../assets/fonts/dm-sans/dm-sans.css'
 import '../styles/index.css'
 
 import { AppProps } from 'next/app'

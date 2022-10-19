@@ -88,6 +88,5 @@ module.exports = {
     require('./@tailwind/plugins/titles'),
     require('./@tailwind/plugins/buttons'),
     require('./@tailwind/plugins/paragraphs'),
-    // require('@tailwindcss/aspect-ratio'),
   ]
 }
