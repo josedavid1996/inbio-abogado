@@ -1,11 +1,9 @@
-// import { useState } from 'react'
-// import { Step } from '../components/shared/SideMultistep'
-// import DatosPersonalesForm from '../components/shared/SideMultistep/DatosPersonalesForm'
-// import IconMoon from '../icons/IconMoon'
 import Navbar from '../components/layout/Navbar'
 import NextImage from 'next/image'
 import { About } from '@components/others/abouts'
 import { Services } from '@components/others/services'
+import { Quote } from '@components/others/quote'
+import { BgNegroTransparente } from '@components/others/bgNegroTransparente'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -16,57 +14,6 @@ export interface SideMultistepComponentProps {
 }
 
 const Home = () => {
-  // const [stepper, setStepper] = useState(0)
-
-  // const maxStep = 3
-
-  // const props: SideMultistepComponentProps = {
-  //   stepper,
-  //   isLast: stepper === maxStep,
-  //   next: () => {
-  //     setStepper((prev) => {
-  //       if (prev === maxStep) return maxStep
-  //       return prev + 1
-  //     })
-  //   },
-  //   back: () => {
-  //     setStepper((prev) => {
-  //       if (prev === 0) return 0
-  //       return prev - 1
-  //     })
-  //   },
-  //   submit: () => {
-  //     console.log('Enviar formulario')
-  //   }
-  // }
-
-  // const steps: Step[] = [
-  //   {
-  //     icon: IconMoon,
-  //     label: 'Datos Personales',
-  //     desc: 'Lorem ipsum dolor sit.',
-  //     component: <DatosPersonalesForm {...props} />
-  //   },
-  //   {
-  //     icon: IconMoon,
-  //     label: 'Datos Solicitante',
-  //     desc: 'Lorem ipsum dolor sit.',
-  //     component: <DatosPersonalesForm {...props} />
-  //   },
-  //   {
-  //     icon: IconMoon,
-  //     label: 'Cultivos',
-  //     desc: 'Lorem ipsum dolor sit.',
-  //     component: <DatosPersonalesForm {...props} />
-  //   },
-  //   {
-  //     icon: IconMoon,
-  //     label: 'Especies',
-  //     desc: 'Lorem ipsum dolor sit.',
-  //     component: <DatosPersonalesForm {...props} />
-  //   }
-  // ]
-
   return (
     <>
       <div className='imgBannerNabar relative'>
@@ -91,10 +38,13 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <div className='absolute w-full h-[80px] bottom-0 bg-gradient-to-t from-blacktranparente to-customtranparente z-10' />
+      <BgNegroTransparente />
       </div>
       <About />
       <Services />
+      <Quote />
+      {/* <Services />
+      <Services /> */}
     </>
   )
 }

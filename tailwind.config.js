@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        customText: '"Roboto", Helvetica, Arial, sans-serif'
+      },
       colors: {
         blacktranparente: 'rgba(23,26,29,1) 40%',
         customtranparente: 'rgba(23,26,29,0) 100%)'
