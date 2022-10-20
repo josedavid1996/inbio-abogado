@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        renderprogresbar: 'renderprogresbarframe 0.6s linear forwards',
-        renderimgabout: 'renderimgaboutframe 0.7s linear forwards',
-        renderimgabanner: 'renderimgaboutframe 1.4s linear forwards',
-        renderaboutme: 'renderimgaboutframe 1s linear forwards'
+        renderprogresbar: 'renderprogresbarframe 0.6s 1s linear forwards',
+        renderimgabout: 'renderimgaboutframe 0.7s ',
+        renderimgabanner: 'renderimgaboutframe 1.4s',
+        renderaboutme: 'renderimgaboutframe 1s'
 
       },
       keyframes: {
