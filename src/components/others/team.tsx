@@ -3,7 +3,7 @@ import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
-  FaPinterest,
+  FaPinterest
 } from 'react-icons/fa'
 import NextImage from 'next/image'
 export const Team = () => {
