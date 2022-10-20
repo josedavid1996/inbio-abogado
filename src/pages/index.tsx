@@ -4,6 +4,7 @@ import { About } from '@components/others/abouts'
 import { Services } from '@components/others/services'
 import { Quote } from '@components/others/quote'
 import { BgNegroTransparente } from '@components/others/bgNegroTransparente'
+import { Team } from '@components/others/team'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -16,35 +17,38 @@ export interface SideMultistepComponentProps {
 const Home = () => {
   return (
     <>
-      <div className='imgBannerNabar relative'>
+      <div className="imgBannerNabar relative">
         <Navbar />
-        <section className='h-auto w-[87%] flex flex-col gap-4 md:flex-row mx-auto justify-center items-center p-6'>
-          <div className='w-full mt-[90px] flex flex-col gap-[10px] md:w-1/2'>
-            <h4 className='text-white text-sm tracking-[5px]  '>YOUR LEGAL PARTNER</h4>
-            <div className='text-white'>
-              Hi, I´m <span className='text-[#AD8E6D]'>Alberto Kyros</span> a
+        <section className="h-auto w-[87%] flex flex-col gap-4 md:flex-row mx-auto justify-center items-center p-6">
+          <div className="w-full mt-[90px] flex flex-col gap-[10px] md:w-1/2">
+            <h4 className="text-white text-sm tracking-[5px]  ">
+              YOUR LEGAL PARTNER
+            </h4>
+            <div className="text-white">
+              Hi, I´m <span className="text-[#AD8E6D]">Alberto Kyros</span> a
             </div>
-            <p className='text-[#999187] '>
-              In quis amet ex veniam in irure est culpa veniam velit fugiat cupidatat duis anim commodo elit in occaecat cupidatat eu et sunt commodo voluptate ullamco magna nulla amet. Lorem ipsum officia
+            <p className="text-[#999187] ">
+              In quis amet ex veniam in irure est culpa veniam velit fugiat
+              cupidatat duis anim commodo elit in occaecat cupidatat eu et sunt
+              commodo voluptate ullamco magna nulla amet. Lorem ipsum officia
             </p>
           </div>
-          <div className='w-full md:w-1/2 flex items-center justify-center '>
-            <div className='animate-renderimgabanner z-0'>
+          <div className="w-full md:w-1/2 flex items-center justify-center ">
+            <div className="animate-renderimgabanner z-0">
               <NextImage
-                src='/images/personbanner.png'
+                src="/images/personbanner.png"
                 width={450}
                 height={550}
               />
             </div>
           </div>
         </section>
-      <BgNegroTransparente />
+        <BgNegroTransparente />
       </div>
       <About />
       <Services />
       <Quote />
-      {/* <Services />
-      <Services /> */}
+      <Team />
     </>
   )
 }
