@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        blacktranparente: 'rgba(23,26,29,1) 10%',
+        customtranparente: 'rgba(23,26,29,0) 100%)'
+      },
       animation: {
         renderprogresbar: 'renderprogresbarframe 0.6s 1s linear forwards',
         renderimgabout: 'renderimgaboutframe 0.7s ',
@@ -25,15 +29,15 @@ module.exports = {
         renderimgaboutframe: {
           '0%': {
             opacity: "0",
-            transform: "translateY(200px)"
+            transform: "translateY(200px)",
           },
           '70%': {
             opacity: "0",
-            transform: "translateY(40px)"
+            transform: "translateY(40px)",
           },
           '100%': {
             opacity: "1",
-            transform: "translateY(0)"
+            transform: "translateY(0)",
           }
         },
 

@@ -3,8 +3,8 @@ import { Progressbar } from '@components/others/progressbar'
 import { DataProgressBar } from '@mock/dataProgressBar'
 export const About = () => {
   return (
-    <section className="bg-[#171A1D] flex flex-col md:flex-row p-6 gap-4 py-10">
-      <div className="w-full md:w-1/2 flex items-center justify-center">
+    <section className="bg-[#171A1D] flex flex-col md:flex-row p-6 gap-4 py-10 z-30">
+      <div className="w-full md:w-1/2 flex items-center justify-center ">
         <div className='animate-renderimgabout  '>
           <NextImage
             src="/images/personabout.png"
@@ -16,8 +16,7 @@ export const About = () => {
           />
         </div>
       </div>
-      <div className="w-full md:w-1/2 flex items-center justify-center ">
-        {/* <div className='flex flex-col gap-4 animate-renderaboutme'> */}
+      <div className="w-full md:w-1/2 flex items-center justify-center">
         <div className='flex flex-col gap-4 animate-renderaboutme'>
           <h4 className="text-white text-[34px] font-semibold">About Me</h4>
           <p className="text-[#999187]">
