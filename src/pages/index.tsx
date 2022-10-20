@@ -5,6 +5,7 @@
 import Navbar from '../components/layout/Navbar'
 import NextImage from 'next/image'
 import { About } from '@components/others/abouts'
+import { Services } from '@components/others/services'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -68,10 +69,9 @@ const Home = () => {
 
   return (
     <>
-    {/*navbar y header */}
       <div className='imgBannerNabar relative'>
         <Navbar />
-        <section className='h-auto w-[87%] flex flex-col gap-4 md:flex-row mx-auto justify-center items-center '>
+        <section className='h-auto w-[87%] flex flex-col gap-4 md:flex-row mx-auto justify-center items-center p-6'>
           <div className='w-full mt-[90px] flex flex-col gap-[10px] md:w-1/2'>
             <h4 className='text-white text-sm tracking-[5px]  '>YOUR LEGAL PARTNER</h4>
             <div className='text-white'>
@@ -91,9 +91,10 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <div className='absolute w-full h-[100px] bottom-0 bg-gradient-to-t from-blacktranparente to-customtranparente z-10' />
+        <div className='absolute w-full h-[80px] bottom-0 bg-gradient-to-t from-blacktranparente to-customtranparente z-10' />
       </div>
       <About />
+      <Services />
     </>
   )
 }

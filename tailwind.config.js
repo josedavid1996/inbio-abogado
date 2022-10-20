@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blacktranparente: 'rgba(23,26,29,1) 10%',
+        blacktranparente: 'rgba(23,26,29,1) 40%',
         customtranparente: 'rgba(23,26,29,0) 100%)'
       },
       animation: {
