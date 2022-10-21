@@ -7,6 +7,7 @@ import { BgNegroTransparente } from '@components/others/bgNegroTransparente'
 import { Team } from '@components/others/team'
 import { Resumen } from '@components/others/resumen'
 import { Container } from '@components/others/container'
+import { Numbers } from '@components/others/numbers'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -22,8 +23,8 @@ const Home = () => {
       <div className="imgBannerNabar relative ">
         <Navbar />
         <Container>
-          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16">
-            <div className="w-full mt-[90px] flex flex-col gap-[10px] md:w-1/2">
+          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16 p-9">
+            <div className="w-full  flex flex-col gap-[10px] md:w-1/2">
               <h4 className="text-white text-sm tracking-[5px]  ">
                 YOUR LEGAL PARTNER
               </h4>
@@ -38,11 +39,14 @@ const Home = () => {
               </p>
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center ">
-              <div className="animate-renderimgabanner z-0">
+              {/* <div className="animate-renderimgabanner z-0"> */}
+              <div className="animate-renderimgabanner relative w-full h-auto aspect-square z-0">
                 <NextImage
                   src="/images/personbanner.png"
-                  width={450}
-                  height={550}
+                  // width={450}
+                  layout="fill"
+                  className="w-full h-full absolute"
+                  // height={550}
                 />
               </div>
             </div>
@@ -51,11 +55,12 @@ const Home = () => {
         </Container>
         <BgNegroTransparente />
       </div>
-        <About />
-        <Services />
-        <Quote />
-        <Team />
-        <Resumen />
+      <About />
+      <Services />
+      <Quote />
+      <Team />
+      <Resumen />
+      <Numbers />
     </>
   )
 }
