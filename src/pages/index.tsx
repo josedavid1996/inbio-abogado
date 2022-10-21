@@ -19,10 +19,10 @@ export interface SideMultistepComponentProps {
 const Home = () => {
   return (
     <>
-      <div className="imgBannerNabar relative">
+      <div className="imgBannerNabar relative ">
         <Navbar />
         <Container>
-          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center">
+          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16">
             <div className="w-full mt-[90px] flex flex-col gap-[10px] md:w-1/2">
               <h4 className="text-white text-sm tracking-[5px]  ">
                 YOUR LEGAL PARTNER
@@ -47,15 +47,15 @@ const Home = () => {
               </div>
             </div>
           </section>
+          <div />
         </Container>
-
         <BgNegroTransparente />
       </div>
-      <About />
-      <Services />
-      <Quote />
-      <Team />
-      <Resumen />
+        <About />
+        <Services />
+        <Quote />
+        <Team />
+        <Resumen />
     </>
   )
 }

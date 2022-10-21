@@ -10,7 +10,10 @@ module.exports = {
       },
       colors: {
         blacktranparente: 'rgba(23,26,29,1) 40%',
-        customtranparente: 'rgba(23,26,29,0) 100%)'
+        customtranparente: 'rgba(23,26,29,0) 100%)',
+        gradResumen1: 'rgba(255,255,255,.1) 0%',
+        gradResumen2: 'rgba(255,255,255,0) 100%)',
+
       },
       animation: {
         renderprogresbar: 'renderprogresbarframe 0.6s 1s linear forwards',

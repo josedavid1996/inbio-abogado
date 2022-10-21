@@ -22,8 +22,8 @@ const Navbar = () => {
     }
   }, [])
   return (
-    <header className={`shadow z-50 bg-[#171A1D] lg:sticky lg:top-0 ${pathname === '/' && isTransparent && 'lg:bg-transparent '} text-red-500 h-[90px]  transition-colors duration-300 ease-in-out `}>
-      <nav className="container flex justify-between items-center h-full" >
+    <header className={`shadow z-50 bg-[#171A1D] lg:fixed w-full lg:top-0 ${pathname === '/' && isTransparent && 'lg:bg-transparent '} text-red-500 h-[90px]  transition-colors duration-300 ease-in-out `}>
+      <nav className="container flex justify-between items-center h-full " >
         <div className=''>
           <NextLink href="/">
             <div className='relative w-[212px] h-[36px]'>
