@@ -6,7 +6,7 @@ export const Quote = () => {
     <div className="bg-[url('/images/bgquote.jpg')] w-full h-[850px] bg-cover bg-center xl:h-[950px] relative top-0 z-0">
       {/* <Container>
         <> */}
-      <BgNegroTransparente isReverse />
+      <BgNegroTransparente isReverse light />
       <div className='w-[90%] mx-auto max-w-[1240px] h-full'>
         <div className="flex flex-col justify-center h-full p-6 gap-4">
           <div>
@@ -25,7 +25,7 @@ export const Quote = () => {
         </div>
       </div>
 
-      <BgNegroTransparente />
+      <BgNegroTransparente light />
       {/* </>
       </Container> */}
     </div>

@@ -1,7 +1,9 @@
+/* eslint-disable no-useless-escape */
 export const isServer = () => typeof window === 'undefined'
 
 export const isEmpty = (v?: string) => v?.trim().length === 0
 
+// eslint-disable-next-line promise/param-names
 export const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
 export const classNames = (cln: Array<string | undefined>) => {
