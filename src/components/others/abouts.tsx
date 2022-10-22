@@ -2,9 +2,12 @@ import NextImage from 'next/image'
 import { Progressbar } from '@components/others/progressbar'
 import { DataProgressBar } from '@mock/dataProgressBar'
 import { Container } from './container'
-export const About = () => {
+interface Iprops {
+  Class?: string
+}
+export const About = ({ Class }: Iprops) => {
   return (
-    <section className="bg-[#171A1D]">
+    <section className={`bg-[#171A1D] ${Class}`}>
       <Container>
         <div className=" flex flex-col md:flex-row gap-4 py-10 z-30 ">
           <div className="w-full md:w-1/2 flex items-center justify-center ">

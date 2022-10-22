@@ -1,4 +1,5 @@
 import Navbar from '../components/layout/Navbar'
+import { useState } from 'react'
 import NextImage from 'next/image'
 import { About } from '@components/others/abouts'
 import { Services } from '@components/others/services'
@@ -9,6 +10,7 @@ import { Resumen } from '@components/others/resumen'
 import { Container } from '@components/others/container'
 import { Numbers } from '@components/others/numbers'
 import { RecentBlogs } from '@components/others/recentblogs'
+import { HeaderMobile } from '@components/others/headerMobile'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -19,12 +21,15 @@ export interface SideMultistepComponentProps {
 }
 
 const Home = () => {
+  const [ViewMenu, setViewMenu] = useState(false)
+
   return (
     <>
-      <div className="imgBannerNabar relative ">
+      <HeaderMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
+      <div className="imgBannerNabar relative h-auto">
         <Navbar />
         <Container>
-          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16 p-9">
+          <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16 py-9">
             <div className="w-full  flex flex-col gap-[10px] md:w-1/2">
               <h4 className="text-white text-sm tracking-[5px]  ">
                 YOUR LEGAL PARTNER
@@ -40,14 +45,11 @@ const Home = () => {
               </p>
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center ">
-              {/* <div className="animate-renderimgabanner z-0"> */}
               <div className="animate-renderimgabanner relative w-full h-auto aspect-square z-0">
                 <NextImage
                   src="/images/personbanner.png"
-                  // width={450}
                   layout="fill"
                   className="w-full h-full absolute"
-                  // height={550}
                 />
               </div>
             </div>

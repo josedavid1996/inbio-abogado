@@ -18,9 +18,10 @@ body.dark {
 
 .imgBannerNabar {
   background-image: url('/images/bgbanner.jpg');
-  background-position: center;
+  background-position: top;
   /* aspect-ratio: 1/1; */
-  /* background-repeat: no-repeat; */
-  background-size: cover;
+  /* background-repeat: repeat; */
+  /* background-size: cover; */
+
 
 }
