@@ -10,7 +10,7 @@ import { Resumen } from '@components/others/resumen'
 import { Container } from '@components/others/container'
 import { Numbers } from '@components/others/numbers'
 import { RecentBlogs } from '@components/others/recentblogs'
-import { HeaderMobile } from '@components/others/headerMobile'
+import { NavbarMobile } from '@components/others/navbarMobile'
 
 export interface SideMultistepComponentProps {
   stepper: number
@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <HeaderMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
+      <NavbarMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
       <div className="imgBannerNabar relative h-auto">
         <Navbar />
         <Container>

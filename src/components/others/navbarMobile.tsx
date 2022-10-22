@@ -9,7 +9,7 @@ interface Iprops {
   setViewMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export const HeaderMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
+export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
   return (
     <header
       className={`z-50 bg-[#171A1D] lg:hidden w-full ${
