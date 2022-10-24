@@ -17,18 +17,6 @@ export const RecentBlogs = () => {
             slidesPerGroup={3}
             spaceBetween={0}
             loopFillGroupWithBlank={true}
-            // pagination={{
-            //   // el: '.swiper-pagination',
-            //   clickable: true,
-            //   renderBullet: function (index, className) {
-            //     return (
-            //       '<span class="' + className + '">' + (index + 1) + '</span>'
-            //     )
-            //   },
-            //   // renderBullet: function (k, Class) {
-            //   //   return <span className={` ${Class} border`}> {k + 1}</span>
-            //   // },
-            // }}
             breakpoints={{
               380: {
                 slidesPerView: 1,

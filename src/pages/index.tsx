@@ -10,6 +10,7 @@ import { Numbers } from '@components/others/numbers'
 import { RecentBlogs } from '@components/others/recentblogs'
 import { NavbarMobile } from '@components/others/navbarMobile'
 import { Banner } from '@components/others/banner'
+import { Contact } from '@components/others/contact'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -37,6 +38,7 @@ const Home = () => {
       <Resumen />
       <Numbers />
       <RecentBlogs />
+      <Contact />
     </>
   )
 }
