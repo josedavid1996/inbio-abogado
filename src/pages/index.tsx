@@ -11,6 +11,7 @@ import { RecentBlogs } from '@components/others/recentblogs'
 import { NavbarMobile } from '@components/others/navbarMobile'
 import { Banner } from '@components/others/banner'
 import { Contact } from '@components/others/contact'
+import { Footer } from '@components/others/footer'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -31,6 +32,7 @@ const Home = () => {
         <Banner />
         <BgNegroTransparente />
       </div>
+      {/* Secciones separadas por componentes */}
       <About />
       <Services />
       <Quote />
@@ -39,6 +41,7 @@ const Home = () => {
       <Numbers />
       <RecentBlogs />
       <Contact />
+      <Footer />
     </>
   )
 }
