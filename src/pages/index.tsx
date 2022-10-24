@@ -10,7 +10,6 @@ import { Numbers } from '@components/others/numbers'
 import { RecentBlogs } from '@components/others/recentblogs'
 import { NavbarMobile } from '@components/others/navbarMobile'
 import { Banner } from '@components/others/banner'
-
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -24,6 +23,7 @@ const Home = () => {
 
   return (
     <>
+      {/* existen 2 navbar, dependiendo del screen se cambia  */}
       <NavbarMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
       <div className="imgBannerNabar relative h-auto">
         <Navbar />

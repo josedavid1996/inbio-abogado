@@ -1,5 +1,8 @@
 // import '../assets/fonts/dm-sans/dm-sans.css'
 import '../styles/index.css'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 import { AppProps } from 'next/app'
 import { ToastContainer } from 'react-toastify'
