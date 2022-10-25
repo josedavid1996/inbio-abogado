@@ -4,7 +4,7 @@ interface Iprops {
 }
 export const BgNegroTransparente = ({ isReverse, light }: Iprops) => (
   <div
-    className={`absolute w-full h-[80px] z-30 ${
+    className={`absolute w-full h-[105px] z-30 ${
       isReverse
         ? light
           ? 'bg-gradient-to-b top-0 from-blacktranparente30 to-customtranparente'

@@ -12,6 +12,7 @@ import { NavbarMobile } from '@components/others/navbarMobile'
 import { Banner } from '@components/others/banner'
 import { Contact } from '@components/others/contact'
 import { Footer } from '@components/others/footer'
+import { Scroll } from '@components/others/scroll'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -27,10 +28,11 @@ const Home = () => {
     <>
       {/* existen 2 navbar, dependiendo del screen se cambia  */}
       <NavbarMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
-      <div className="imgBannerNabar relative h-auto">
+      <div className="imgBannerNabar relative h-auto ">
         <Navbar />
         <Banner />
         <BgNegroTransparente />
+        <Scroll />
       </div>
       {/* Secciones separadas por componentes */}
       <About />
