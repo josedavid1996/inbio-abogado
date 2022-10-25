@@ -13,6 +13,7 @@ import { Banner } from '@components/others/banner'
 import { Contact } from '@components/others/contact'
 import { Footer } from '@components/others/footer'
 import { Scroll } from '@components/others/scroll'
+import { IconsFloats } from '@components/others/iconsfloats'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -33,6 +34,7 @@ const Home = () => {
         <Banner />
         <BgNegroTransparente />
         <Scroll />
+        <IconsFloats />
       </div>
       {/* Secciones separadas por componentes */}
       <About />

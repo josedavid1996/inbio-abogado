@@ -18,10 +18,10 @@ body.dark {
 
 .imgBannerNabar {
   background-image: url('/images/bgbanner.jpg');
-  background-position: top;
+  background-position: center;
   /* aspect-ratio: 1/1; */
   /* background-repeat: repeat; */
-  /* background-size: cover; */
+  background-size: cover;
 }
 body::-webkit-scrollbar {
   width: 5.8px;
