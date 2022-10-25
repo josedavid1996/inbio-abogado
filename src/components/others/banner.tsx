@@ -29,7 +29,7 @@ export const Banner = () => {
   })
   return (
     <Container>
-      <section className="h-auto flex flex-col gap-4 md:flex-row justify-center items-center lg:pt-16 py-16">
+      <section className="h-auto flex flex-col gap-10 md:gap-4 md:flex-row justify-center items-center lg:pt-16 py-16">
         <div className="w-full flex flex-col gap-[10px] md:w-1/2  h-full ">
           <h4 className="text-white tracking-[4px] text-xs  ">
             YOUR LEGAL PARTNER
@@ -53,7 +53,8 @@ export const Banner = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 flex items-center justify-center ">
-          <div className="animate-renderimgabanner relative w-full  aspect-square z-0 ">
+        {/* <div className="animate-renderimgabanner relative w-full h-[438px] lg:h-[554px] aspect-square z-0 "> */}
+          <div className="animate-renderimgabanner relative w-full aspect-custom z-0 ">
             <NextImage
               src="/images/personbanner.png"
               layout="fill"

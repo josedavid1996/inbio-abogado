@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         customText: '"Roboto", Helvetica, Arial, sans-serif'
       },
+      aspectRatio: {
+        'custom': '1 / 1.1'
+      },
       colors: {
         blacktranparente: 'rgba(23,26,29,1) 79%',
         blacktranparente30: 'rgba(23,26,29,1) 0%',

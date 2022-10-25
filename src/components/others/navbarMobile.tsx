@@ -14,13 +14,13 @@ export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
     <header
       className={`z-50 bg-[#171A1D] lg:hidden w-full ${
         ViewMenu ? 'h-[468px]' : 'h-[90px]'
-      } text-red-500 py-[27px] transition-all duration-700 ease-in-out `}
+      } text-red-500 py-[26px] transition-all duration-700 ease-in-out `}
     >
-      <Container Class="relative">
-        <nav className="flex justify-between items-center">
+      <Container Class="relative ">
+        <nav className="flex flex-row justify-between items-center w-full ">
           <div className="">
             <NextLink href="/">
-              <div className="relative w-[212px] h-[36px]">
+              <div className="relative w-[212px] h-[36px] ">
                 <NextImage
                   src="/images/logonavbar.png"
                   layout="fill"
@@ -29,9 +29,9 @@ export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
               </div>
             </NextLink>
           </div>
-          <div className="lg:hidden ">
+          <div className="lg:hidden w-6 h-6 ">
             <FiMenu
-              className="w-8 h-8 text-white"
+              className="w-full h-full text-white"
               onClick={() => setViewMenu(!ViewMenu)}
             />
           </div>

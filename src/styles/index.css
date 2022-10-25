@@ -22,6 +22,16 @@ body.dark {
   /* aspect-ratio: 1/1; */
   /* background-repeat: repeat; */
   /* background-size: cover; */
-
-
+}
+body::-webkit-scrollbar {
+  width: 5.8px;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: black;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #AD8E6D;
+  outline: 1px solid slategrey;
 }

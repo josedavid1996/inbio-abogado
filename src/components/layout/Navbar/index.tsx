@@ -28,7 +28,7 @@ const Navbar = () => {
       } text-red-500 py-[27px] transition-colors duration-300 ease-in-out `}
     >
       <Container>
-        <nav className="flex justify-between items-center h-full">
+        <nav className="flex justify-between items-center  h-full">
           <div className="">
             <NextLink href="/">
               <div className="relative w-[212px] h-[36px]">
@@ -40,7 +40,7 @@ const Navbar = () => {
               </div>
             </NextLink>
           </div>
-          <div className="hidden lg:flex flex-row justify-between w-[614px] text-[13px] text-white font-semibold tracking-tight ">
+          <div className="hidden lg:flex flex-row justify-between w-[568px] text-[13px]  mr-5 text-white font-semibold tracking-tight ">
             <div className='text-[#AD8E6D]'>Home</div>
             <div>About Me</div>
             <div>My Services</div>
