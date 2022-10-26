@@ -29,7 +29,7 @@ const Home = () => {
     <>
       {/* existen 2 navbar, dependiendo del screen se cambia  */}
       <NavbarMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
-      <div className="imgBannerNabar relative h-auto ">
+      <div className="imgBannerNabar relative h-auto" id="Home">
         <Navbar />
         <Banner />
         <BgNegroTransparente />

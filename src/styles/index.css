@@ -16,6 +16,9 @@ body.dark {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
 .imgBannerNabar {
   background-image: url('/images/bgbanner.jpg');
   background-position: center;

@@ -1,15 +1,16 @@
+/* eslint-disable comma-dangle */
 import { TittleCustom } from './tittleCustom'
 import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
-  FaPinterest
+  FaPinterest,
 } from 'react-icons/fa'
 import NextImage from 'next/image'
 import { Container } from './container'
 export const Team = () => {
   return (
-    <section className="bg-[#171A1D] py-10 z-30">
+    <section className="bg-[#171A1D] py-10 z-30" id="Team">
       <Container>
         <>
           <TittleCustom tittle="Meet The Team" />

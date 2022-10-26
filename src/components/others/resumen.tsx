@@ -2,7 +2,7 @@ import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
 export const Resumen = () => {
   return (
-    <div className="bg-[#171A1D] py-10 z-30">
+    <div className="bg-[#171A1D] py-10 z-30" id="Resumen">
       <Container>
         <TittleCustom tittle="My Resume" />
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-4">

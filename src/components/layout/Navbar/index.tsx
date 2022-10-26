@@ -23,7 +23,7 @@ const Navbar = () => {
   }, [])
   return (
     <header
-      className={`z-50 bg-[#171A1D] hidden lg:block lg:fixed w-full lg:top-0 ${
+      className={`z-50 bg-[#171A1D] hidden lg:block lg:fixed w-full lg:top-0  ${
         pathname === '/' && isTransparent && 'lg:bg-transparent '
       } text-red-500 py-[27px] transition-colors duration-300 ease-in-out `}
     >
@@ -41,13 +41,27 @@ const Navbar = () => {
             </NextLink>
           </div>
           <div className="hidden lg:flex flex-row justify-between w-[568px] text-[13px]  mr-5 text-white font-semibold tracking-tight ">
-            <div className='text-[#AD8E6D]'>Home</div>
-            <div>About Me</div>
-            <div>My Services</div>
-            <div>Meet The Team</div>
-            <div>My Resume</div>
-            <div>Blog</div>
-            <div>Contact</div>
+            <div className="text-[#AD8E6D]">
+              <a href="#Home">Home</a>
+            </div>
+            <div>
+              <a href="#About">About Me</a>
+            </div>
+            <div>
+              <a href="#Services">My Services</a>
+            </div>
+            <div>
+              <a href="#Team">Meet The Team</a>
+            </div>
+            <div>
+              <a href="#Resumen">My Resume</a>
+            </div>
+            <div>
+              <a href="#Blog">Blog</a>
+            </div>
+            <div>
+              <a href="#Contact">Contact</a>
+            </div>
           </div>
         </nav>
       </Container>
