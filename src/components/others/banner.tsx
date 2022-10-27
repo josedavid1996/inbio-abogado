@@ -35,7 +35,8 @@ export const Banner = () => {
             YOUR LEGAL PARTNER
           </h4>
           <div className="text-white  text-[32px] lg:text-[50px] tracking-[-1px] font-semibold">
-            Hi, I´m <span className="text-[#AD8E6D]">Alberto Kyros </span> a{' '}
+            Hi, I´m <span className="text-[#AD8E6D]">Alberto Kyros </span>
+            <br /> a {' '}
             <span className="" ref={typedElement}></span>
           </div>
           <p className="text-[#999187] ">

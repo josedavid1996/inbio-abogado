@@ -10,7 +10,7 @@ import NextImage from 'next/image'
 import { Container } from './container'
 export const Team = () => {
   return (
-    <section className="bg-[#171A1D] py-10 z-30" id="Team">
+    <section className="bg-[#171A1D] py-[90px] z-30" id="Team">
       <Container>
         <>
           <TittleCustom tittle="Meet The Team" />

@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <header
       className={`z-50 bg-[#171A1D] hidden lg:block lg:fixed w-full lg:top-0  ${
-        pathname === '/' && isTransparent && 'lg:bg-transparent '
+        pathname === '/' && isTransparent ? 'lg:bg-transparent ' : 'mb-[90px]'
       } text-red-500 py-[27px] transition-colors duration-300 ease-in-out `}
     >
       <Container>

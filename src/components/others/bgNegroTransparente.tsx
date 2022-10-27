@@ -1,10 +1,16 @@
+/* eslint-disable comma-dangle */
 interface Iprops {
   isReverse?: boolean
   light?: boolean
+  Height?: string
 }
-export const BgNegroTransparente = ({ isReverse, light }: Iprops) => (
+export const BgNegroTransparente = ({
+  isReverse,
+  light,
+  Height = '',
+}: Iprops) => (
   <div
-    className={`absolute w-full h-[105px] z-30 ${
+    className={`absolute w-full h-[105px] ${Height} z-30 ${
       isReverse
         ? light
           ? 'bg-gradient-to-b top-0 from-blacktranparente30 to-customtranparente'

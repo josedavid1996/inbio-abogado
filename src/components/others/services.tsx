@@ -2,7 +2,7 @@ import { FaBriefcase, FaUser, FaGavel } from 'react-icons/fa'
 import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
 export const Services = () => (
-  <section className="bg-[#171A1D] py-10 z-30" id="Services">
+  <section className="bg-[#171A1D] py-[90px] z-30" id="Services">
     <Container>
       <>
         <TittleCustom tittle="My Services" />

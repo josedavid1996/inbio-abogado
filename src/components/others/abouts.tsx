@@ -7,9 +7,9 @@ interface Iprops {
 }
 export const About = ({ Class }: Iprops) => {
   return (
-    <section className={`bg-[#171A1D] ${Class}`} id="About">
+    <section className={`bg-[#171A1D]  ${Class}`} id="About">
       <Container>
-        <div className=" flex flex-col md:flex-row gap-4 py-10 z-30 ">
+        <div className=" flex flex-col md:flex-row gap-4 py-[90px] z-30 ">
           <div className="w-full md:w-1/2 flex items-center justify-center ">
             <div className="animate-renderimgabout  ">
               <NextImage

@@ -12,8 +12,8 @@ module.exports = {
         'custom': '1 / 1.1'
       },
       colors: {
-        blacktranparente: 'rgba(23,26,29,1) 60%',
-        blacktranparente30: 'rgba(23,26,29,1) 20%',
+        blacktranparente: 'rgba(23,26,29,1) 30%',
+        blacktranparente30: 'rgba(23,26,29,1) 0%',
         customtranparente: 'rgba(23,26,29,0) 100%)',
         gradResumen1: 'rgba(255,255,255,.1) 0%',
         gradResumen2: 'rgba(255,255,255,0) 100%)',

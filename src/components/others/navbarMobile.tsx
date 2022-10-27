@@ -36,36 +36,48 @@ export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
             />
           </div>
         </nav>
-        <div
-          className="transition-opacity duration-300 ease-in-out text-[13px] font-semibold h-auto pt-10  text-white"
-        >
+        <div className="transition-opacity duration-300 ease-in-out text-[13px] font-semibold h-auto pt-10  text-white">
           <div className="flex flex-col gap-5 ">
             <div>
-              <h3>Home</h3>
+              <h3>
+                <a href="#Home">Home</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>About Me</h3>
+              <h3>
+                <a href="#About">About Me</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>My Services</h3>
+              <h3>
+                <a href="#Services">My Services</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>Meet The Team</h3>
+              <h3>
+                <a href="#Team">Meet The Team</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>My Resumen</h3>
+              <h3>
+                <a href="#Resumen">My Resume</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>Blog</h3>
+              <h3>
+                <a href="#Blog">Blog</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
-              <h3>Contact</h3>
+              <h3>
+                <a href="#Contact">Contact</a>
+              </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
           </div>

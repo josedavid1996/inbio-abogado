@@ -32,7 +32,7 @@ const Home = () => {
       <div className="imgBannerNabar relative h-auto" id="Home">
         <Navbar />
         <Banner />
-        <BgNegroTransparente />
+        <BgNegroTransparente Height='lg:h-[210px]' />
         <Scroll />
         <IconsFloats />
       </div>

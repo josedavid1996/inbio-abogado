@@ -7,7 +7,7 @@ import { CardBlog } from './cardBlog'
 import { DataBolgs } from '@mock/dataBlogs'
 export const RecentBlogs = () => {
   return (
-    <div className="bg-[#171A1D] py-10 z-30" id="Blog">
+    <div className="bg-[#171A1D] py-[90px] z-30" id="Blog">
       <Container>
         <TittleCustom tittle="Recent Blog" />
         <div className="lg:p-6">
