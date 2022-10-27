@@ -6,7 +6,7 @@ export const Resumen = () => {
       <Container>
         <TittleCustom tittle="My Resume" />
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-4">
-          <div >
+          <div data-aos="fade-up">
             <h3 className="text-white text-[28px] font-semibold ">
               Experiences
             </h3>
@@ -95,10 +95,8 @@ export const Resumen = () => {
               </div>
             </div>
           </div>
-          <div >
-            <h3 className="text-white text-[28px] font-semibold ">
-              Education
-            </h3>
+          <div data-aos="fade-up">
+            <h3 className="text-white text-[28px] font-semibold ">Education</h3>
             <div className="flex flex-col w-auto mt-6">
               <div className="flex flex-col">
                 <div className="flex flex-row relative">

@@ -19,8 +19,11 @@ module.exports = {
         gradResumen2: 'rgba(255,255,255,0) 100%)',
 
       },
+      transitionTimingFunction: {
+        'customtransition': 'cubic-bezier(1, 0, 0.5, 1) forwards',
+      },
       animation: {
-        renderprogresbar: 'renderprogresbarframe 0.6s 1s linear forwards',
+        renderprogresbar: 'renderprogresbarframe 0.6s 1s cubic-bezier(1,0,0.5,1) forwards',
         renderimgabout: 'renderimgaboutframe 0.7s ',
         renderimgabanner: 'renderimgaboutframe 1.4s',
         renderaboutme: 'renderimgaboutframe 1s'

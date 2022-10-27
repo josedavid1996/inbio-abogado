@@ -10,7 +10,7 @@ export const RecentBlogs = () => {
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog">
       <Container>
         <TittleCustom tittle="Recent Blog" />
-        <div className="lg:p-6">
+        <div className="lg:p-6" data-aos="fade-up">
           <Swiper
             grabCursor={true}
             slidesPerView="auto"

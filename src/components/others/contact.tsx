@@ -11,7 +11,7 @@ export const Contact = () => {
       <BgNegroTransparente light />
       <div className="mx-auto w-[90%] max-w-[740px] py-6">
         <TittleCustom tittle="Contact" />
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 " data-aos="fade-up">
           <div className="flex flex-col md:flex-row gap-6 ">
             <input
               type="text"
