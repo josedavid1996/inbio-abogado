@@ -15,7 +15,7 @@ export const Team = () => {
         <>
           <TittleCustom tittle="Meet The Team" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex flex-col " data-aos="fade-left">
+            <div className="flex flex-col ">
               <div className="aspect-square relative ">
                 <NextImage
                   src="/images/person1.jpg"
@@ -38,7 +38,7 @@ export const Team = () => {
                 <h6>Managing Partner</h6>
               </div>
             </div>
-            <div data-aos="fade-left">
+            <div >
               <div className="aspect-square relative ">
                 <NextImage
                   src="/images/person2.jpg"
@@ -63,7 +63,7 @@ export const Team = () => {
                 <h6>Senior Partner</h6>
               </div>
             </div>
-            <div data-aos="fade-left">
+            <div >
               <div className="aspect-square relative ">
                 <NextImage
                   src="/images/person3.jpg"
