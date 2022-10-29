@@ -1,12 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Container } from '@components/others/container'
 
+interface IpropsDivHref {
+  id: string
+  tittle: string
+}
+
 const Navbar = () => {
   const [isTransparent, SetisTransparent] = useState(true)
-  const { pathname } = useRouter()
+  const [SecctionView, setSecctionView] = useState('')
+  const { pathname, asPath } = useRouter()
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
@@ -15,12 +22,28 @@ const Navbar = () => {
       SetisTransparent(true)
     }
   }
+  // const ComparePathId = (id: string) =>
+  const DivHref = ({ id, tittle }: IpropsDivHref) => (
+    <div className={SecctionView === id ? 'text-[#AD8E6D]' : ''}>
+      <a href={id} onClick={() => setSecctionView(id)}>
+        {tittle}
+      </a>
+    </div>
+  )
+
   useEffect(() => {
     window.addEventListener('scroll', changeBackground)
     return () => {
       window.removeEventListener('scroll', changeBackground)
     }
   }, [])
+  useEffect(() => {
+    console.log('change')
+    setSecctionView(asPath.split('/')[1])
+  }, [])
+  // useEffect(() => {
+  //   console.log('effect')
+  // }, [SecctionView])
   return (
     <header
       className={`z-50 bg-[#171A1D] hidden lg:block lg:fixed w-full lg:top-0  ${
@@ -41,27 +64,13 @@ const Navbar = () => {
             </NextLink>
           </div>
           <div className="hidden lg:flex flex-row justify-between w-[568px] text-[13px]  mr-5 text-white font-semibold tracking-tight ">
-            <div className="text-[#AD8E6D]">
-              <a href="#Home">Home</a>
-            </div>
-            <div>
-              <a href="#About">About Me</a>
-            </div>
-            <div>
-              <a href="#Services">My Services</a>
-            </div>
-            <div>
-              <a href="#Team">Meet The Team</a>
-            </div>
-            <div>
-              <a href="#Resumen">My Resume</a>
-            </div>
-            <div>
-              <a href="#Blog">Blog</a>
-            </div>
-            <div>
-              <a href="#Contact">Contact</a>
-            </div>
+            <DivHref id="#Home" tittle="Home" />
+            <DivHref id="#About" tittle="About Me" />
+            <DivHref id="#Services" tittle="My Services" />
+            <DivHref id="#Team" tittle="Meet The Team" />
+            <DivHref id="#Resumen" tittle="My Resume" />
+            <DivHref id="#Blog" tittle="Blog" />
+            <DivHref id="#Contact" tittle="Contact" />
           </div>
         </nav>
       </Container>
