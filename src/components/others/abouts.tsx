@@ -32,6 +32,7 @@ export const About = ({ Class }: Iprops) => {
                 officia veniam enim sit culpa velit proident enim ea officia
                 aute non in mollit culpa anim magna sit veniam irure eiusmod.
               </p>
+              {/* data-aos="fade-right" */}
               <div className="mt-5 flex flex-col gap-[22px]">
                 {DataProgressBar &&
                   DataProgressBar.map((data, k) => (
