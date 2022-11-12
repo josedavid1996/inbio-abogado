@@ -7,7 +7,11 @@ export const Services = () => (
       <>
         <TittleCustom tittle="My Services" />
         <div className="flex flex-col lg:flex-row gap-4">
-          <div className="flex flex-col gap-3">
+          <div
+            className="flex flex-col gap-3"
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+          >
             <div>
               <FaBriefcase className="w-10 h-10 text-[#AD8E6D]" />
             </div>
@@ -20,7 +24,11 @@ export const Services = () => (
               irure.
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div
+            className="flex flex-col gap-3"
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+          >
             <div>
               <FaUser className="w-10 h-10 text-[#AD8E6D]" />
             </div>
@@ -33,7 +41,11 @@ export const Services = () => (
               irure.
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div
+            className="flex flex-col gap-3"
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+          >
             <div>
               <FaGavel className="w-10 h-10 text-[#AD8E6D]" />
             </div>

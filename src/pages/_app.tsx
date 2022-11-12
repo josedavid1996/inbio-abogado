@@ -17,9 +17,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     Aos.init({
-      once: true,
+      // once: false,
       offset: 10,
       duration: 1000,
+      delay: 500,
+      // data-aos-anchor-placement="center-center"
     })
   }, [])
 
