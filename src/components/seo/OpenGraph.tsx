@@ -22,6 +22,7 @@ export const OpenGraph = ({
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
     <meta property="og:image" content={img} />
+    <meta property="og:locale" content="es_LA" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={tittlePage} />

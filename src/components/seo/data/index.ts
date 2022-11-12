@@ -13,7 +13,7 @@ export const DataPageGeneral: IdataPageGeneral = {
   link: 'Kyros',
   description: 'Somos los mejores en lo que hacemos',
   domain: 'inbio-abogado.vercel.app',
-  img: 'https://inbio-abogado.vercel.app/images/personabout.png',
+  img: 'https://inbio-abogado.vercel.app/images/imgpageseo.png',
   keywords: 'Comercial services, employment services, civil ligitation',
   url: 'https://inbio-abogado.vercel.app/',
 }
