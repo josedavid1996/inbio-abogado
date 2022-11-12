@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import Aos from 'aos'
 import useLoadTheme from '../hooks/useLoadTheme'
 import { useEffect } from 'react'
+import { NavbarProvider } from '@contexts/NavbarProvider'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // Servicio para cargar el theme desde el LocalStorage
@@ -26,10 +27,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, [])
 
   return (
-    <main>
-      <Component {...pageProps} />
-      <ToastContainer />
-    </main>
+    <NavbarProvider>
+      <main>
+        <Component {...pageProps} />
+        <ToastContainer />
+      </main>
+    </NavbarProvider>
   )
 }
 

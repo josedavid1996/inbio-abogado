@@ -10,6 +10,7 @@ export const Progressbar = ({ percentage, tittlePercentege }: Iprops) => {
 
   useEffect(() => {
     if (inView) setIsEffect(true)
+    else setIsEffect(false)
   }, [inView])
 
   return (
