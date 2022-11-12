@@ -1,10 +1,4 @@
-import HeadNext from 'next/head'
+import { DataPageGeneral } from '@components/seo/data'
+import { OpenGraph } from '@components/seo/OpenGraph'
 
-export const Head = () => {
-  return (
-    <HeadNext>
-      <title>Kyros - Personal Website</title>
-      <meta property="og:title" content="Kyros - Personal Website" key="title" />
-    </HeadNext>
-  )
-}
+export const Head = () => <OpenGraph {...DataPageGeneral} />

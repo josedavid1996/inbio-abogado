@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import { useState, useEffect } from 'react'
 import { BgNegroTransparente } from './bgNegroTransparente'
 import CountUp from 'react-countup/build'
