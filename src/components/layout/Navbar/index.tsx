@@ -1,17 +1,33 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable indent */
 /* eslint-disable react-hooks/exhaustive-deps */
 import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Container } from '@components/others/container'
+import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
 
 interface IpropsDivHref {
   id: string
   tittle: string
 }
 
+const ColorText = 'text-[#AD8E6D]'
+
+const SwitchOption: any = {
+  '#Home': ColorText,
+  '#About': ColorText,
+  '#Services': ColorText,
+  '#Team': ColorText,
+  '#Resumen': ColorText,
+  '#Blog': ColorText,
+  '#Contact': ColorText,
+}
+
 const Navbar = () => {
   const [isTransparent, SetisTransparent] = useState(true)
+  const { ViewSecction } = NavbarContextConfig() as IContext
   const [SecctionView, setSecctionView] = useState('')
   const { pathname, asPath } = useRouter()
 
@@ -24,7 +40,22 @@ const Navbar = () => {
   }
   // const ComparePathId = (id: string) =>
   const DivHref = ({ id, tittle }: IpropsDivHref) => (
-    <div className={SecctionView === id ? 'text-[#AD8E6D]' : ''}>
+    <div
+      className={
+        SecctionView === ''
+          ? `#${ViewSecction}` === id
+            ? SwitchOption[`#${ViewSecction}`]
+            : ''
+          : SecctionView === id
+          ? SwitchOption[id]
+          : ''
+        // SecctionView === id
+        //   ? 'text-[#AD8E6D]'
+        //   : `#${ViewSecction}` === id
+        //   ? 'text-[#AD8E6D]'
+        //   : ''
+      }
+    >
       <a href={id} onClick={() => setSecctionView(id)}>
         {tittle}
       </a>
@@ -38,7 +69,7 @@ const Navbar = () => {
     }
   }, [])
   useEffect(() => {
-    console.log('change')
+    // console.log('change')
     setSecctionView(asPath.split('/')[1])
   }, [])
   // useEffect(() => {

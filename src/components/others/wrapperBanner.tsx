@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer'
 
 export const WrapperBanner = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
-  const { ref, inView } = useInView({ threshold: 0 })
+  const { ref, inView } = useInView({ threshold: 1 })
   useEffect(() => {
     if (inView) {
       setViewSecction('Home')

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable comma-dangle */
 import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
@@ -5,9 +6,20 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import { CardBlog } from './cardBlog'
 import { DataBolgs } from '@mock/dataBlogs'
+import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+
 export const RecentBlogs = () => {
+  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref, inView } = useInView({ threshold: 1 })
+
+  useEffect(() => {
+    if (inView) setViewSecction('Blog')
+  }, [inView])
+
   return (
-    <div className="bg-[#171A1D] py-[90px] z-30" id="Blog">
+    <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
         <TittleCustom tittle="Recent Blog" />
         <div

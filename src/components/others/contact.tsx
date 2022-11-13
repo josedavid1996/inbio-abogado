@@ -1,11 +1,22 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { BgNegroTransparente } from './bgNegroTransparente'
 import { TittleCustom } from './tittleCustom'
 
 export const Contact = () => {
+  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref, inView } = useInView({ threshold: 1 })
+
+  useEffect(() => {
+    if (inView) setViewSecction('Contact')
+  }, [inView])
+
   return (
     <div
       id="Contact"
+      ref={ref}
       className="bg-[#171A1D] py-10 z-30 bg-[url('/images/bgContact.jpg')] relative"
     >
       <BgNegroTransparente light />

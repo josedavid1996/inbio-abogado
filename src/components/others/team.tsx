@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable comma-dangle */
 import { TittleCustom } from './tittleCustom'
 import {
@@ -8,9 +9,18 @@ import {
 } from 'react-icons/fa'
 import NextImage from 'next/image'
 import { Container } from './container'
+import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
 export const Team = () => {
+  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref, inView } = useInView({ threshold: 1 })
+
+  useEffect(() => {
+    if (inView) setViewSecction('Team')
+  }, [inView])
   return (
-    <section className="bg-[#171A1D] py-[90px] z-30" id="Team">
+    <section className="bg-[#171A1D] py-[90px] z-30" id="Team" ref={ref}>
       <Container>
         <>
           <TittleCustom tittle="Meet The Team" />

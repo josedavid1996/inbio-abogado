@@ -1,13 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react'
 import NextImage from 'next/image'
 import { Progressbar } from '@components/others/progressbar'
 import { DataProgressBar } from '@mock/dataProgressBar'
 import { Container } from './container'
+import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
+import { useInView } from 'react-intersection-observer'
 interface Iprops {
   Class?: string
 }
 export const About = ({ Class }: Iprops) => {
+  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref, inView } = useInView({ threshold: 1 })
+
+  useEffect(() => {
+    if (inView) setViewSecction('About')
+  }, [inView])
   return (
-    <section className={`bg-[#171A1D]  ${Class}`} id="About">
+    <section className={`bg-[#171A1D]  ${Class}`} id="About" ref={ref}>
       <Container>
         <div className=" flex flex-col md:flex-row gap-4 py-[90px] z-30 ">
           <div className="w-full md:w-1/2 flex items-center justify-center ">

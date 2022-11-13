@@ -1,8 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
 export const Resumen = () => {
+  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref, inView } = useInView({ threshold: 0.4 })
+  useEffect(() => {
+    if (inView) setViewSecction('Resumen')
+  }, [inView])
   return (
-    <div className="bg-[#171A1D] py-[90px] z-30" id="Resumen">
+    <div className="bg-[#171A1D] py-[90px] z-30" id="Resumen" ref={ref}>
       <Container>
         <TittleCustom tittle="My Resume" />
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-4">
