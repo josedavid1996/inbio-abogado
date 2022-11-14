@@ -3,7 +3,9 @@ import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { BgNegroTransparente } from './bgNegroTransparente'
+import { InputArea } from '@components/shared/textArea'
 import { TittleCustom } from './tittleCustom'
+import Input from '@components/shared/Input'
 
 export const Contact = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
@@ -24,28 +26,31 @@ export const Contact = () => {
         <TittleCustom tittle="Contact" />
         <div className="flex flex-col gap-6 " data-aos="fade-up">
           <div className="flex flex-col md:flex-row gap-6 ">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="input w-full bg-transparent border border-[#999187]"
+            <Input
+              label="Your Name"
+              className="input w-full h-full bg-transparent border border-[#999187]"
             />
-            <input
-              type="text"
-              placeholder="Your Email"
-              className="input w-full bg-transparent border border-[#999187]"
+            <Input
+              label="Your Email"
+              className="input w-full h-full bg-transparent border border-[#999187]"
             />
-            <input
-              type="text"
-              placeholder="Your Phone"
-              className="input w-full bg-transparent border border-[#999187]"
+            <Input
+              label="Your Phone"
+              className="input w-full h-full bg-transparent border border-[#999187]"
             />
           </div>
-          <div className="w-full h-[168px]">
+          <InputArea />
+          {/* <div className="w-full h-[168px] relative">
             <textarea
-              className="textarea bg-transparent border border-[#999187] w-full h-full"
-              placeholder="Your Message"
-            ></textarea>
-          </div>
+              className="textarea bg-transparent border border-[#999187] w-full h-full peer p-5"
+              placeholder=""
+            />
+            <label
+              className="absolute top-[20px] left-[15px] text-slate-500 duration-300 transition-all peer-focus:-translate-y-4 peer-placeholder-shown:-translate-y-4"
+            >
+              Your Message
+            </label>
+          </div> */}
           <button className="w-[173px] h-[37px] bg-[#AD8E6D] text-white mx-auto rounded-md font-semibold text-[14px]">
             Send Message
           </button>
