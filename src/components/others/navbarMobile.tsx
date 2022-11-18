@@ -21,6 +21,7 @@ export const NavbarMobile = () => {
                 <NextImage
                   src="/images/logonavbar.webp"
                   layout="fill"
+                  alt='Img_Navbar'
                   priority
                   className="absolute w-full h-full"
                 />

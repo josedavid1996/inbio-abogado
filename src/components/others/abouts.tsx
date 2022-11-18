@@ -30,6 +30,7 @@ export const About = ({ Class }: Iprops) => {
                 // className='absolute w-full h-full object-cover'
                 // objectFit='cover'
                 // layout='fill'
+                alt='Img_about'
                 width={450}
                 height={500}
               />

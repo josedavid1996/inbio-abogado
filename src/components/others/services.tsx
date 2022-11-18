@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
 import { TittleCustom } from './tittleCustom'
+
 export const Services = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
   const { inView, ref } = useInView({ threshold: 1 })

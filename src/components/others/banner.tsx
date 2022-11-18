@@ -62,6 +62,8 @@ export const Banner = () => {
             <NextImage
               src="/images/personbanner.webp"
               layout="fill"
+              priority
+              alt="Img_banner"
               className="w-full h-full absolute"
             />
           </div>
