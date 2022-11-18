@@ -18,7 +18,7 @@ export const Numbers = () => {
 
   return (
     <div
-      className="bg-[url('/images/bgNumbers.webp')] w-full h-[547px] md:h-[272px] aspect-square bg-cover bg-center relative flex items-center justify-center"
+      className="bg-[url('/images/bgnumbers.webp')] w-full h-[547px] md:h-[272px] aspect-square bg-cover bg-center relative flex items-center justify-center"
       ref={ref}
     >
       <BgNegroTransparente isReverse light />

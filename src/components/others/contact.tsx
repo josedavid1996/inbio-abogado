@@ -19,7 +19,7 @@ export const Contact = () => {
     <div
       id="Contact"
       ref={ref}
-      className="bg-[#171A1D] py-10 z-30 bg-[url('/images/bgContact.webp')] relative"
+      className="bg-[#171A1D] py-10 z-30 bg-[url('/images/bgcontact.webp')] relative"
     >
       <BgNegroTransparente light />
       <div className="mx-auto w-[90%] max-w-[740px] py-6">
