@@ -20,7 +20,7 @@ html {
   scroll-behavior: smooth;
 }
 .imgBannerNabar {
-  background-image: url('/images/bgbanner.jpg');
+  background-image: url('/images/bgbanner.webp');
   background-position: center;
   /* aspect-ratio: 1/1; */
   /* background-repeat: repeat; */

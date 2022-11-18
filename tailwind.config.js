@@ -24,7 +24,7 @@ module.exports = {
       },
       animation: {
         renderprogresbar: 'renderprogresbarframe 0.6s 1s cubic-bezier(1,0,0.5,1) forwards',
-        renderimgabout: 'renderimgaboutframe 0.7s ',
+        renderimgabout: 'renderimgaboutframeIzquierda 1s ',
         renderimgabanner: 'renderimgaboutframe 1.4s',
         renderaboutme: 'renderimgaboutframe 1s'
 
@@ -42,15 +42,29 @@ module.exports = {
         renderimgaboutframe: {
           '0%': {
             opacity: "0",
-            transform: "translateY(200px)",
+            transform: "translateX(200px)",
           },
           '70%': {
             opacity: "0",
-            transform: "translateY(40px)",
+            transform: "translateX(40px)",
           },
           '100%': {
             opacity: "1",
-            transform: "translateY(0)",
+            transform: "translateX(0)",
+          }
+        },
+        renderimgaboutframeIzquierda: {
+          '0%': {
+            opacity: "0",
+            transform: "translateX(-200px)",
+          },
+          '70%': {
+            opacity: "0",
+            transform: "translateX(-40px)",
+          },
+          '100%': {
+            opacity: "1",
+            transform: "translateX(0)",
           }
         },
 

@@ -36,8 +36,7 @@ export const Banner = () => {
           </h4>
           <div className="text-white  text-[32px] lg:text-[50px] tracking-[-1px] font-semibold">
             Hi, I´m <span className="text-[#AD8E6D]">Alberto Kyros </span>
-            <br /> a {' '}
-            <span className="" ref={typedElement}></span>
+            <br /> a <span className="" ref={typedElement}></span>
           </div>
           <p className="text-[#999187] ">
             In quis amet ex veniam in irure est culpa veniam velit fugiat
@@ -53,11 +52,15 @@ export const Banner = () => {
             </button>
           </div>
         </div>
-        <div className="w-full md:w-1/2 flex items-center justify-center ">
-        {/* <div className="animate-renderimgabanner relative w-full h-[438px] lg:h-[554px] aspect-square z-0 "> */}
-          <div className="animate-renderimgabanner relative w-full aspect-custom z-0 ">
+        <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden ">
+          {/* <div className="animate-renderimgabanner relative w-full aspect-custom z-0 "> */}
+          <div
+            data-aos="fade-left"
+            // data-aos-anchor-placement="center-bottom"
+            className="relative w-full aspect-custom z-0"
+          >
             <NextImage
-              src="/images/personbanner.png"
+              src="/images/personbanner.webp"
               layout="fill"
               className="w-full h-full absolute"
             />

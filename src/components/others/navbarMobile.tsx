@@ -1,15 +1,12 @@
-import { SetStateAction, Dispatch } from 'react'
+import { useState } from 'react'
 import NextLink from 'next/link'
 import { FiMenu } from 'react-icons/fi'
 import NextImage from 'next/image'
 import { Container } from './container'
 
-interface Iprops {
-  ViewMenu: boolean
-  setViewMenu: Dispatch<SetStateAction<boolean>>
-}
+export const NavbarMobile = () => {
+  const [ViewMenu, setViewMenu] = useState(false)
 
-export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
   return (
     <header
       className={`z-50 bg-[#171A1D] lg:hidden w-full ${
@@ -22,8 +19,9 @@ export const NavbarMobile = ({ ViewMenu, setViewMenu }: Iprops) => {
             <NextLink href="/">
               <div className="relative w-[212px] h-[36px] ">
                 <NextImage
-                  src="/images/logonavbar.png"
+                  src="/images/logonavbar.webp"
                   layout="fill"
+                  priority
                   className="absolute w-full h-full"
                 />
               </div>

@@ -49,11 +49,6 @@ const Navbar = () => {
           : SecctionView === id
           ? SwitchOption[id]
           : ''
-        // SecctionView === id
-        //   ? 'text-[#AD8E6D]'
-        //   : `#${ViewSecction}` === id
-        //   ? 'text-[#AD8E6D]'
-        //   : ''
       }
     >
       <a href={id} onClick={() => setSecctionView(id)}>
@@ -69,12 +64,8 @@ const Navbar = () => {
     }
   }, [])
   useEffect(() => {
-    // console.log('change')
     setSecctionView(asPath.split('/')[1])
   }, [])
-  // useEffect(() => {
-  //   console.log('effect')
-  // }, [SecctionView])
   return (
     <header
       className={`z-50 bg-[#171A1D] hidden lg:block lg:fixed w-full lg:top-0  ${
@@ -87,8 +78,9 @@ const Navbar = () => {
             <NextLink href="/">
               <div className="relative w-[212px] h-[36px]">
                 <NextImage
-                  src="/images/logonavbar.png"
+                  src="/images/logonavbar.webp"
                   layout="fill"
+                  priority
                   className="absolute w-full h-full"
                 />
               </div>

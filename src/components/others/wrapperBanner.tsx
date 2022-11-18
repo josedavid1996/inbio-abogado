@@ -1,10 +1,13 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from '@components/layout/Navbar'
+import {
+  Banner,
+  BgNegroTransparente,
+  IconsFloats,
+  Scroll,
+} from '@components/others'
 import { useEffect } from 'react'
-import { Banner } from './banner'
-import { BgNegroTransparente } from './bgNegroTransparente'
-import { IconsFloats } from './iconsfloats'
-import { Scroll } from './scroll'
 import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
 import { useInView } from 'react-intersection-observer'
 

@@ -32,8 +32,9 @@ export const Team = () => {
             >
               <div className="aspect-square relative ">
                 <NextImage
-                  src="/images/person1.jpg"
+                  src="/images/person1.webp"
                   layout="fill"
+                  loading="lazy"
                   className="absolute w-full h-full rounded-lg z-0"
                 />
                 <div className="absolute bottom-9 w-full z-40">
@@ -55,10 +56,9 @@ export const Team = () => {
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
               <div className="aspect-square relative ">
                 <NextImage
-                  src="/images/person2.jpg"
+                  src="/images/person2.webp"
                   layout="fill"
-                  // width={350}
-                  // height={350}
+                  loading="lazy"
                   className="absolute w-full h-full rounded-lg"
                 />
                 <div className="absolute bottom-9 w-full z-40">
@@ -80,10 +80,9 @@ export const Team = () => {
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
               <div className="aspect-square relative ">
                 <NextImage
-                  src="/images/person3.jpg"
+                  src="/images/person3.webp"
                   layout="fill"
-                  // width={350}
-                  // height={350}
+                  loading="lazy"
                   className="absolute w-full h-full rounded-lg"
                 />
                 <div className="absolute bottom-9 w-full z-40">

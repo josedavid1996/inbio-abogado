@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import { About } from '@components/others/abouts'
-import { Services } from '@components/others/services'
-import { Quote } from '@components/others/quote'
-import { Team } from '@components/others/team'
-import { Resumen } from '@components/others/resumen'
-import { Numbers } from '@components/others/numbers'
-import { RecentBlogs } from '@components/others/recentblogs'
-import { NavbarMobile } from '@components/others/navbarMobile'
-import { Contact } from '@components/others/contact'
-import { Footer } from '@components/others/footer'
-import { WrapperBanner } from '@components/others/wrapperBanner'
-import { Head } from '@components/others/head'
+/* eslint-disable comma-dangle */
+import {
+  About,
+  Services,
+  Quote,
+  Team,
+  Resumen,
+  Numbers,
+  RecentBlogs,
+  NavbarMobile,
+  Contact,
+  Footer,
+  WrapperBanner,
+  Head,
+} from '@components/others'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -20,13 +22,14 @@ export interface SideMultistepComponentProps {
 }
 
 const Home = () => {
-  const [ViewMenu, setViewMenu] = useState(false)
-
   return (
     <>
       <Head />
       {/* existen 2 navbar, dependiendo del screen se cambia  */}
-      <NavbarMobile ViewMenu={ViewMenu} setViewMenu={setViewMenu} />
+      {/* navbar solo  para mobile */}
+      <NavbarMobile />
+
+      {/* navbar solo  para desktop */}
       <WrapperBanner />
       {/* Secciones separadas por componentes */}
       <About />

@@ -20,10 +20,13 @@ export const About = ({ Class }: Iprops) => {
     <section className={`bg-[#171A1D]  ${Class}`} id="About" ref={ref}>
       <Container>
         <div className=" flex flex-col md:flex-row gap-4 py-[90px] z-30 ">
-          <div className="w-full md:w-1/2 flex items-center justify-center ">
-            <div className="animate-renderimgabout  ">
+          <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
+            <div
+              data-aos="fade-right"
+              data-aos-anchor-placement="center-bottom"
+            >
               <NextImage
-                src="/images/personabout.png"
+                src="/images/personabout.webp"
                 // className='absolute w-full h-full object-cover'
                 // objectFit='cover'
                 // layout='fill'
@@ -32,8 +35,12 @@ export const About = ({ Class }: Iprops) => {
               />
             </div>
           </div>
-          <div className="w-full md:w-1/2 flex items-center justify-center">
-            <div className="flex flex-col gap-4 animate-renderaboutme">
+          <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
+            <div
+              className="flex flex-col gap-4"
+              data-aos="fade-left"
+              data-aos-anchor-placement="center-bottom"
+            >
               <h4 className="text-white text-[34px] font-semibold">About Me</h4>
               <p className="text-[#999187]">
                 In quis amet ex veniam in irure est culpa veniam velit fugiat
