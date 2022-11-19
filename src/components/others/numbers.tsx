@@ -8,7 +8,7 @@ export const Numbers = () => {
   const [isEffect, setIsEffect] = useState<boolean>(false)
 
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0,
   })
 
   useEffect(() => {
