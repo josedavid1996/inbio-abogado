@@ -1,23 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
-import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
 import { BgNegroTransparente } from './bgNegroTransparente'
 import { InputArea } from '@components/shared/textArea'
 import { TittleCustom } from './tittleCustom'
 import Input from '@components/shared/Input'
+import { useSecctionView } from '@hooks/useSeccionView'
+import { IdDataNavbar } from '@mock/dataNavbar'
 
 export const Contact = () => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
-  const { ref, inView } = useInView({ threshold: 1 })
-
-  useEffect(() => {
-    if (inView) setViewSecction('Contact')
-  }, [inView])
+  const { ref } = useSecctionView(IdDataNavbar.Contact, 1)
 
   return (
     <div
-      id="Contact"
+      id={IdDataNavbar.Contact}
       ref={ref}
       className="bg-[#171A1D] py-10 z-30 bg-[url('/images/bgcontact.webp')] relative"
     >

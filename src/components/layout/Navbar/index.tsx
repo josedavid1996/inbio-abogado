@@ -7,24 +7,11 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Container } from '@components/others/container'
 import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
-
+import { DataNavbar } from '@mock/dataNavbar'
 interface IpropsDivHref {
   id: string
   tittle: string
 }
-
-const ColorText = 'text-[#AD8E6D]'
-
-const SwitchOption: any = {
-  '#Home': ColorText,
-  '#About': ColorText,
-  '#Services': ColorText,
-  '#Team': ColorText,
-  '#Resumen': ColorText,
-  '#Blog': ColorText,
-  '#Contact': ColorText,
-}
-
 const Navbar = () => {
   const [isTransparent, SetisTransparent] = useState(true)
   const { ViewSecction } = NavbarContextConfig() as IContext
@@ -44,10 +31,10 @@ const Navbar = () => {
       className={
         SecctionView === ''
           ? `#${ViewSecction}` === id
-            ? SwitchOption[`#${ViewSecction}`]
+            ? 'text-custom1'
             : ''
           : SecctionView === id
-          ? SwitchOption[id]
+          ? 'text-custom1'
           : ''
       }
     >
@@ -87,13 +74,9 @@ const Navbar = () => {
             </NextLink>
           </div>
           <div className="hidden lg:flex flex-row justify-between w-[568px] text-[13px]  mr-5 text-white font-semibold tracking-tight ">
-            <DivHref id="#Home" tittle="Home" />
-            <DivHref id="#About" tittle="About Me" />
-            <DivHref id="#Services" tittle="My Services" />
-            <DivHref id="#Team" tittle="Meet The Team" />
-            <DivHref id="#Resumen" tittle="My Resume" />
-            <DivHref id="#Blog" tittle="Blog" />
-            <DivHref id="#Contact" tittle="Contact" />
+            {DataNavbar.map((obj, k) => (
+              <DivHref id={obj.id} tittle={obj.tittle} key={k} />
+            ))}
           </div>
         </nav>
       </Container>

@@ -12,6 +12,7 @@ module.exports = {
         'custom': '1 / 1.1'
       },
       colors: {
+        custom1: '#AD8E6D',
         blacktranparente: 'rgba(23,26,29,1) 30%',
         blacktranparente30: 'rgba(23,26,29,1) 0%',
         customtranparente: 'rgba(23,26,29,0) 100%)',

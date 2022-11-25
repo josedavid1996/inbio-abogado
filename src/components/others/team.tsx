@@ -3,14 +3,12 @@
 import { TittleCustom } from './tittleCustom'
 import NextImage from 'next/image'
 import { Container } from './container'
-import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
-import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
 import { IDataTeam as IitemTeam, DataTeam } from '@mock/dataTeam'
 import NextLink from 'next/link'
+import { useSecctionView } from '@hooks/useSeccionView'
+import { IdDataNavbar } from '@mock/dataNavbar'
 export const Team = () => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
-  const { ref, inView } = useInView({ threshold: 1 })
+  const { ref } = useSecctionView(IdDataNavbar.Team, 1)
 
   const ItemTeam = ({ icons, img, subtittle, tittle }: IitemTeam) => (
     <div className="flex flex-col">
@@ -40,11 +38,12 @@ export const Team = () => {
     </div>
   )
 
-  useEffect(() => {
-    if (inView) setViewSecction('Team')
-  }, [inView])
   return (
-    <section className="bg-[#171A1D] py-[90px] z-30" id="Team" ref={ref}>
+    <section
+      className="bg-[#171A1D] py-[90px] z-30"
+      id={IdDataNavbar.Team}
+      ref={ref}
+    >
       <Container>
         <>
           <TittleCustom tittle="Meet The Team" />

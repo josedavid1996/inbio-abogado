@@ -7,20 +7,17 @@ import {
   IconsFloats,
   Scroll,
 } from '@components/others'
-import { useEffect } from 'react'
-import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
-import { useInView } from 'react-intersection-observer'
+import { useSecctionView } from '@hooks/useSeccionView'
+import { IdDataNavbar } from '@mock/dataNavbar'
 
 export const WrapperBanner = () => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
-  const { ref, inView } = useInView({ threshold: 1 })
-  useEffect(() => {
-    if (inView) {
-      setViewSecction('Home')
-    }
-  }, [inView])
+  const { ref } = useSecctionView(IdDataNavbar.Home, 1)
   return (
-    <div className="imgBannerNabar relative h-auto" id="Home" ref={ref}>
+    <div
+      className="imgBannerNabar relative h-auto"
+      id={IdDataNavbar.Home}
+      ref={ref}
+    >
       <Navbar />
       <Banner />
       <BgNegroTransparente Height="lg:h-[210px]" />

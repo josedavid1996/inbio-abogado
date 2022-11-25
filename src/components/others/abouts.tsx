@@ -1,23 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react'
 import NextImage from 'next/image'
 import { Progressbar } from '@components/others/progressbar'
 import { DataProgressBar } from '@mock/dataProgressBar'
 import { Container } from './container'
-import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
-import { useInView } from 'react-intersection-observer'
+import { useSecctionView } from '@hooks/useSeccionView'
+import { IdDataNavbar } from '@mock/dataNavbar'
 interface Iprops {
   Class?: string
 }
 export const About = ({ Class }: Iprops) => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
-  const { ref, inView } = useInView({ threshold: 1 })
-
-  useEffect(() => {
-    if (inView) setViewSecction('About')
-  }, [inView])
+  const { ref } = useSecctionView(IdDataNavbar.About, 1)
   return (
-    <section className={`bg-[#171A1D]  ${Class}`} id="About" ref={ref}>
+    <section
+      className={`bg-[#171A1D]  ${Class}`}
+      id={IdDataNavbar.About}
+      ref={ref}
+    >
       <Container>
         <div className=" flex flex-col md:flex-row gap-4 py-[90px] z-30 ">
           <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
@@ -30,7 +28,7 @@ export const About = ({ Class }: Iprops) => {
                 // className='absolute w-full h-full object-cover'
                 // objectFit='cover'
                 // layout='fill'
-                alt='Img_about'
+                alt="Img_about"
                 width={450}
                 height={500}
               />

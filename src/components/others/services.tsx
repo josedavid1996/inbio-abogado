@@ -1,19 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FaBriefcase, FaUser, FaGavel } from 'react-icons/fa'
 import { Container } from './container'
-import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
 import { TittleCustom } from './tittleCustom'
+import { useSecctionView } from '@hooks/useSeccionView'
+import { IdDataNavbar } from '@mock/dataNavbar'
 
 export const Services = () => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
-  const { inView, ref } = useInView({ threshold: 1 })
-  useEffect(() => {
-    if (inView) setViewSecction('Services')
-  }, [inView])
+  const { ref } = useSecctionView(IdDataNavbar.Services, 1)
   return (
-    <section className="bg-[#171A1D] py-[90px] z-30" id="Services" ref={ref}>
+    <section
+      className="bg-[#171A1D] py-[90px] z-30"
+      id={IdDataNavbar.Services}
+      ref={ref}
+    >
       <Container>
         <>
           <TittleCustom tittle="My Services" />
