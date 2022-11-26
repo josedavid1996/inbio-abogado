@@ -19,7 +19,12 @@
       "@components/*": ["./src/components/*"],
       "@mock/*": ["./src/mock/*"],
       "@contexts/*": ["./src/contexts/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@mutation/*": ["./src/graphql/mutation/*"],
+      "@query/*": ["./src/graphql/query/*"],
+      "@ssr/*": ["./src/graphql/ssr/*"],
+      "@Uri/*": ["./src/graphql/uri/*"],
+      "@apollo/*": ["./src/apollo/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

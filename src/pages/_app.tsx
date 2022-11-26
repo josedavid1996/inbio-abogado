@@ -11,6 +11,8 @@ import Aos from 'aos'
 import useLoadTheme from '../hooks/useLoadTheme'
 import { useEffect } from 'react'
 import { NavbarProvider } from '@contexts/NavbarProvider'
+import { ApolloProvider } from '@apollo/client'
+import { client } from '@apollo/index'
 import {
   Head,
   NavbarMobile,
@@ -33,20 +35,22 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, [])
 
   return (
-    <NavbarProvider>
-      <main>
-        <Head />
-        {/* existen 2 navbar, dependiendo del screen se cambia  */}
-        {/* navbar solo  para mobile */}
-        <NavbarMobile />
+    <ApolloProvider client={client}>
+      <NavbarProvider>
+        <main>
+          <Head />
+          {/* existen 2 navbar, dependiendo del screen se cambia  */}
+          {/* navbar solo  para mobile */}
+          <NavbarMobile />
 
-        {/* navbar para otras paginas */}
-        <BannerForOtherPage />
-        <Component {...pageProps} />
-        <ToastContainer />
-        <Footer />
-      </main>
-    </NavbarProvider>
+          {/* navbar para otras paginas */}
+          <BannerForOtherPage />
+          <Component {...pageProps} />
+          <ToastContainer />
+          <Footer />
+        </main>
+      </NavbarProvider>
+    </ApolloProvider>
   )
 }
 
