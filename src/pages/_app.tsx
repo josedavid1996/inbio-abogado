@@ -11,6 +11,12 @@ import Aos from 'aos'
 import useLoadTheme from '../hooks/useLoadTheme'
 import { useEffect } from 'react'
 import { NavbarProvider } from '@contexts/NavbarProvider'
+import {
+  Head,
+  NavbarMobile,
+  BannerForOtherPage,
+  Footer,
+} from '@components/others'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // Servicio para cargar el theme desde el LocalStorage
@@ -29,8 +35,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <NavbarProvider>
       <main>
+        <Head />
+        {/* existen 2 navbar, dependiendo del screen se cambia  */}
+        {/* navbar solo  para mobile */}
+        <NavbarMobile />
+
+        {/* navbar para otras paginas */}
+        <BannerForOtherPage />
         <Component {...pageProps} />
         <ToastContainer />
+        <Footer />
       </main>
     </NavbarProvider>
   )

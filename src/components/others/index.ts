@@ -19,6 +19,7 @@ import { Services } from './services'
 import { Team } from './team'
 import { TittleCustom } from './tittleCustom'
 import { WrapperBanner } from './wrapperBanner'
+import { BannerForOtherPage } from './BannerForOtherPage'
 
 export {
   About,
@@ -41,4 +42,5 @@ export {
   Services,
   Team,
   WrapperBanner,
+  BannerForOtherPage,
 }
