@@ -22,9 +22,11 @@
       "@hooks/*": ["./src/hooks/*"],
       "@mutation/*": ["./src/graphql/mutation/*"],
       "@query/*": ["./src/graphql/query/*"],
+      "@Generated": ["./src/generated/graphql"],
       "@ssr/*": ["./src/graphql/ssr/*"],
       "@Uri/*": ["./src/graphql/uri/*"],
-      "@apollo/*": ["./src/apollo/*"]
+      "@apollo/*": ["./src/apollo/*"],
+      "@Services/*": ["./src/services/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
