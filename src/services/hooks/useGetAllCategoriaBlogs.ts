@@ -1,26 +1,20 @@
 /* eslint-disable comma-dangle */
-import { useGetAllBlogsQuery } from '@Generated'
+import { useGetAllCategoriaBlogsQuery } from '@Generated'
+
 interface IVariables {
-  pagina: number
-  numeroPagina: number
   estado: 'Activado' | 'Desactivado'
   destacado: 'Activado' | 'Desactivado' | ''
 }
-export const useGetAllBlogs = (
+
+export const useGetAllCategoriaBlogs = (
   variable: IVariables | undefined = {
-    pagina: 1,
     destacado: '',
     estado: 'Activado',
-    numeroPagina: 20,
   },
 ) => {
-  const { data, loading } = useGetAllBlogsQuery({
+  const { data, loading } = useGetAllCategoriaBlogsQuery({
     fetchPolicy: 'network-only',
     variables: variable,
   })
-
-  return {
-    data,
-    loading,
-  }
+  return { data, loading }
 }

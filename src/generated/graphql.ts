@@ -1,11 +1,5 @@
-/* eslint-disable eol-last */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable object-curly-spacing */
-/* eslint-disable indent */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable semi */
-/* eslint-disable no-use-before-define */
+/* eslint-disable-line */
+/* eslint-disable */
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
@@ -596,6 +590,14 @@ export type GetAllBlogsQueryVariables = Exact<{
 
 export type GetAllBlogsQuery = { __typename?: 'Query', GetAllBlogs: { __typename?: 'GetAllBlogs', numeroTotal?: number | null, data?: Array<{ __typename?: 'Blog', destacado?: string | null, blogId?: string | null, categoriaBlogId?: number | null, descripcionCorta?: string | null, created_at?: any | null, descripcionLarga?: string | null, estado?: string | null, keywords?: string | null, slug?: string | null, titulo?: string | null, updated_at?: any | null, usuarioId?: number | null, CategoriaBlog?: { __typename?: 'CategoriaBlog', created_at?: any | null, categoriaBlogId?: string | null, descripcion?: string | null, destacado?: string | null, estado?: string | null, keywords?: string | null, numeroBlogs?: number | null, slug?: string | null, titulo?: string | null, updated_at?: any | null, imagenPrincipal?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null, imagenSecundaria?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null } | null, User?: { __typename?: 'User', apellidos?: string | null, apiToken?: string | null, celular?: string | null, cantidadComprada?: number | null, customer_id?: string | null, email?: string | null, estado?: string | null, fechaNacimiento?: any | null, foto?: string | null, genero?: number | null, id?: string | null, montoTotalComprado?: number | null, nombres?: string | null, numeroDocumento?: string | null, tipoDocumento?: string | null, tipoUsuario?: number | null } | null, imagenPrincipal?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null, imagenSecundaria?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null }> | null } };
 
+export type GetAllCategoriaBlogsQueryVariables = Exact<{
+  estado?: InputMaybe<Scalars['String']>;
+  destacado?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetAllCategoriaBlogsQuery = { __typename?: 'Query', GetAllCategoriaBlogs: { __typename?: 'GetAllCategoriaBlogs', numeroTotal?: number | null, data?: Array<{ __typename?: 'CategoriaBlog', categoriaBlogId?: string | null, created_at?: any | null, descripcion?: string | null, destacado?: string | null, estado?: string | null, keywords?: string | null, numeroBlogs?: number | null, slug?: string | null, titulo?: string | null, updated_at?: any | null, imagenPrincipal?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null, imagenSecundaria?: { __typename?: 'Imagen', estado?: string | null, id?: string | null, titulo?: string | null, url?: string | null } | null }> | null } };
+
 
 export const GetAllBlogsDocument = gql`
     query GetAllBlogs($pagina: Int, $numeroPagina: Int, $estado: String, $destacado: String) {
@@ -708,3 +710,63 @@ export function useGetAllBlogsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetAllBlogsQueryHookResult = ReturnType<typeof useGetAllBlogsQuery>;
 export type GetAllBlogsLazyQueryHookResult = ReturnType<typeof useGetAllBlogsLazyQuery>;
 export type GetAllBlogsQueryResult = Apollo.QueryResult<GetAllBlogsQuery, GetAllBlogsQueryVariables>;
+export const GetAllCategoriaBlogsDocument = gql`
+    query GetAllCategoriaBlogs($estado: String, $destacado: String) {
+  GetAllCategoriaBlogs(estado: $estado, destacado: $destacado) {
+    data {
+      categoriaBlogId
+      created_at
+      descripcion
+      destacado
+      estado
+      imagenPrincipal {
+        estado
+        id
+        titulo
+        url
+      }
+      imagenSecundaria {
+        estado
+        id
+        titulo
+        url
+      }
+      keywords
+      numeroBlogs
+      slug
+      titulo
+      updated_at
+    }
+    numeroTotal
+  }
+}
+    `;
+
+/**
+ * __useGetAllCategoriaBlogsQuery__
+ *
+ * To run a query within a React component, call `useGetAllCategoriaBlogsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllCategoriaBlogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllCategoriaBlogsQuery({
+ *   variables: {
+ *      estado: // value for 'estado'
+ *      destacado: // value for 'destacado'
+ *   },
+ * });
+ */
+export function useGetAllCategoriaBlogsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllCategoriaBlogsQuery, GetAllCategoriaBlogsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllCategoriaBlogsQuery, GetAllCategoriaBlogsQueryVariables>(GetAllCategoriaBlogsDocument, options);
+      }
+export function useGetAllCategoriaBlogsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllCategoriaBlogsQuery, GetAllCategoriaBlogsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllCategoriaBlogsQuery, GetAllCategoriaBlogsQueryVariables>(GetAllCategoriaBlogsDocument, options);
+        }
+export type GetAllCategoriaBlogsQueryHookResult = ReturnType<typeof useGetAllCategoriaBlogsQuery>;
+export type GetAllCategoriaBlogsLazyQueryHookResult = ReturnType<typeof useGetAllCategoriaBlogsLazyQuery>;
+export type GetAllCategoriaBlogsQueryResult = Apollo.QueryResult<GetAllCategoriaBlogsQuery, GetAllCategoriaBlogsQueryVariables>;

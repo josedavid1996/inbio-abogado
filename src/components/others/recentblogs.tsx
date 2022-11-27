@@ -10,9 +10,11 @@ import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useGetAllBlogs } from '@Services/index'
+import { useRouter } from 'next/router'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
+  const { push: Push } = useRouter()
   const { ref, inView } = useInView({ threshold: 1 })
   const { data, loading } = useGetAllBlogs()
 
@@ -27,7 +29,7 @@ export const RecentBlogs = () => {
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
-        <TittleCustom tittle="Recent Blog" />
+        <TittleCustom tittle="Recent Blog" onClick={() => Push('/blog')} />
         <div
           className="lg:p-6"
           data-aos="fade-up"

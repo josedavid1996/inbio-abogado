@@ -1,0 +1,29 @@
+query GetAllCategoriaBlogs($estado: String, $destacado: String) {
+  GetAllCategoriaBlogs(estado: $estado, destacado: $destacado) {
+    data {
+      categoriaBlogId
+      created_at
+      descripcion
+      destacado
+      estado
+      imagenPrincipal {
+        estado
+        id
+        titulo
+        url
+      }
+      imagenSecundaria {
+        estado
+        id
+        titulo
+        url
+      }
+      keywords
+      numeroBlogs
+      slug
+      titulo
+      updated_at
+    }
+    numeroTotal
+  }
+}

@@ -7,7 +7,7 @@ const config: CodegenConfig = {
   schema: 'https://inbio.almacenrivera.com/public/graphql',
   documents: 'src/**/*.graphql',
   generates: {
-    'src/generated/graphql.tsx': {
+    'src/generated/graphql.ts': {
       config: { withHooks: true },
       plugins: [
         'typescript',
