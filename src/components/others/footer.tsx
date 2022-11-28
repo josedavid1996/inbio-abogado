@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 
 export const Footer = () => {
   return (
-    <div className="bg-[#171A1D] z-30 py-[22px] border-t-[0.5px] border-[#999187]">
+    <div className="bg-[#171A1D]  py-[22px]  border-t-[0.5px] border-[#999187]">
       <div className="h-[58px] md:h-[30px]">
         <Container Class="flex flex-col md:flex-row justify-between items-center ">
           <h4 className="text-left  tracking-normal w-full text-custom3">

@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      zIndex: {
+        999: '999',
+        9999: '9999'
+      },
       fontFamily: {
         customText: '"Roboto", Helvetica, Arial, sans-serif'
       },
@@ -13,6 +17,7 @@ module.exports = {
       },
       colors: {
         custom1: '#AD8E6D',
+        custom2: '#171A1D',
         blacktranparente: 'rgba(23,26,29,1) 30%',
         blacktranparente30: 'rgba(23,26,29,1) 0%',
         customtranparente: 'rgba(23,26,29,0) 100%)',

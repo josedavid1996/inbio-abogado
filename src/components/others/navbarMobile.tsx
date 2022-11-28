@@ -9,19 +9,19 @@ export const NavbarMobile = () => {
 
   return (
     <header
-      className={`z-50 bg-[#171A1D] lg:hidden w-full ${
+      className={` bg-[#171A1D]  lg:hidden w-full  ${
         ViewMenu ? 'h-[468px]' : 'h-[90px]'
       } text-red-500 py-[26px] transition-all duration-700 ease-in-out `}
     >
-      <Container Class="relative ">
-        <nav className="flex flex-row justify-between items-center w-full ">
+      <Container Class="relative  ">
+        <nav className="flex flex-row justify-between items-center w-full">
           <div className="">
             <NextLink href="/">
               <div className="relative w-[212px] h-[36px] ">
                 <NextImage
                   src="/images/logonavbar.webp"
                   layout="fill"
-                  alt='Img_Navbar'
+                  alt="Img_Navbar"
                   priority
                   className="absolute w-full h-full"
                 />
@@ -35,8 +35,12 @@ export const NavbarMobile = () => {
             />
           </div>
         </nav>
-        <div className="transition-opacity duration-300 ease-in-out text-[13px] font-semibold h-auto pt-10  text-white">
-          <div className="flex flex-col gap-5 ">
+        <div
+          className={`${
+            ViewMenu ? 'opacity-100' : 'opacity-0'
+          }  text-[13px] font-semibold h-auto pt-10  text-white`}
+        >
+          <div className="flex flex-col gap-5  ">
             <div>
               <h3>
                 <a href="#Home">Home</a>
