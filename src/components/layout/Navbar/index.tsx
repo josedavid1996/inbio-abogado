@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 import NextImage from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Container } from '@components/others/container'
+import { Container } from '@components/others/home'
 import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
 import { DataNavbar } from '@mock/dataNavbar'
 interface IpropsDivHref {

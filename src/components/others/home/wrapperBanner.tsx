@@ -6,7 +6,7 @@ import {
   BgNegroTransparente,
   IconsFloats,
   Scroll,
-} from '@components/others'
+} from '@components/others/home'
 import { useSecctionView } from '@hooks/useSeccionView'
 import { IdDataNavbar } from '@mock/dataNavbar'
 

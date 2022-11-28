@@ -18,7 +18,7 @@ import {
   NavbarMobile,
   BannerForOtherPage,
   Footer,
-} from '@components/others'
+} from '@components/others/home'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // Servicio para cargar el theme desde el LocalStorage

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import NextImage from 'next/image'
-import { Progressbar } from '@components/others/progressbar'
+import { Progressbar } from '@components/others/home'
 import { DataProgressBar } from '@mock/dataProgressBar'
 import { Container } from './container'
 import { useSecctionView } from '@hooks/useSeccionView'

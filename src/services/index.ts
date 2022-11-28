@@ -1,2 +1,3 @@
 import { useGetAllBlogs } from './hooks/useGetAllBlogs'
-export { useGetAllBlogs }
+import { useGetAllCategoriaBlogs } from './hooks/useGetAllCategoriaBlogs'
+export { useGetAllBlogs, useGetAllCategoriaBlogs }

@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef } from 'react'
-import { Container } from '@components/others/container'
+import { Container } from '@components/others/home'
 import NextImage from 'next/image'
 import Typed from 'typed.js'
 const OptionTyped = ['Personal Lawyer', 'Corporate Lawyer', 'Business Lawyer']

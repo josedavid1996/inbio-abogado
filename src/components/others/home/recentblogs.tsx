@@ -9,22 +9,16 @@ import { DataBolgs } from '@mock/dataBlogs'
 import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useGetAllBlogs } from '@Services/index'
 import { useRouter } from 'next/router'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
   const { push: Push } = useRouter()
   const { ref, inView } = useInView({ threshold: 1 })
-  const { data, loading } = useGetAllBlogs()
 
   useEffect(() => {
     if (inView) setViewSecction('Blog')
   }, [inView])
-
-  useEffect(() => {
-    console.log(data?.GetAllBlogs.data)
-  }, [loading])
 
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>

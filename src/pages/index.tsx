@@ -9,7 +9,7 @@ import {
   RecentBlogs,
   Contact,
   WrapperBanner,
-} from '@components/others'
+} from '@components/others/home'
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
