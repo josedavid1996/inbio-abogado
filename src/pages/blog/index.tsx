@@ -6,21 +6,19 @@ import { LoaderSpinner } from '@components/shared/loaderSpinner'
 import { CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { Show } from '@components/shared/Show'
 import { useGetAllCategoriaBlogs } from '@Services'
-import { useMemo } from 'react'
+import { useCallback } from 'react'
 
 const Index = () => {
   const { data, loading } = useGetAllCategoriaBlogs()
-  const Data = useMemo(
+  const Data = useCallback(
     () => data?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[],
-    [data?.GetAllCategoriaBlogs.data?.length],
+    [data?.GetAllCategoriaBlogs.data],
   )
   return (
     <div className="bg-[#171A1D]">
       <Container Class="flex flex-col items-center">
         <Show condition={!loading} isDefault={<LoaderSpinner />}>
-          <ViewCategoriaBlogMobile
-            Data={Data}
-          />
+          <ViewCategoriaBlogMobile Data={Data()} />
         </Show>
       </Container>
     </div>
