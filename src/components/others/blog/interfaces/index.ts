@@ -20,3 +20,23 @@ export interface CategoriaBlogDTO {
   updated_at: string
   __typename: string
 }
+
+export interface BlogDTO {
+  CategoriaBlog: CategoriaBlogDTO
+  User: string | null
+  blogId: string
+  categoriaBlogId: number
+  created_at: string
+  descripcionCorta: string
+  descripcionLarga: string
+  destacado: string
+  estado: string
+  imagenPrincipal: ImagenDTO
+  imagenSecundaria: ImagenDTO
+  keywords: string
+  slug: string
+  titulo: string
+  updated_at: string
+  usuarioId: number
+  __typename: string
+}

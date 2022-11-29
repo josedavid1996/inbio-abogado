@@ -1,17 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo } from 'react'
 import { CategoriaBlogDTO } from '../interfaces'
+import { Show, LoaderSpinner } from '@components/shared/'
 import { useRouter } from 'next/router'
 interface IProps {
-  Data?: CategoriaBlogDTO[]
+  Data: CategoriaBlogDTO[] | []
+  loading: boolean
 }
 interface IListItem {
   k?: number
   tittle: string
   onClick: () => void
 }
-export const ViewCategoriaBlogMobile = ({ Data }: IProps) => {
-  console.log('render')
+export const ViewCategoriaBlogMobile = ({ Data, loading }: IProps) => {
   const DataMemo = useMemo(() => Data, [Data])
 
   const ListItem = ({ k, onClick, tittle }: IListItem) => (
@@ -25,16 +26,18 @@ export const ViewCategoriaBlogMobile = ({ Data }: IProps) => {
   )
   const { push } = useRouter()
   return (
-    <div className="lg:hidden w-full text-white font-medium flex flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
-      <ListItem onClick={() => push('/blog?slug=all')} tittle="Todos" />
-      {DataMemo?.map((obj, k) => (
-        <ListItem
-          k={k}
-          tittle={obj.titulo}
-          onClick={() => push(`/blog?slug=${obj.slug}`)}
-          key={k}
-        />
-      ))}
-    </div>
+    <Show condition={!loading} isDefault={<LoaderSpinner />}>
+      <div className="lg:hidden w-full text-white font-medium flex flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
+        <ListItem onClick={() => push('/blog')} tittle="Todos" />
+        {DataMemo?.map((obj, k) => (
+          <ListItem
+            k={k}
+            tittle={obj.titulo || ''}
+            onClick={() => push(`/blog/${obj.slug || ''}`)}
+            key={k}
+          />
+        ))}
+      </div>
+    </Show>
   )
 }
