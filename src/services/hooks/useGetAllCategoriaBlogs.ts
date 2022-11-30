@@ -16,5 +16,5 @@ export const useGetAllCategoriaBlogs = (
     fetchPolicy: 'network-only',
     variables: variable,
   })
-  return { data, loading }
+  return { data: data?.GetAllCategoriaBlogs.data, loading }
 }

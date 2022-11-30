@@ -20,7 +20,7 @@ export const useGetAllBlogs = (
   })
 
   return {
-    data,
+    data: data?.GetAllBlogs.data,
     loading,
   }
 }

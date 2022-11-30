@@ -7,7 +7,6 @@ import {
   ViewCategoriaBlogDesktop,
 } from '@components/others/blog'
 import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
-import { Show } from '@components/shared'
 import { useGetAllCategoriaBlogs, useGetAllBlogs } from '@Services'
 
 const Index = () => {
@@ -19,29 +18,20 @@ const Index = () => {
 
   return (
     <div className="bg-[#171A1D]">
-      <Container Class="flex flex-col items-center ">
+      <Container Class="flex flex-col items-center">
         <ViewCategoriaBlogMobile
           loading={LoadingCategorysBlogs}
-          Data={
-            DataCategoryBlogs?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[]
-          }
+          Data={DataCategoryBlogs as CategoriaBlogDTO[]}
         />
-        <div className="flex flex-row w-full">
+        <div className="flex flex-row w-full min-h-screen">
           <ViewCategoriaBlogDesktop
-            Data={
-              DataCategoryBlogs?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[]
-            }
             loading={LoadingCategorysBlogs}
+            Data={DataCategoryBlogs as CategoriaBlogDTO[]}
           />
-          <Show
-            condition={!LoadingAllBlogs}
-            isDefault={<h2>Falta Rellenar mas Blogs</h2>}
-          >
-            <AllBlogs
-              Data={DataAllBlogs?.GetAllBlogs.data as BlogDTO[]}
-              loading={LoadingAllBlogs}
-            />
-          </Show>
+          <AllBlogs
+            Data={DataAllBlogs as BlogDTO[]}
+            loading={LoadingAllBlogs}
+          />
         </div>
       </Container>
     </div>

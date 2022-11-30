@@ -5,7 +5,7 @@ import {
   ViewCategoriaBlogDesktop,
   ViewCategoriaBlogMobile,
 } from '@components/others/blog'
-import { CategoriaBlogDTO } from '@components/others/blog/interfaces'
+import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { Container } from '@components/others/home'
 import { useGetAllCategoriaBlogs, useGetAllBlogs } from '@Services'
 import { useRouter } from 'next/router'
@@ -24,21 +24,20 @@ const Index = () => {
   const { query } = useRouter()
   return (
     <div className="bg-[#171A1D]">
-      <Container Class="flex flex-col items-center border">
+      <Container Class="flex flex-col items-center">
         <ViewCategoriaBlogMobile
+          Data={DataCategoryBlogs as CategoriaBlogDTO[]}
           loading={LoadingCategorysBlogs}
-          Data={
-            DataCategoryBlogs?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[]
-          }
         />
-        <div className="flex flex-row w-full">
+        <div className="flex flex-row w-full min-h-screen">
           <ViewCategoriaBlogDesktop
-            Data={
-              DataCategoryBlogs?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[]
-            }
+            Data={DataCategoryBlogs as CategoriaBlogDTO[]}
+            loading={LoadingCategorysBlogs}
+          />
+          <AllBlogs
+            Data={DataAllBlogs as BlogDTO[]}
             loading={LoadingAllBlogs}
           />
-          {/* <AllBlogs Data={} /> */}
         </div>
       </Container>
     </div>
