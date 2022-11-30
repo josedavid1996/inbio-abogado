@@ -1,3 +1,4 @@
 import { useGetAllBlogs } from './hooks/useGetAllBlogs'
 import { useGetAllCategoriaBlogs } from './hooks/useGetAllCategoriaBlogs'
-export { useGetAllBlogs, useGetAllCategoriaBlogs }
+import { useGetAllBlogsCategoriaSlug } from './hooks/useGetAllBlogsCategoriaSlug'
+export { useGetAllBlogs, useGetAllCategoriaBlogs, useGetAllBlogsCategoriaSlug }

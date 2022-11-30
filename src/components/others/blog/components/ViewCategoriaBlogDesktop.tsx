@@ -24,9 +24,9 @@ export const ViewCategoriaBlogDesktop = ({ Data, loading }: IProps) => {
     )
   }
   return (
-    <div className="hidden lg:block w-full max-w-[350px]  ">
+    <div className="hidden lg:block w-full max-w-[350px]">
       <div className="px-6 sticky top-[114px]">
-        <div className="text-custom1 font-bold">Categorias</div>
+        <div className="text-custom1 font-bold lg:text-xl">Categorias</div>
         <div className="grid grid-cols-2 gap-2 mt-6 justify-evenly ">
           <ListItem tittle="Todos" onClick={() => push('/blog')} />
           {Data?.map((obj, k) => (

@@ -6,7 +6,6 @@ interface IProps {
 }
 
 export const CardBlog = ({ Data }: IProps) => {
-  console.log(Data)
   return (
     <div className="w-full flex flex-col items-center gap-2">
       <div className="relative aspect-square w-full rounded-lg overflow-hidden cursor-pointer">
