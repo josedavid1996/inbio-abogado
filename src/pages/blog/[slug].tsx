@@ -14,7 +14,6 @@ interface IPropsSSP {
 }
 const Index = ({ slug }: IPropsSSP) => {
   const { data, loading } = useGetBlogSlug({ slug })
-  console.log(data)
   return (
     <div className="bg-[#171A1D] min-h-screen h-full">
       <Container>
