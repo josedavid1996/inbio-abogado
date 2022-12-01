@@ -735,6 +735,69 @@ export type GetAllCategoriaBlogsQuery = {
   }
 }
 
+export type GetBlogSlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']>
+}>
+
+export type GetBlogSlugQuery = {
+  __typename?: 'Query'
+  GetBlogSlug: {
+    __typename?: 'Blog'
+    blogId?: string | null
+    titulo?: string | null
+    slug?: string | null
+    descripcionCorta?: string | null
+    keywords?: string | null
+    estado?: string | null
+    destacado?: string | null
+    categoriaBlogId?: number | null
+    usuarioId?: number | null
+    created_at?: any | null
+    descripcionLarga?: string | null
+    imagenSecundaria?: {
+      __typename?: 'Imagen'
+      id?: string | null
+      titulo?: string | null
+      estado?: string | null
+      url?: string | null
+    } | null
+    imagenPrincipal?: {
+      __typename?: 'Imagen'
+      id?: string | null
+      titulo?: string | null
+      estado?: string | null
+      url?: string | null
+    } | null
+    CategoriaBlog?: {
+      __typename?: 'CategoriaBlog'
+      categoriaBlogId?: string | null
+      titulo?: string | null
+      slug?: string | null
+      keywords?: string | null
+      descripcion?: string | null
+      estado?: string | null
+      destacado?: string | null
+      created_at?: any | null
+      updated_at?: any | null
+      numeroBlogs?: number | null
+      imagenSecundaria?: {
+        __typename?: 'Imagen'
+        id?: string | null
+        titulo?: string | null
+        estado?: string | null
+        url?: string | null
+      } | null
+      imagenPrincipal?: {
+        __typename?: 'Imagen'
+        id?: string | null
+        titulo?: string | null
+        estado?: string | null
+        url?: string | null
+      } | null
+    } | null
+  }
+}
+
 export const GetAllBlogsDocument = gql`
   query GetAllBlogs(
     $pagina: Int
@@ -1062,4 +1125,106 @@ export type GetAllCategoriaBlogsLazyQueryHookResult = ReturnType<
 export type GetAllCategoriaBlogsQueryResult = Apollo.QueryResult<
   GetAllCategoriaBlogsQuery,
   GetAllCategoriaBlogsQueryVariables
+>
+export const GetBlogSlugDocument = gql`
+  query GetBlogSlug($slug: String) {
+    GetBlogSlug(slug: $slug) {
+      blogId
+      titulo
+      slug
+      descripcionCorta
+      imagenSecundaria {
+        id
+        titulo
+        estado
+        url
+      }
+      imagenPrincipal {
+        id
+        titulo
+        estado
+        url
+      }
+      keywords
+      estado
+      destacado
+      categoriaBlogId
+      CategoriaBlog {
+        categoriaBlogId
+        titulo
+        slug
+        keywords
+        descripcion
+        imagenSecundaria {
+          id
+          titulo
+          estado
+          url
+        }
+        imagenPrincipal {
+          id
+          titulo
+          estado
+          url
+        }
+        estado
+        destacado
+        created_at
+        updated_at
+        numeroBlogs
+      }
+      usuarioId
+      created_at
+      descripcionLarga
+    }
+  }
+`
+
+/**
+ * __useGetBlogSlugQuery__
+ *
+ * To run a query within a React component, call `useGetBlogSlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlogSlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlogSlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetBlogSlugQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetBlogSlugQuery,
+    GetBlogSlugQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBlogSlugQuery, GetBlogSlugQueryVariables>(
+    GetBlogSlugDocument,
+    options,
+  )
+}
+export function useGetBlogSlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetBlogSlugQuery,
+    GetBlogSlugQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBlogSlugQuery, GetBlogSlugQueryVariables>(
+    GetBlogSlugDocument,
+    options,
+  )
+}
+export type GetBlogSlugQueryHookResult = ReturnType<typeof useGetBlogSlugQuery>
+export type GetBlogSlugLazyQueryHookResult = ReturnType<
+  typeof useGetBlogSlugLazyQuery
+>
+export type GetBlogSlugQueryResult = Apollo.QueryResult<
+  GetBlogSlugQuery,
+  GetBlogSlugQueryVariables
 >
