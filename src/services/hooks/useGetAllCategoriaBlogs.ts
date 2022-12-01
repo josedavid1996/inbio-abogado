@@ -1,4 +1,5 @@
 /* eslint-disable comma-dangle */
+import { CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { useGetAllCategoriaBlogsQuery } from '@Generated'
 
 interface IVariables {
@@ -16,5 +17,8 @@ export const useGetAllCategoriaBlogs = (
     fetchPolicy: 'network-only',
     variables: variable,
   })
-  return { data: data?.GetAllCategoriaBlogs.data, loading }
+  return {
+    data: data?.GetAllCategoriaBlogs.data as CategoriaBlogDTO[],
+    loading,
+  }
 }

@@ -8,18 +8,19 @@ import { LayoutBlog } from '@components/layout/blog'
 
 const Index = () => {
   const { query } = useRouter()
-  const {
-    data: DataAllBlogs,
-    loading: LoadingAllBlogs,
-  } = useGetAllBlogsCategoriaSlug({
-    estado: 'Activado',
-    numeroPagina: 20,
-    pagina: 1,
-    slug: query.slug! + '',
-  })
+  // const {
+  //   data: DataAllBlogs,
+  //   loading: LoadingAllBlogs,
+  // } = useGetAllBlogsCategoriaSlug({
+  //   estado: 'Activado',
+  //   numeroPagina: 20,
+  //   pagina: 1,
+  //   slug: query.slug! + '',
+  // })
   return (
     <LayoutBlog>
-      <AllBlogs Data={DataAllBlogs as BlogDTO[]} loading={LoadingAllBlogs} />
+      {/* <AllBlogs Data={[]} loading={LoadingAllBlogs} /> */}
+      slug
     </LayoutBlog>
   )
 }

@@ -1,4 +1,5 @@
 /* eslint-disable comma-dangle */
+import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetAllBlogsQuery } from '@Generated'
 interface IVariables {
   pagina: number
@@ -20,7 +21,7 @@ export const useGetAllBlogs = (
   })
 
   return {
-    data: data?.GetAllBlogs.data,
+    data: data?.GetAllBlogs.data as BlogDTO[],
     loading,
   }
 }

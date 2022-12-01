@@ -1,5 +1,4 @@
-import { ViewCategoriaBlogMobile } from './components/ViewCategoriasBlogMobile'
+import { CategoriasBlog } from './components/CategoriasBlog'
 import { AllBlogs } from './components/AllBlogs'
 import { CardBlog } from './components/CardBlog'
-import { ViewCategoriaBlogDesktop } from './components/ViewCategoriaBlogDesktop'
-export { ViewCategoriaBlogMobile, AllBlogs, ViewCategoriaBlogDesktop, CardBlog }
+export { CategoriasBlog, AllBlogs, CardBlog }
