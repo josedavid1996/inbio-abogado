@@ -32,7 +32,7 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       {/* Para whatsapp */}
       <meta property="og:image" content={data.imgPrincipal || ''} />
       <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
-      <meta property="og:image:type" content="image/*" />
+      <meta property="og:image:type" content="image/wepb" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="300" />
 
