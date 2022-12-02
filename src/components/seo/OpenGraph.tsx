@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import { IdataPageGeneral } from './data'
 import NextHead from 'next/head'
 export const OpenGraph = ({ data }: IdataPageGeneral) => {
-  console.log(data.imgPrincipal)
   return (
     <NextHead>
       <title>{data.tittlePage}</title>
@@ -24,7 +23,7 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={data.description || ''} />
 
-      {/* Para facebook, SMS */}
+      {/* Para twitter  */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={data.description || ''} />
       <meta name="twitter:title" content={data.tittlePage || ''} />
