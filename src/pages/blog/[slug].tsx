@@ -41,7 +41,7 @@ const Index = ({ data }: IPropsSSP) => {
         data={{
           tittlePage: data.titulo,
           description: data.descripcionCorta,
-          imgPrincipal: data.imagenPrincipal.url,
+          imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
           imgSecundaria: data.imagenSecundaria.url,
           url: DOMAIN_URL + 'blog/' + data.slug,
           domain: DOMAIN_URL + 'blog/' + data.slug,
