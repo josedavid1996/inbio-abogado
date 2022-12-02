@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 import { DOMAIN_URL } from '@mock/etc'
 import { ReactNode, useReducer, createContext, useContext } from 'react'
@@ -16,13 +17,20 @@ export interface SeoType {
 }
 
 export const InitialStateSeo: SeoType = {
-  tittlePage: 'Kyros - Personal Website',
-  link: 'Kyros',
-  description: 'Somos los mejores en lo que hacemos',
-  domain: DOMAIN_URL,
-  img: `${DOMAIN_URL}images/imgpageseo.webp`,
-  keywords: 'Comercial services, employment services, civil ligitation',
-  url: DOMAIN_URL,
+  // tittlePage: 'Kyros - Personal Website',
+  // link: 'Kyros',
+  // description: 'Somos los mejores en lo que hacemos',
+  // domain: DOMAIN_URL,
+  // img: `${DOMAIN_URL}images/imgpageseo.webp`,
+  // keywords: 'Comercial services, employment services, civil ligitation',
+  // url: DOMAIN_URL,
+  tittlePage: '',
+  link: '',
+  description: '',
+  domain: '',
+  img: '',
+  keywords: '',
+  url: '',
 }
 
 export interface IContext {
