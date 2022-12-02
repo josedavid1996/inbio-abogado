@@ -16,13 +16,6 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta property="og:site_name" content={data.tittlePage || ''} />
       {/* <meta name="keywords" content={data.keywords || ''} /> */}
 
-      {/* Para whatsapp */}
-      <meta property="og:image" content={data.imgPrincipal || ''} />
-      <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="300" />
-
       {/* Para facebook, SMS */}
       <meta property="og:image" content={data.imgSecundaria || ''} />
       <meta property="og:image:secure_url" content={data.imgSecundaria || ''} />
@@ -35,6 +28,14 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta name="twitter:description" content={data.description || ''} />
       <meta name="twitter:title" content={data.tittlePage || ''} />
       <meta name="twitter:image" content={data.imgSecundaria || ''} />
+
+      {/* Para whatsapp */}
+      <meta property="og:image" content={data.imgPrincipal || ''} />
+      <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
+      {/* <meta property="og:image:type" content="image/png" /> */}
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="300" />
+      <meta property="og:image:alt" content={data.description || ''} />
 
       {/* <meta property="og:locale" content="es_ES" />
 <meta property="og:type" content="website" />
