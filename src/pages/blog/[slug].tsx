@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 import { AllBlogs } from '@components/others/blog'
@@ -5,6 +6,7 @@ import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlug } from '@Services'
 import { useRouter } from 'next/router'
 import { LayoutBlog } from '@components/layout/blog'
+import { useEffect } from 'react'
 import NextImage from 'next/image'
 import request from 'graphql-request'
 import { GetServerSidePropsContext } from 'next'
@@ -19,16 +21,19 @@ interface IPropsSSP {
 }
 const Index = ({ data }: IPropsSSP) => {
   const { dispatch } = CallSeoContext()
-  dispatch({
-    type: 'UpdateSeo',
-    payload: {
-      tittlePage: data.titulo,
-      description: data.descripcionCorta,
-      img: data.imagenPrincipal.url,
-      url: DOMAIN_URL + 'blog/' + data.slug,
-      domain: DOMAIN_URL + 'blog/' + data.slug,
-    },
-  })
+  useEffect(() => {
+    dispatch({
+      type: 'UpdateSeo',
+      payload: {
+        tittlePage: data.titulo,
+        description: data.descripcionCorta,
+        img: data.imagenPrincipal.url,
+        url: DOMAIN_URL + 'blog/' + data.slug,
+        domain: DOMAIN_URL + 'blog/' + data.slug,
+      },
+    })
+  }, [])
+
   return (
     <div className="bg-[#171A1D] min-h-screen h-full">
       <Container>
