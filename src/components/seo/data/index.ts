@@ -1,12 +1,12 @@
 /* eslint-disable comma-dangle */
 export interface IdataPageGeneral {
-  tittlePage: string
-  link: string
-  description: string
-  domain: string
-  img: string
-  keywords: string
-  url: string
+  tittlePage?: string
+  link?: string
+  description?: string
+  domain?: string
+  img?: string
+  keywords?: string
+  url?: string
 }
 export const DataPageGeneral: IdataPageGeneral = {
   tittlePage: 'Kyros - Personal Website',

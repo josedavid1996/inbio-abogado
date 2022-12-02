@@ -6,14 +6,29 @@ import { useGetBlogSlug } from '@Services'
 import { useRouter } from 'next/router'
 import { LayoutBlog } from '@components/layout/blog'
 import NextImage from 'next/image'
+import request from 'graphql-request'
 import { GetServerSidePropsContext } from 'next'
 import { Container } from '@components/others/home'
-import { IMG_404 } from '@mock/etc'
+import { DOMAIN_URL, IMG_404 } from '@mock/etc'
+import { URI } from '@Uri/index'
+import { GET_SLUG_BLOG } from '@ssr/index'
+import { CallSeoContext } from '@contexts/seo/SeoContext'
 interface IPropsSSP {
   slug: string
+  data: BlogDTO
 }
-const Index = ({ slug }: IPropsSSP) => {
-  const { data, loading } = useGetBlogSlug({ slug })
+const Index = ({ data }: IPropsSSP) => {
+  const { dispatch } = CallSeoContext()
+  dispatch({
+    type: 'UpdateSeo',
+    payload: {
+      tittlePage: data.titulo,
+      description: data.descripcionCorta,
+      img: data.imagenPrincipal.url,
+      url: DOMAIN_URL + 'blog/' + data.slug,
+      domain: DOMAIN_URL + 'blog/' + data.slug,
+    },
+  })
   return (
     <div className="bg-[#171A1D] min-h-screen h-full">
       <Container>
@@ -37,16 +52,20 @@ const Index = ({ slug }: IPropsSSP) => {
           <div
             className="font-medium leading-8 text-md font-customText text-gray-200"
             dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
-          >
-          </div>
+          ></div>
         </div>
       </Container>
     </div>
   )
 }
 
-export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
-  return { props: { slug: ctx.query.slug } }
+export const getServerSideProps = async ({
+  query,
+}: GetServerSidePropsContext) => {
+  const { GetBlogSlug } = await request(URI, GET_SLUG_BLOG, {
+    slug: query.slug,
+  })
+  return { props: { data: GetBlogSlug } }
 }
 
 export default Index

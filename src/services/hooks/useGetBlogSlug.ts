@@ -1,4 +1,5 @@
 /* eslint-disable comma-dangle */
+import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlugQuery } from '@Generated'
 interface IVariable {
   slug: string
@@ -8,5 +9,5 @@ export const useGetBlogSlug = (variables: IVariable) => {
     fetchPolicy: 'network-only',
     variables,
   })
-  return { data: data?.GetBlogSlug, loading }
+  return { data: data?.GetBlogSlug as BlogDTO, loading }
 }
