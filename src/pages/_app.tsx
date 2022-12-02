@@ -20,8 +20,6 @@ import {
   BannerForOtherPage,
   Footer,
 } from '@components/others/home'
-import { OpenGraph } from '@components/seo/OpenGraph'
-import { DOMAIN_URL } from '@mock/etc'
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // Servicio para cargar el theme desde el LocalStorage
   useLoadTheme()
@@ -41,19 +39,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <SeoProvider>
         <NavbarProvider>
           <main>
-            <OpenGraph
-              data={{
-                tittlePage: 'Kyros - Personal Website',
-                link: 'Kyros',
-                description: 'Somos los mejores en lo que hacemos',
-                domain: DOMAIN_URL,
-                imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
-                imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
-                keywords:
-                  'Comercial services, employment services, civil ligitation',
-                url: DOMAIN_URL,
-              }}
-            />
             {/* <Head /> */}
             {/* existen 2 navbar, dependiendo del screen se cambia  */}
             {/* navbar solo  para mobile */}

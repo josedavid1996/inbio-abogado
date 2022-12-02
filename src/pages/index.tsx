@@ -14,6 +14,7 @@ import {
 } from '@components/others/home'
 import { useEffect } from 'react'
 import { CallSeoContext } from '@contexts/seo/SeoContext'
+import { OpenGraph } from '@components/seo/OpenGraph'
 import { DOMAIN_URL } from '@mock/etc'
 
 // import { OpenGraph } from '@components/seo/OpenGraph'
@@ -43,6 +44,18 @@ const Home = () => {
   // }, [])
   return (
     <>
+      <OpenGraph
+        data={{
+          tittlePage: 'Kyros - Personal Website',
+          link: 'Kyros',
+          description: 'Somos los mejores en lo que hacemos',
+          domain: DOMAIN_URL,
+          imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
+          imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
+          keywords: 'Comercial services, employment services, civil ligitation',
+          url: DOMAIN_URL,
+        }}
+      />
       {/* <OpenGraph data={} /> */}
       {/* navbar solo  para desktop */}
       <WrapperBanner />
