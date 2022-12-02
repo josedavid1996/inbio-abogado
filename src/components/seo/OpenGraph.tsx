@@ -18,13 +18,13 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
 
       {/* Para facebook, SMS */}
       <meta property="og:image" content={data.imgSecundaria || ''} />
-      <meta property="og:image:secure_url" content={data.imgSecundaria || ''} />
+      <meta
+        property="og:image:secure_url"
+        content={data.imgSecundaria || data.imgSecundaria}
+      />
       <meta property="og:image:width" content="400" />
       <meta property="og:image:height" content="300" />
-      <meta
-        property="og:image:alt"
-        content={data.description || data.imgSecundaria}
-      />
+      <meta property="og:image:alt" content={data.description || ''} />
 
       {/* Para twitter  */}
       <meta name="twitter:card" content="summary_large_image" />
