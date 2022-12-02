@@ -17,8 +17,8 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       {/* <meta name="keywords" content={data.keywords || ''} /> */}
 
       {/* Para facebook, SMS */}
-      <meta property="og:image" content={data.imgPrincipal || ''} />
-      <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
+      <meta property="og:image" content={data.imgSecundaria || ''} />
+      <meta property="og:image:secure_url" content={data.imgSecundaria || ''} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={data.description || ''} />
@@ -27,11 +27,11 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={data.description || ''} />
       <meta name="twitter:title" content={data.tittlePage || ''} />
-      <meta name="twitter:image" content={data.imgPrincipal || ''} />
+      <meta name="twitter:image" content={data.imgSecundaria || ''} />
 
       {/* Para whatsapp */}
-      <meta property="og:image" content={data.imgSecundaria || ''} />
-      <meta property="og:image:secure_url" content={data.imgSecundaria || ''} />
+      <meta property="og:image" content={data.imgPrincipal || ''} />
+      <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
       <meta property="og:image:type" content="image/*" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="300" />

@@ -58,7 +58,7 @@ const Index = ({ data }: IPropsSSP) => {
             </div>
             <div className="relative aspect-video w-full">
               <NextImage
-                src={data?.imagenPrincipal?.url || IMG_404}
+                src={data?.imagenSecundaria?.url || IMG_404}
                 className="absolute w-full h-full object-cover rounded-md"
                 priority
                 layout="fill"
