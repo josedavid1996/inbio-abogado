@@ -41,8 +41,8 @@ const Index = ({ data }: IPropsSSP) => {
         data={{
           tittlePage: data.titulo,
           description: data.descripcionCorta,
-          imgPrincipal: `${DOMAIN_URL}images/logoexample.png`,
-          imgSecundaria: data.imagenSecundaria.url,
+          imgPrincipal: data.imagenSecundaria.url,
+          imgSecundaria: data.imagenPrincipal.url,
           url: DOMAIN_URL + 'blog/' + data.slug,
           domain: DOMAIN_URL + 'blog/' + data.slug,
         }}
