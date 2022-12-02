@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-empty-pattern */
 import { useEffect } from 'react'
 import { IdataPageGeneral } from './data'
 import NextHead from 'next/head'
-export const OpenGraph = (data: IdataPageGeneral) => {
-  useEffect(() => {
-    console.log('cambando el meta')
-  }, [data])
+export const OpenGraph = ({ data }: IdataPageGeneral) => {
+  console.log('cambiando meta')
+  // useEffect(() => {
+  //   console.log('cambando el meta')
+  // }, [data])
   return (
     <NextHead>
       <title>{data.tittlePage}</title>
