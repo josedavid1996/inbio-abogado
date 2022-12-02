@@ -47,7 +47,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 link: 'Kyros',
                 description: 'Somos los mejores en lo que hacemos',
                 domain: DOMAIN_URL,
-                img: `${DOMAIN_URL}images/imgpageseo.webp`,
+                imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
+                imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
                 keywords:
                   'Comercial services, employment services, civil ligitation',
                 url: DOMAIN_URL,

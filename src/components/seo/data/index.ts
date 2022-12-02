@@ -5,7 +5,8 @@ export interface IdataPageGeneral {
     link?: string
     description?: string
     domain?: string
-    img?: string
+    imgPrincipal?: string
+    imgSecundaria?: string
     keywords?: string
     url?: string
   }
@@ -16,7 +17,8 @@ export const DataPageGeneral: IdataPageGeneral = {
     link: 'Kyros',
     description: 'Somos los mejores en lo que hacemos',
     domain: 'inbio-abogado.vercel.app',
-    img: 'https://inbio-abogado.vercel.app/images/imgpageseo.webp',
+    imgPrincipal: 'https://inbio-abogado.vercel.app/images/imgpageseo.webp',
+    imgSecundaria: 'https://inbio-abogado.vercel.app/images/imgpageseo.webp',
     keywords: 'Comercial services, employment services, civil ligitation',
     url: 'https://inbio-abogado.vercel.app/',
   },
