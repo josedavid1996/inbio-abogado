@@ -4,6 +4,7 @@
 import { useEffect } from 'react'
 import { IdataPageGeneral } from './data'
 import NextHead from 'next/head'
+import { DOMAIN_URL } from '@mock/etc'
 export const OpenGraph = ({ data }: IdataPageGeneral) => {
   console.log(data.imgPrincipal)
   return (
@@ -31,9 +32,15 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta name="twitter:image" content={data.imgSecundaria || ''} />
 
       {/* Para whatsapp */}
-      <meta property="og:image" content={data.imgPrincipal || ''} />
-      <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
-      <meta property="og:image:type" content="image/webp" />
+      <meta
+        property="og:image"
+        content={`${DOMAIN_URL}images/imgpageseo.webp` || ''}
+      />
+      <meta
+        property="og:image:secure_url"
+        content={`${DOMAIN_URL}images/imgpageseo.webp` || ''}
+      />
+      <meta property="og:image:type" content="image/*" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="300" />
 
