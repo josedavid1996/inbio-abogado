@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { IdataPageGeneral } from './data'
 import NextHead from 'next/head'
 export const OpenGraph = ({ data }: IdataPageGeneral) => {
+  console.log(data.imgPrincipal)
   return (
     <NextHead>
       <title>{data.tittlePage}</title>
@@ -32,7 +33,7 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       {/* Para whatsapp */}
       <meta property="og:image" content={data.imgPrincipal || ''} />
       <meta property="og:image:secure_url" content={data.imgPrincipal || ''} />
-      <meta property="og:image:type" content="image/wepb" />
+      <meta property="og:image:type" content="image/webp" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="300" />
 
