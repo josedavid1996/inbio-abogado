@@ -8,7 +8,7 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
   return (
     <NextHead>
       <title>{data.tittlePage}</title>
-      <meta property="og:locale" content="es_LA" />
+      <meta property="og:locale" content="es_ES" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={data.tittlePage || ''} />
       <meta property="og:description" content={data.description || ''} />
@@ -29,10 +29,10 @@ export const OpenGraph = ({ data }: IdataPageGeneral) => {
       <meta name="twitter:title" content={data.tittlePage || ''} />
       <meta name="twitter:image" content={data.imgPrincipal || ''} />
 
-      {/* Para facebook, SMS */}
+      {/* Para whatsapp */}
       <meta property="og:image" content={data.imgSecundaria || ''} />
       <meta property="og:image:secure_url" content={data.imgSecundaria || ''} />
-      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:type" content="image/webp" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="300" />
     </NextHead>
