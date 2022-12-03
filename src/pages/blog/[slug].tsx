@@ -1,3 +1,6 @@
+/* eslint-disable n/handle-callback-err */
+/* eslint-disable no-undef */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
@@ -5,7 +8,7 @@ import { AllBlogs } from '@components/others/blog'
 import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlug } from '@Services'
 import { LayoutBlog } from '@components/layout/blog'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import NextImage from 'next/image'
 import request from 'graphql-request'
 import { GetServerSidePropsContext } from 'next'
@@ -17,14 +20,66 @@ import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { FaFacebook, FaInstagram, FaWhatsapp, FaShare } from 'react-icons/fa'
 import NextLink from 'next/link'
-import { useRouter, Router, withRouter, NextRouter } from 'next/router'
+import { useRouter, withRouter, NextRouter } from 'next/router'
 interface IPropsSSP {
   slug: string
   data: BlogDTO
   router: NextRouter
 }
-const Index = ({ data, slug, router }: IPropsSSP) => {
+
+const Index = ({ data, slug }: IPropsSSP) => {
+  const router = useRouter()
   const Page = router.pathname.split('/')[1]
+  const [DataShare] = useState({
+    tittle: data.titulo,
+    text: data.descripcionCorta,
+    url: DOMAIN_URL + Page + '/' + slug,
+  })
+  const ShareResponvie = () => {
+    console.log(navigator)
+    if (typeof navigator.share === 'function') {
+      navigator
+        .share(DataShare)
+        .then((res) => {
+          console.log(res)
+          console.log('res compartido con exito')
+        })
+        .catch((err) => {
+          console.log(err)
+          console.log('res compartido con exito')
+        })
+    } else {
+      console.log('no soportado')
+    }
+  }
+  {
+    /*
+
+  shareResponsive(post){
+  // Evitamos el comportamiento por default del enlace
+    const title = this.getFormatTitle(post.post_title);
+    const id = post.ID
+  //URL Dinámica
+    const url = https://www.firbid.com/actualizate/${title}?id=${id}
+
+    if (process.client) {
+      // navigator.share recibe un objeto con los siguientes parámetros:
+      if(navigator && this.shareActive) {
+        // console.log("Compartiendo")
+       //Aqui se envia los Metas
+          navigator.share({
+          title: title, // Título
+          text: "FIRBID News: ", // Texto
+          url: url // La URL a compartir, en este caso usamos nuestra variable
+        })
+        if(this.shareActive){
+          this.shareActive = false;
+        }
+      };
+    }
+},
+*/
+  }
 
   return (
     <>
@@ -62,13 +117,16 @@ const Index = ({ data, slug, router }: IPropsSSP) => {
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
             />
             <div className="flex flex-row w-full gap-4 justify-end">
-              <NextLink
+              {/* <NextLink
                 href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
-              >
-                <a target={'_blank'}>
-                  <FaFacebook className="w-6 h-6" />
-                </a>
-              </NextLink>
+              > */}
+              {/* <a target={'_blank'}> */}
+              <FaFacebook
+                className="w-6 h-6"
+                onClick={() => ShareResponvie()}
+              />
+              {/* </a> */}
+              {/* </NextLink> */}
               <FaInstagram className="w-6 h-6" />
               <FaWhatsapp className="w-6 h-6" />
               <FaShare className="w-6 h-6" />
@@ -92,4 +150,4 @@ export const getServerSideProps = async ({
   }
 }
 
-export default withRouter(Index)
+export default Index
