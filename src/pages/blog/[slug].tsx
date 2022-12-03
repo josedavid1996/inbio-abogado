@@ -17,15 +17,15 @@ import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { FaFacebook, FaInstagram, FaWhatsapp, FaShare } from 'react-icons/fa'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter, Router, withRouter, NextRouter } from 'next/router'
 interface IPropsSSP {
-  url: string
-  data: BlogDTO
   slug: string
+  data: BlogDTO
+  router: NextRouter
 }
-const Index = ({ data, url, slug }: IPropsSSP) => {
-  const a = useRouter()
-  // console.log(a)
+const Index = ({ data, slug, router }: IPropsSSP) => {
+  const Page = router.pathname.split('/')[1]
+
   return (
     <>
       <OpenGraph
@@ -63,7 +63,7 @@ const Index = ({ data, url, slug }: IPropsSSP) => {
             />
             <div className="flex flex-row w-full gap-4 justify-end">
               <NextLink
-                href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
               >
                 <a target={'_blank'}>
                   <FaFacebook className="w-6 h-6" />
@@ -88,8 +88,8 @@ export const getServerSideProps = async ({
     slug: query.slug,
   })
   return {
-    props: { data: GetBlogSlug, url: req.headers.referer, slug: query.slug },
+    props: { data: GetBlogSlug, slug: query.slug },
   }
 }
 
-export default Index
+export default withRouter(Index)
