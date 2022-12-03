@@ -4,7 +4,6 @@
 import { AllBlogs } from '@components/others/blog'
 import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlug } from '@Services'
-import { useRouter } from 'next/router'
 import { LayoutBlog } from '@components/layout/blog'
 import { useEffect } from 'react'
 import NextImage from 'next/image'
@@ -16,25 +15,16 @@ import { URI } from '@Uri/index'
 import { GET_SLUG_BLOG } from '@ssr/index'
 import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
+import { FaFacebook, FaInstagram, FaWhatsapp, FaShare } from 'react-icons/fa'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 interface IPropsSSP {
-  slug: string
+  url: string
   data: BlogDTO
 }
-const Index = ({ data }: IPropsSSP) => {
-  // const { dispatch } = CallSeoContext()
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'UpdateSeo',
-  //     payload: {
-  //       tittlePage: data.titulo,
-  //       description: data.descripcionCorta,
-  //       img: data.imagenPrincipal.url,
-  //       url: DOMAIN_URL + 'blog/' + data.slug,
-  //       domain: DOMAIN_URL + 'blog/' + data.slug,
-  //     },
-  //   })
-  // }, [])
-
+const Index = ({ data, url }: IPropsSSP) => {
+  const a = useRouter()
+  // console.log(a)
   return (
     <>
       <OpenGraph
@@ -69,7 +59,19 @@ const Index = ({ data }: IPropsSSP) => {
             <div
               className="font-medium leading-8 text-md font-customText text-gray-200"
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
-            ></div>
+            />
+            <div className="flex flex-row w-full gap-4 justify-end">
+              <NextLink
+                href={'https://www.facebook.com/sharer/sharer.php?u=' + url}
+              >
+                <a target={'_blank'}>
+                  <FaFacebook className="w-6 h-6" />
+                </a>
+              </NextLink>
+              <FaInstagram className="w-6 h-6" />
+              <FaWhatsapp className="w-6 h-6" />
+              <FaShare className="w-6 h-6" />
+            </div>
           </div>
         </Container>
       </div>
@@ -79,11 +81,12 @@ const Index = ({ data }: IPropsSSP) => {
 
 export const getServerSideProps = async ({
   query,
+  req,
 }: GetServerSidePropsContext) => {
   const { GetBlogSlug } = await request(URI, GET_SLUG_BLOG, {
     slug: query.slug,
   })
-  return { props: { data: GetBlogSlug } }
+  return { props: { data: GetBlogSlug, url: req.headers.referer } }
 }
 
 export default Index
