@@ -21,8 +21,9 @@ import { useRouter } from 'next/router'
 interface IPropsSSP {
   url: string
   data: BlogDTO
+  slug: string
 }
-const Index = ({ data, url }: IPropsSSP) => {
+const Index = ({ data, url, slug }: IPropsSSP) => {
   const a = useRouter()
   // console.log(a)
   return (
@@ -62,7 +63,12 @@ const Index = ({ data, url }: IPropsSSP) => {
             />
             <div className="flex flex-row w-full gap-4 justify-end">
               <NextLink
-                href={'https://www.facebook.com/sharer/sharer.php?u=' + url}
+                href={
+                  'https://www.facebook.com/sharer/sharer.php?u=' +
+                  url +
+                  '/' +
+                  slug
+                }
               >
                 <a target={'_blank'}>
                   <FaFacebook className="w-6 h-6" />
@@ -86,7 +92,9 @@ export const getServerSideProps = async ({
   const { GetBlogSlug } = await request(URI, GET_SLUG_BLOG, {
     slug: query.slug,
   })
-  return { props: { data: GetBlogSlug, url: req.headers.referer } }
+  return {
+    props: { data: GetBlogSlug, url: req.headers.referer, slug: query.slug },
+  }
 }
 
 export default Index
