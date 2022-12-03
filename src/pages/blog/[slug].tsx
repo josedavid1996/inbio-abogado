@@ -63,12 +63,7 @@ const Index = ({ data, url, slug }: IPropsSSP) => {
             />
             <div className="flex flex-row w-full gap-4 justify-end">
               <NextLink
-                href={
-                  'https://www.facebook.com/sharer/sharer.php?u=' +
-                  url +
-                  '/' +
-                  slug
-                }
+                href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
               >
                 <a target={'_blank'}>
                   <FaFacebook className="w-6 h-6" />
