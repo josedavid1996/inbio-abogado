@@ -27,60 +27,57 @@ interface IPropsSSP {
   router: NextRouter
 }
 
+interface Data {
+  tittle: string
+  text: string
+  url: string
+}
+interface IButtonShare {
+  /** Si es mobile usaremos el MetaData, caso contrario el urlWeb */
+  isMobile: boolean
+  /** url para compartir en pc */
+  urlWeb: string
+  /** MetaData que se compartira para mobile */
+  MetaData: Data
+}
+
 const Index = ({ data, slug }: IPropsSSP) => {
   const router = useRouter()
   const Page = router.pathname.split('/')[1]
-  const [DataShare] = useState({
-    tittle: data.titulo,
-    text: data.descripcionCorta,
-    url: DOMAIN_URL + Page + '/' + slug,
-  })
-  const ShareResponvie = () => {
-    console.log(navigator)
+
+  const ShareResponvie = (data: Data) => {
     if (typeof navigator.share === 'function') {
       navigator
-        .share(DataShare)
-        .then((res) => {
-          console.log(res)
+        .share(data)
+        .then(() => {
           console.log('res compartido con exito')
         })
-        .catch((err) => {
-          console.log(err)
-          console.log('res compartido con exito')
+        .catch(() => {
+          console.log('hubo un error')
         })
     } else {
       console.log('no soportado')
     }
   }
-  {
-    /*
-
-  shareResponsive(post){
-  // Evitamos el comportamiento por default del enlace
-    const title = this.getFormatTitle(post.post_title);
-    const id = post.ID
-  //URL Dinámica
-    const url = https://www.firbid.com/actualizate/${title}?id=${id}
-
-    if (process.client) {
-      // navigator.share recibe un objeto con los siguientes parámetros:
-      if(navigator && this.shareActive) {
-        // console.log("Compartiendo")
-       //Aqui se envia los Metas
-          navigator.share({
-          title: title, // Título
-          text: "FIRBID News: ", // Texto
-          url: url // La URL a compartir, en este caso usamos nuestra variable
-        })
-        if(this.shareActive){
-          this.shareActive = false;
-        }
-      };
-    }
-},
-*/
+  const WrapperButtonShare = ({ isMobile, urlWeb, MetaData }: IButtonShare) => {
+    return (
+      <>
+        <NextLink
+          className={isMobile ? 'hidden' : ''}
+          href={urlWeb}
+          // href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
+        >
+          <a target={'_blank'}>
+            <FaFacebook className="w-6 h-6 text-white" />
+          </a>
+        </NextLink>
+        <FaFacebook
+          className={`w-6 h-6 text-white ${isMobile ? '' : 'hidden'}`}
+          onClick={() => ShareResponvie(MetaData)}
+        />
+      </>
+    )
   }
-
   return (
     <>
       <OpenGraph
@@ -117,16 +114,15 @@ const Index = ({ data, slug }: IPropsSSP) => {
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
             />
             <div className="flex flex-row w-full gap-4 justify-end">
-              {/* <NextLink
-                href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
-              > */}
-              {/* <a target={'_blank'}> */}
-              <FaFacebook
-                className="w-6 h-6"
-                onClick={() => ShareResponvie()}
+              <WrapperButtonShare
+                MetaData={{
+                  text: data.descripcionCorta,
+                  tittle: data.titulo,
+                  url: DOMAIN_URL + 'blog/' + data.slug,
+                }}
+                isMobile={navigator.platform !== 'Win32'}
+                urlWeb={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
               />
-              {/* </a> */}
-              {/* </NextLink> */}
               <FaInstagram className="w-6 h-6" />
               <FaWhatsapp className="w-6 h-6" />
               <FaShare className="w-6 h-6" />
