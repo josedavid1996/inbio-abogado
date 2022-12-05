@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
-import { AllBlogs } from '@components/others/blog'
+import { AllBlogs, WrapperButtonShares } from '@components/others/blog'
 import dynamic from 'next/dynamic'
 import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlug } from '@Services'
@@ -20,8 +20,7 @@ import { GET_SLUG_BLOG } from '@ssr/index'
 import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { FaFacebook, FaInstagram, FaWhatsapp, FaShare } from 'react-icons/fa'
-import NextLink from 'next/link'
-import { useRouter, withRouter, NextRouter } from 'next/router'
+import { useRouter, NextRouter } from 'next/router'
 interface IPropsSSP {
   slug: string
   data: BlogDTO
@@ -37,6 +36,7 @@ const ButtonShare = dynamic(
 const Index = ({ data, slug }: IPropsSSP) => {
   const router = useRouter()
   const Page = router.pathname.split('/')[1]
+  const MY_URL = DOMAIN_URL + Page + '/' + slug
 
   return (
     <>
@@ -74,17 +74,29 @@ const Index = ({ data, slug }: IPropsSSP) => {
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
             />
             <div className="flex flex-row w-full gap-4 justify-end">
-              <ButtonShare
-                MetaData={{
-                  text: data.descripcionCorta,
-                  tittle: data.titulo,
-                  url: DOMAIN_URL + 'blog/' + data.slug,
-                }}
-                urlWeb={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
+              <WrapperButtonShares
+                MetaData={{ text: data.descripcionCorta, tittle: data.titulo }}
+                RedesSociales={[
+                  {
+                    Icon: FaFacebook,
+                    url:
+                      'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
+                  },
+                  {
+                    Icon: FaInstagram,
+                    url: '',
+                  },
+                  {
+                    Icon: FaWhatsapp,
+                    url:
+                      'https://web.whatsapp.com/send?text=' +
+                      data.titulo +
+                      ' ' +
+                      MY_URL,
+                  },
+                  { Icon: FaShare, url: '' },
+                ]}
               />
-              <FaInstagram className="w-6 h-6" />
-              <FaWhatsapp className="w-6 h-6" />
-              <FaShare className="w-6 h-6" />
             </div>
           </div>
         </Container>

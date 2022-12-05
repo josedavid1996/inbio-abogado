@@ -1,18 +1,18 @@
-import { FaFacebook } from 'react-icons/fa'
 import NextLink from 'next/link'
-
+import { IconType } from 'react-icons'
 interface Data {
   tittle: string
   text: string
-  url: string
 }
 interface IProps {
   /** url para compartir en pc */
   urlWeb: string
-  /** MetaData que se compartira para mobile */
+  /** MetaData que se compartira */
   MetaData: Data
+  /** Icono que usaremos */
+  Icon: IconType
 }
-export const ButtonShare = ({ MetaData, urlWeb }: IProps) => {
+export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
   const isMobile =
     typeof window !== 'undefined' ? navigator.platform !== 'Win32' : true
 
@@ -32,16 +32,12 @@ export const ButtonShare = ({ MetaData, urlWeb }: IProps) => {
   }
   return (
     <>
-      <NextLink
-        className={isMobile ? 'hidden' : ''}
-        href={urlWeb}
-        // href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
-      >
+      <NextLink className={isMobile ? 'hidden' : ''} href={urlWeb}>
         <a target={'_blank'} className={isMobile ? 'hidden' : ''}>
-          <FaFacebook className="w-6 h-6 text-white" />
+          <Icon className="w-6 h-6 text-white" />
         </a>
       </NextLink>
-      <FaFacebook
+      <Icon
         className={`w-6 h-6 text-white ${isMobile ? '' : 'hidden'}`}
         onClick={() => ShareResponvie(MetaData)}
       />
