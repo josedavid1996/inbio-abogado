@@ -5,6 +5,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 import { AllBlogs } from '@components/others/blog'
+import dynamic from 'next/dynamic'
 import { BlogDTO } from '@components/others/blog/interfaces'
 import { useGetBlogSlug } from '@Services'
 import { LayoutBlog } from '@components/layout/blog'
@@ -26,58 +27,17 @@ interface IPropsSSP {
   data: BlogDTO
   router: NextRouter
 }
-
-interface Data {
-  tittle: string
-  text: string
-  url: string
-}
-interface IButtonShare {
-  /** Si es mobile usaremos el MetaData, caso contrario el urlWeb */
-  isMobile: boolean
-  /** url para compartir en pc */
-  urlWeb: string
-  /** MetaData que se compartira para mobile */
-  MetaData: Data
-}
-
+const ButtonShare = dynamic(
+  () =>
+    import('../../components/others/blog/components/ButtonShare').then(
+      (data) => data.ButtonShare,
+    ),
+  { ssr: false },
+)
 const Index = ({ data, slug }: IPropsSSP) => {
   const router = useRouter()
   const Page = router.pathname.split('/')[1]
 
-  const ShareResponvie = (data: Data) => {
-    if (typeof navigator.share === 'function') {
-      navigator
-        .share(data)
-        .then(() => {
-          console.log('res compartido con exito')
-        })
-        .catch(() => {
-          console.log('hubo un error')
-        })
-    } else {
-      console.log('no soportado')
-    }
-  }
-  const WrapperButtonShare = ({ isMobile, urlWeb, MetaData }: IButtonShare) => {
-    return (
-      <>
-        <NextLink
-          className={isMobile ? 'hidden' : ''}
-          href={urlWeb}
-          // href={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
-        >
-          <a target={'_blank'}>
-            <FaFacebook className="w-6 h-6 text-white" />
-          </a>
-        </NextLink>
-        <FaFacebook
-          className={`w-6 h-6 text-white ${isMobile ? '' : 'hidden'}`}
-          onClick={() => ShareResponvie(MetaData)}
-        />
-      </>
-    )
-  }
   return (
     <>
       <OpenGraph
@@ -114,13 +74,12 @@ const Index = ({ data, slug }: IPropsSSP) => {
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
             />
             <div className="flex flex-row w-full gap-4 justify-end">
-              <WrapperButtonShare
+              <ButtonShare
                 MetaData={{
                   text: data.descripcionCorta,
                   tittle: data.titulo,
                   url: DOMAIN_URL + 'blog/' + data.slug,
                 }}
-                isMobile={navigator.platform !== 'Win32'}
                 urlWeb={`https://www.facebook.com/sharer/sharer.php?u=${DOMAIN_URL}${Page}/${slug}`}
               />
               <FaInstagram className="w-6 h-6" />
@@ -134,15 +93,12 @@ const Index = ({ data, slug }: IPropsSSP) => {
   )
 }
 
-export const getServerSideProps = async ({
-  query,
-  req,
-}: GetServerSidePropsContext) => {
+export const getServerSideProps = async (a: GetServerSidePropsContext) => {
   const { GetBlogSlug } = await request(URI, GET_SLUG_BLOG, {
-    slug: query.slug,
+    slug: a.query.slug,
   })
   return {
-    props: { data: GetBlogSlug, slug: query.slug },
+    props: { data: GetBlogSlug, slug: a.query.slug },
   }
 }
 
