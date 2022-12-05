@@ -19,7 +19,13 @@ import { URI } from '@Uri/index'
 import { GET_SLUG_BLOG } from '@ssr/index'
 import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
-import { FaFacebook, FaInstagram, FaWhatsapp, FaShare } from 'react-icons/fa'
+import {
+  FaFacebook,
+  FaInstagram,
+  FaWhatsapp,
+  FaShare,
+  FaTwitter,
+} from 'react-icons/fa'
 import { useRouter, NextRouter } from 'next/router'
 interface IPropsSSP {
   slug: string
@@ -83,10 +89,6 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
                   },
                   {
-                    Icon: FaInstagram,
-                    url: '',
-                  },
-                  {
                     Icon: FaWhatsapp,
                     url:
                       'https://web.whatsapp.com/send?text=' +
@@ -94,7 +96,14 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       ' ' +
                       MY_URL,
                   },
-                  { Icon: FaShare, url: '' },
+                  {
+                    Icon: FaTwitter,
+                    url:
+                      'http://TWITTER.com/share?text=' +
+                      data.titulo +
+                      '&url=' +
+                      MY_URL,
+                  },
                 ]}
               />
             </div>
