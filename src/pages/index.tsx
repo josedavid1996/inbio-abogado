@@ -27,21 +27,6 @@ export interface SideMultistepComponentProps {
 }
 
 const Home = () => {
-  // const { dispatch } = CallSeoContext()
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'UpdateSeo',
-  //     payload: {
-  //       tittlePage: 'Kyros - Personal Website',
-  //       link: 'Kyros',
-  //       description: 'Somos los mejores en lo que hacemos',
-  //       domain: DOMAIN_URL,
-  //       img: `${DOMAIN_URL}images/imgpageseo.webp`,
-  //       keywords: 'Comercial services, employment services, civil ligitation',
-  //       url: DOMAIN_URL,
-  //     },
-  //   })
-  // }, [])
   return (
     <>
       <OpenGraph

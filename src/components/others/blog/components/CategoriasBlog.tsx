@@ -1,23 +1,18 @@
 /* eslint-disable indent */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { CategoriaBlogDTO } from '../interfaces'
-import { Show, LoaderSpinner } from '@components/shared/'
-// import { Dispatch, SetStateAction } from 'react'
-// import { useRouter } from 'next/router'
+import { Show, SkeletorText } from '@components/shared'
 import NextLink from 'next/link'
 interface IProps {
   Data: CategoriaBlogDTO[] | []
-  loading: boolean
-  // dispatch: Dispatch<SetStateAction<string>>
-  // Slug: string
+  loading?: boolean
 }
 interface IListItem {
   tittle: string
-  // onClick: () => void
   route: string
   slug: string
 }
-export const CategoriasBlog = ({ Data, loading }: IProps) => {
+export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
   // const { push } = useRouter()
   const ListItem = ({ route, tittle, slug }: IListItem) => (
     <div
@@ -32,7 +27,17 @@ export const CategoriasBlog = ({ Data, loading }: IProps) => {
     </div>
   )
   return (
-    <Show condition={!loading} isDefault={<LoaderSpinner />}>
+    <Show
+      condition={!loading}
+      isDefault={
+        <div className="flex flex-row gap-4 w-full">
+          <SkeletorText />
+          <SkeletorText />
+          <SkeletorText />
+          <SkeletorText />
+        </div>
+      }
+    >
       <div className="hidden lg:flex w-full text-white font-medium  flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
         <ListItem route={'/blog'} tittle="Todos" slug="Todos" />
         {Data?.map((obj, k) => (
