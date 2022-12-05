@@ -29,8 +29,6 @@ const Index = ({ slug }: IPropsSSP) => {
     <div className="bg-[#171A1D] min-h-screen h-full">
       <Container Class="flex flex-col items-center">
         <CategoriasBlog
-          //   Slug={Slug}
-          //   dispatch={setSlug}
           Data={DataCategoryBlogs}
           loading={LoadingCategorysBlogs}
         />
