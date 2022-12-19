@@ -12,6 +12,7 @@ import {
 } from '@components/others/home'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { DOMAIN_URL } from '@mock/etc'
+import { useEffect } from 'react'
 
 // import { OpenGraph } from '@components/seo/OpenGraph'
 export interface SideMultistepComponentProps {
