@@ -4,16 +4,12 @@
 import {
   About,
   Services,
-  Quote,
   Team,
   Resumen,
-  Numbers,
   RecentBlogs,
   Contact,
   WrapperBanner,
 } from '@components/others/home'
-import { useEffect } from 'react'
-import { CallSeoContext } from '@contexts/seo/SeoContext'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { DOMAIN_URL } from '@mock/etc'
 
@@ -47,10 +43,8 @@ const Home = () => {
       {/* Secciones separadas por componentes */}
       <About />
       <Services />
-      <Quote />
       <Team />
       <Resumen />
-      <Numbers />
       <RecentBlogs />
       <Contact />
     </>

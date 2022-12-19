@@ -22,7 +22,7 @@ export const Progressbar = ({ percentage, tittlePercentege }: Iprops) => {
         } rounded  transition-all scale-0 origin-left`}
       >
         <div className="relative w-full h-full rounded ">
-          <div className="absolute bg-[#202020] -top-10 right-0 p-1 z-20">
+          <div className="absolute bg-[#202020] text-white -top-10 right-0 p-1 z-20">
             {tittlePercentege || 'NOT_FOUND'}
           </div>
           <div className="absolute bg-[#202020] w-4 h-4 transform skew-y-12 z-10 -top-6 right-0 p-1" />

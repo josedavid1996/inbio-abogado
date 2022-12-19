@@ -33,7 +33,7 @@ export const Team = () => {
         <h4 className="text-white text-[20px] font-semibold text-center ">
           {tittle || ''}
         </h4>
-        <h6>{subtittle || ''}</h6>
+        <h6 className="text-custon4">{subtittle || ''}</h6>
       </div>
     </div>
   )

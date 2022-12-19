@@ -1,11 +1,9 @@
 import { BgNegroTransparente } from './bgNegroTransparente'
 import { RiDoubleQuotesR } from 'react-icons/ri'
-// import { Container } from './container'
+
 export const Quote = () => {
   return (
     <div className="bg-[url('/images/bgquote.webp')] w-full h-[850px] bg-cover bg-center xl:h-[950px] relative top-0 z-0">
-      {/* <Container>
-        <> */}
       <BgNegroTransparente isReverse light />
       <div className="w-[90%] mx-auto max-w-[1240px] h-full">
         <div className="flex flex-col justify-center h-full p-6 gap-4 overflow-hidden">
@@ -30,8 +28,6 @@ export const Quote = () => {
       </div>
 
       <BgNegroTransparente light />
-      {/* </>
-      </Container> */}
     </div>
   )
 }

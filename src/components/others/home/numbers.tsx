@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { BgNegroTransparente } from './bgNegroTransparente'
 import CountUp from 'react-countup/build'
 import { useInView } from 'react-intersection-observer'
+import { DataNumber, IDataNumber } from '@mock/dataNumber'
 
 export const Numbers = () => {
   const [isEffect, setIsEffect] = useState<boolean>(false)
@@ -11,6 +12,14 @@ export const Numbers = () => {
     threshold: 0,
   })
 
+  const Item = ({ count, tittle }: IDataNumber) => (
+    <div className=" flex flex-col items-center ">
+      <h4 className="text-[32px] text-white font-semibold">
+        {isEffect && <CountUp end={count || 1000} duration={1} />}
+      </h4>
+      <span className="text-[12px] text-custon4">{tittle}</span>
+    </div>
+  )
   useEffect(() => {
     if (inView) setIsEffect(true)
     else setIsEffect(false)
@@ -23,7 +32,10 @@ export const Numbers = () => {
     >
       <BgNegroTransparente isReverse light />
       <div className="flex flex-col md:flex-row w-[90%] max-w-[1240px] justify-around items-center gap-4">
-        <div className=" flex flex-col items-center ">
+        {DataNumber?.map((obj, k) => (
+          <Item {...obj} key={k} />
+        ))}
+        {/* <div className=" flex flex-col items-center ">
           <h4 className="text-[32px] text-white font-semibold">
             {isEffect && <CountUp end={8240} duration={1} />}
           </h4>
@@ -46,7 +58,7 @@ export const Numbers = () => {
             {isEffect && <CountUp end={32} duration={1} />}
           </h4>
           <span className="text-[12px]">AWARDS WINNING</span>
-        </div>
+        </div> */}
       </div>
       <BgNegroTransparente light />
     </div>
