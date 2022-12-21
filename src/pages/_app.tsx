@@ -14,6 +14,7 @@ import { NavbarProvider } from '@contexts/NavbarProvider'
 import { SeoProvider } from '@contexts/seo/SeoContext'
 import { ApolloProvider } from '@apollo/client'
 import { client } from '@apollo/index'
+// import { Wrapper } from '@Redux/store'
 import {
   // Head,
   NavbarMobile,
@@ -57,3 +58,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 }
 
 export default MyApp
+// export default Wrapper.withRedux(MyApp)

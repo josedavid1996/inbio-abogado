@@ -26,7 +26,9 @@
       "@ssr/*": ["./src/graphql/ssr/*"],
       "@Uri/*": ["./src/graphql/uri/*"],
       "@apollo/*": ["./src/apollo/*"],
-      "@Services": ["./src/services/index"]
+      "@Services": ["./src/services/index"],
+      "@Redux/*": ["./src/redux/*"],
+
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
