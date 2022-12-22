@@ -9,6 +9,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { Wrapper } from '@Redux/store'
+import { BreadCrumbs } from '@components/shared'
 const Index = () => {
   const {
     data: DataCategoryBlogs,
@@ -19,6 +20,7 @@ const Index = () => {
     <>
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container Class="flex flex-col items-center gap-2">
+          <BreadCrumbs history={[{ description: 'Blog' }]} />
           <CategoriasBlog
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
@@ -35,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps
   (store: Store) => async (ctx: GetServerSidePropsContext) => {
     store.dispatch(
       SetDataMeta({
-        tittlePage: 'Blogs',
+        tittlePage: 'Kyros - Blogs',
         link: 'Kyros',
         description: 'Vista de todos los blogs',
         domain: DOMAIN_URL,

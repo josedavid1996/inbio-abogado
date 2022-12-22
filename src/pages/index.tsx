@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable comma-dangle */
+import { SetDataMeta } from '@Redux/Meta/mesaSlice'
+import { Wrapper } from '@Redux/store'
 import {
   About,
   Services,
@@ -12,6 +14,8 @@ import {
 } from '@components/others/home'
 import { OpenGraph } from '@components/seo/OpenGraph'
 import { DOMAIN_URL } from '@mock/etc'
+import { Store } from '@reduxjs/toolkit'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
 // import { OpenGraph } from '@components/seo/OpenGraph'
 export interface SideMultistepComponentProps {
@@ -52,3 +56,21 @@ const Home = () => {
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps(
+  (store: Store) => async (ctx: GetServerSidePropsContext) => {
+    store.dispatch(
+      SetDataMeta({
+        tittlePage: 'Kyros - Personal Website',
+        link: 'Kyros',
+        description: 'Somos los mejores en lo que hacemos',
+        domain: DOMAIN_URL,
+        imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
+        imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
+        keywords: 'Comercial services, employment services, civil ligitation',
+        url: DOMAIN_URL,
+      }),
+    )
+    return { props: {} }
+  },
+)

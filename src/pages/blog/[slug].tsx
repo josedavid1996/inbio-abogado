@@ -148,7 +148,7 @@ export const getServerSideProps = Wrapper.getServerSideProps(
 
     store.dispatch(
       SetDataMeta({
-        tittlePage: GetBlogSlug.titulo,
+        tittlePage: 'Kyros - ' + GetBlogSlug.titulo,
         link: GetBlogSlug.titulo,
         description: GetBlogSlug.descripcionCorta,
         domain: DOMAIN_URL + 'blog/' + query.slug,
