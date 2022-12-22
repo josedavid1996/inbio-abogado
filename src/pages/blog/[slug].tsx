@@ -43,16 +43,6 @@ const Index = ({ data, slug }: IPropsSSP) => {
 
   return (
     <>
-      {/* <OpenGraph
-        data={{
-          tittlePage: data.titulo,
-          description: data.descripcionCorta,
-          imgPrincipal: data.imagenSecundaria.url,
-          imgSecundaria: data.imagenPrincipal.url,
-          url: DOMAIN_URL + 'blog/' + data.slug,
-          domain: DOMAIN_URL + 'blog/' + data.slug,
-        }}
-      /> */}
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container>
           <BreadCrumbs
@@ -60,14 +50,10 @@ const Index = ({ data, slug }: IPropsSSP) => {
               { description: 'Blog', url: '/blog' },
               {
                 description: data.titulo || '',
-                // url: '/blog/' + data.slug || '',
               },
             ]}
           />
           <div className="flex flex-col gap-6 w-full py-4">
-            <div className="text-gray-100 w-max flex flex-col font-semibold relative after:absolute after:-bottom-1 after:w-full after:h-[1px] after:bg-custom1">
-              {data?.CategoriaBlog?.titulo || ''}
-            </div>
             <div className="text-base md:text-2xl lg:text-3xl text-custon4 font-bold">
               {data?.titulo || ''}
             </div>
@@ -82,9 +68,12 @@ const Index = ({ data, slug }: IPropsSSP) => {
             </div>
             <div className="text-gray-100">{data?.descripcionCorta || ''}</div>
             <div
-              className="font-medium leading-8 text-md font-customText text-gray-200"
+              className="font-medium leading-8 text-md font-customText text-gray-200 "
               dangerouslySetInnerHTML={{ __html: data?.descripcionLarga! }}
             />
+            <div className="text-gray-100 w-max flex flex-col font-semibold relative after:absolute after:-bottom-1 after:w-full after:h-[1px] after:bg-custom1">
+              {data?.CategoriaBlog?.titulo || ''}
+            </div>
             <div className="flex flex-row w-full gap-4 justify-end">
               <WrapperButtonShares
                 MetaData={{
@@ -95,6 +84,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                 RedesSociales={[
                   {
                     Icon: FaFacebook,
+                    color: '#1877F2',
                     url:
                       'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
                   },
@@ -105,6 +95,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       data.titulo +
                       ' ' +
                       MY_URL,
+                    color: '#25D366',
                   },
                   {
                     Icon: FaTwitter,
@@ -113,6 +104,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       data.titulo +
                       '&url=' +
                       MY_URL,
+                    color: '#1DA1F2',
                   },
                 ]}
               />

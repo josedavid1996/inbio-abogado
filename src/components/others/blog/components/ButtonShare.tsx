@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import NextLink from 'next/link'
 import { IconType } from 'react-icons'
 interface Data {
@@ -12,9 +13,10 @@ interface IProps {
   MetaData: Data
   /** Icono que usaremos */
   Icon: IconType
+  color: string
 }
 const Soported = ['Win32', 'MacIntel']
-export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
+export const ButtonShare = ({ MetaData, urlWeb, Icon, color }: IProps) => {
   const isMobile =
     typeof window !== 'undefined'
       ? !Soported.includes(navigator.platform)
@@ -37,12 +39,17 @@ export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
   return (
     <>
       <NextLink className={isMobile ? 'hidden' : ''} href={urlWeb}>
-        <a target={'_blank'} className={isMobile ? 'hidden' : ''}>
-          <Icon className="w-6 h-6 text-white" />
+        <a
+          target={'_blank'}
+          className={` ${
+            isMobile ? 'hidden' : ''
+          } bg-white hover:bg-[${color}] hrefEnlace `}
+        >
+          <Icon className={`hrefIcon `} />
         </a>
       </NextLink>
       <Icon
-        className={`w-6 h-6 text-white ${isMobile ? '' : 'hidden'}`}
+        className={`w-6 h-6 text-white ${isMobile ? '' : 'hidden'} `}
         onClick={() => ShareResponvie(MetaData)}
       />
     </>

@@ -11,6 +11,7 @@ interface Data {
 interface RedSocial {
   Icon: IconType
   url: string
+  color: string
 }
 
 interface IProps {
@@ -35,6 +36,7 @@ export const WrapperButtonShares = ({ MetaData, RedesSociales }: IProps) => {
             tittle: MetaData.tittle,
             url: MetaData.url,
           }}
+          color={obj.color}
           urlWeb={obj.url}
           Icon={obj.Icon}
         />

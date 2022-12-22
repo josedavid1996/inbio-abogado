@@ -42,11 +42,12 @@ const Index = ({ BlogsCategoriaSlug, GetCategoriaBlogSlug }: IPropsSSP) => {
   //   const [Slug, setSlug] = useState('Todos')
 
   return (
-    <div className="bg-[#171A1D] min-h-screen h-full">
+    <div className="bg-[#171A1D] min-h-screen h-full z-999">
       <Container Class="flex flex-col items-center gap-2">
         <BreadCrumbs
           history={[
             { description: 'Blog', url: '/blog' },
+            { description: 'Categoría' },
             {
               description: GetCategoriaBlogSlug.titulo || '',
             },

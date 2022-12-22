@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
 import { useGetAllBlogs } from '@Services'
+import { FaAngleRight } from 'react-icons/fa'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
@@ -20,7 +21,7 @@ export const RecentBlogs = () => {
     destacado: '',
     estado: 'Activado',
     pagina: 1,
-    numeroPagina: 6
+    numeroPagina: 6,
   })
   console.log(DataAllBlogs)
 
@@ -47,23 +48,23 @@ export const RecentBlogs = () => {
               380: {
                 slidesPerView: 1,
                 spaceBetween: 5,
-                slidesPerGroup: 1
+                slidesPerGroup: 1,
               },
               640: {
                 slidesPerView: 2,
                 spaceBetween: 20,
-                slidesPerGroup: 3
+                slidesPerGroup: 3,
               },
               768: {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                slidesPerGroup: 3
+                slidesPerGroup: 3,
               },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 10,
-                slidesPerGroup: 2
-              }
+                slidesPerGroup: 2,
+              },
             }}
             modules={[Pagination, Navigation]}
             className="mySwiper"
@@ -75,6 +76,19 @@ export const RecentBlogs = () => {
                 </SwiperSlide>
               ))}
           </Swiper>
+        </div>
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          className="flex justify-center"
+        >
+          <button
+            className="btn bg-custon4 border cursor-pointer"
+            onClick={() => Push('/blog')}
+          >
+            Ver Mas
+            <FaAngleRight className="ml-2 animate-pulse" />
+          </button>
         </div>
       </Container>
     </div>

@@ -37,8 +37,8 @@ export const NavbarMobile = () => {
         </nav>
         <div
           className={`${
-            ViewMenu ? 'opacity-100' : 'opacity-0'
-          }  text-[13px] font-semibold h-auto pt-10  text-white`}
+            ViewMenu ? 'opacity-100' : 'opacity-0 hidden'
+          }  text-[13px] font-semibold h-auto pt-10  text-white -z-20 min-w-full`}
         >
           <div className="flex flex-col gap-5  ">
             <div>

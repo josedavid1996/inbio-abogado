@@ -1,14 +1,18 @@
 import NextImage from 'next/image'
 import { BlogDTO } from '../blog/interfaces'
-
+import { useRouter } from 'next/router'
 interface Iprops {
   data: BlogDTO
 }
 
 export const CardBlog = ({ data }: Iprops) => {
+  const { push } = useRouter()
   return (
-    <div className="flex flex-col">
-      <div className="aspect-video   relative object-cover">
+    <div
+      className="flex flex-col cursor-pointer"
+      onClick={() => push('/blog/' + data.slug)}
+    >
+      <div className="aspect-video relative object-cover">
         <NextImage
           src={data.imagenPrincipal.url}
           layout="fill"

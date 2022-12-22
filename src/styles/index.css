@@ -71,3 +71,14 @@ body::-webkit-scrollbar-thumb {
     opacity: 0.01;
   }
 }
+
+.hrefEnlace {
+  @apply duration-300 transition-all ease-in-out rounded-full border p-1;
+}
+
+.hrefIcon {
+  @apply w-6 h-6 text-custon4 duration-300 transition-all ease-in-out;
+}
+.hrefEnlace:hover > svg {
+  @apply text-white;
+}

@@ -29,19 +29,6 @@ export interface SideMultistepComponentProps {
 const Home = () => {
   return (
     <>
-      {/* <OpenGraph
-        data={{
-          tittlePage: 'Kyros - Personal Website',
-          link: 'Kyros',
-          description: 'Somos los mejores en lo que hacemos',
-          domain: DOMAIN_URL,
-          imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
-          imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
-          keywords: 'Comercial services, employment services, civil ligitation',
-          url: DOMAIN_URL,
-        }}
-      /> */}
-      {/* <OpenGraph data={} /> */}
       {/* navbar solo  para desktop */}
       <WrapperBanner />
       {/* Secciones separadas por componentes */}
