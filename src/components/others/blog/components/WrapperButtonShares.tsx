@@ -33,6 +33,7 @@ export const WrapperButtonShares = ({ MetaData, RedesSociales }: IProps) => {
           MetaData={{
             text: MetaData.text,
             tittle: MetaData.tittle,
+            url: obj.url,
           }}
           urlWeb={obj.url}
           Icon={obj.Icon}

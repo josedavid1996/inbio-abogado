@@ -3,6 +3,7 @@ import { IconType } from 'react-icons'
 interface Data {
   tittle: string
   text: string
+  url: string
 }
 interface IProps {
   /** url para compartir en pc */
@@ -14,8 +15,11 @@ interface IProps {
 }
 const Soported = ['Win32', 'MacIntel']
 export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
+  console.log(MetaData)
   const isMobile =
-    typeof window !== 'undefined' ? !Soported.includes(navigator.platform) : true
+    typeof window !== 'undefined'
+      ? !Soported.includes(navigator.platform)
+      : true
 
   const ShareResponvie = (data: Data) => {
     if (typeof navigator.share === 'function') {
