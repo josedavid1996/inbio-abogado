@@ -6,7 +6,7 @@ import { IconType } from 'react-icons'
 interface Data {
   tittle: string
   text: string
-  //   url: string
+  url: string
 }
 interface RedSocial {
   Icon: IconType
@@ -33,7 +33,7 @@ export const WrapperButtonShares = ({ MetaData, RedesSociales }: IProps) => {
           MetaData={{
             text: MetaData.text,
             tittle: MetaData.tittle,
-            url: obj.url,
+            url: MetaData.url,
           }}
           urlWeb={obj.url}
           Icon={obj.Icon}

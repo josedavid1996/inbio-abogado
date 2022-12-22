@@ -15,7 +15,6 @@ interface IProps {
 }
 const Soported = ['Win32', 'MacIntel']
 export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
-  console.log(MetaData)
   const isMobile =
     typeof window !== 'undefined'
       ? !Soported.includes(navigator.platform)

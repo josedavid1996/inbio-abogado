@@ -87,7 +87,11 @@ const Index = ({ data, slug }: IPropsSSP) => {
             />
             <div className="flex flex-row w-full gap-4 justify-end">
               <WrapperButtonShares
-                MetaData={{ text: data.descripcionCorta, tittle: data.titulo }}
+                MetaData={{
+                  text: data.descripcionCorta,
+                  tittle: data.titulo,
+                  url: MY_URL,
+                }}
                 RedesSociales={[
                   {
                     Icon: FaFacebook,
