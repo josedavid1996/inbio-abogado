@@ -16,14 +16,16 @@ import {
 import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { DOMAIN_URL } from '@mock/etc'
+import { BreadCrumbs } from '@components/shared'
 
 // import Slug from '../[slug]'
 
 interface IPropsSSP {
   // slug: string
   BlogsCategoriaSlug: BlogDTO[] | []
+  GetCategoriaBlogSlug: CategoriaBlogDTO
 }
-const Index = ({ BlogsCategoriaSlug }: IPropsSSP) => {
+const Index = ({ BlogsCategoriaSlug, GetCategoriaBlogSlug }: IPropsSSP) => {
   const {
     data: DataCategoryBlogs,
     loading: LoadingCategorysBlogs,
@@ -41,7 +43,15 @@ const Index = ({ BlogsCategoriaSlug }: IPropsSSP) => {
 
   return (
     <div className="bg-[#171A1D] min-h-screen h-full">
-      <Container Class="flex flex-col items-center">
+      <Container Class="flex flex-col items-center gap-2">
+        <BreadCrumbs
+          history={[
+            { description: 'Blog', url: '/blog' },
+            {
+              description: GetCategoriaBlogSlug.titulo || '',
+            },
+          ]}
+        />
         <CategoriasBlog
           Data={DataCategoryBlogs}
           loading={LoadingCategorysBlogs}
@@ -102,6 +112,11 @@ export const getServerSideProps = Wrapper.getServerSideProps(
         url: DOMAIN_URL + 'blog/categoria/' + query.slug,
       }),
     )
-    return { props: { BlogsCategoriaSlug: GetAllBlogsCategoriaSlug.data } }
+    return {
+      props: {
+        BlogsCategoriaSlug: GetAllBlogsCategoriaSlug.data,
+        GetCategoriaBlogSlug,
+      },
+    }
   },
 )

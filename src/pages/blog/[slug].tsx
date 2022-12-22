@@ -30,6 +30,7 @@ import { useRouter, NextRouter } from 'next/router'
 import { Wrapper } from '@Redux/store'
 import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
+import { BreadCrumbs } from '@components/shared'
 interface IPropsSSP {
   slug: string
   data: BlogDTO
@@ -54,6 +55,15 @@ const Index = ({ data, slug }: IPropsSSP) => {
       /> */}
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container>
+          <BreadCrumbs
+            history={[
+              { description: 'Blog', url: '/blog' },
+              {
+                description: data.titulo || '',
+                // url: '/blog/' + data.slug || '',
+              },
+            ]}
+          />
           <div className="flex flex-col gap-6 w-full py-4">
             <div className="text-gray-100 w-max flex flex-col font-semibold relative after:absolute after:-bottom-1 after:w-full after:h-[1px] after:bg-custom1">
               {data?.CategoriaBlog?.titulo || ''}
