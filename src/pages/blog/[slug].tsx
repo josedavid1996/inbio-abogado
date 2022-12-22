@@ -58,7 +58,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
             <div className="text-gray-100 w-max flex flex-col font-semibold relative after:absolute after:-bottom-1 after:w-full after:h-[1px] after:bg-custom1">
               {data?.CategoriaBlog?.titulo || ''}
             </div>
-            <div className="text-base md:text-2xl lg:text-3xl text-cus font-bold">
+            <div className="text-base md:text-2xl lg:text-3xl text-custon4 font-bold">
               {data?.titulo || ''}
             </div>
             <div className="relative aspect-video w-full">

@@ -3,6 +3,7 @@
 import { AllBlogs, CategoriasBlog } from '@components/others/blog'
 import { useGetAllBlogs, useGetAllCategoriaBlogs } from '@Services'
 import { Container } from '@components/others/home'
+import { BreadCrumbs } from '@components/shared'
 import { DOMAIN_URL } from '@mock/etc'
 // import { OpenGraph } from '@components/seo/OpenGraph'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
@@ -31,6 +32,7 @@ const Index = () => {
       /> */}
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container Class="flex flex-col items-center">
+          <BreadCrumbs />
           <CategoriasBlog
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
