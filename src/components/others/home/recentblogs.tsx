@@ -5,16 +5,23 @@ import { TittleCustom } from './tittleCustom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import { CardBlog } from './cardBlog'
-import { DataBolgs } from '@mock/dataBlogs'
 import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
+import { useGetAllBlogs } from '@Services'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
   const { push: Push } = useRouter()
   const { ref, inView } = useInView({ threshold: 1 })
+  const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs({
+    destacado: '',
+    estado: 'Activado',
+    pagina: 1,
+    numeroPagina: 6
+  })
+  console.log(DataAllBlogs)
 
   useEffect(() => {
     if (inView) setViewSecction('Blog')
@@ -39,32 +46,33 @@ export const RecentBlogs = () => {
               380: {
                 slidesPerView: 1,
                 spaceBetween: 5,
-                slidesPerGroup: 1,
+                slidesPerGroup: 1
               },
               640: {
                 slidesPerView: 2,
                 spaceBetween: 20,
-                slidesPerGroup: 3,
+                slidesPerGroup: 3
               },
               768: {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                slidesPerGroup: 3,
+                slidesPerGroup: 3
               },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 10,
-                slidesPerGroup: 2,
-              },
+                slidesPerGroup: 2
+              }
             }}
             modules={[Pagination, Navigation]}
             className="mySwiper"
           >
-            {DataBolgs.map((obj, k) => (
-              <SwiperSlide key={k}>
-                <CardBlog data={obj} />
-              </SwiperSlide>
-            ))}
+            {DataAllBlogs &&
+              DataAllBlogs.map((obj, k) => (
+                <SwiperSlide key={k}>
+                  <CardBlog data={obj} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </Container>
