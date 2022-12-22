@@ -47,9 +47,9 @@ export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps
   (store: Store) => async (ctx: GetServerSidePropsContext) => {
     store.dispatch(
       SetDataMeta({
-        tittlePage: 'Kyros - Personal Website',
+        tittlePage: 'Blogs',
         link: 'Kyros',
-        description: 'Somos los mejores en lo que hacemos',
+        description: 'Vista de todos los blogs',
         domain: DOMAIN_URL,
         imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
         imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
