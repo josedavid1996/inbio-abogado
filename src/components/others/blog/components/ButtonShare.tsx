@@ -12,9 +12,10 @@ interface IProps {
   /** Icono que usaremos */
   Icon: IconType
 }
+const Soported = ['Win32', 'MacIntel']
 export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
   const isMobile =
-    typeof window !== 'undefined' ? navigator.platform !== 'Win32' : true
+    typeof window !== 'undefined' ? !Soported.includes(navigator.platform) : true
 
   const ShareResponvie = (data: Data) => {
     if (typeof navigator.share === 'function') {
@@ -27,7 +28,7 @@ export const ButtonShare = ({ MetaData, urlWeb, Icon }: IProps) => {
           console.log('hubo un error')
         })
     } else {
-      console.log('no soportado')
+      alert('no soportado')
     }
   }
   return (
