@@ -84,7 +84,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                 RedesSociales={[
                   {
                     Icon: FaFacebook,
-                    color: '#1877F2',
+                    color: 'colorFb',
                     url:
                       'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
                   },
@@ -95,7 +95,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       data.titulo +
                       ' ' +
                       MY_URL,
-                    color: '#25D366',
+                    color: 'colorWsp',
                   },
                   {
                     Icon: FaTwitter,
@@ -104,7 +104,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
                       data.titulo +
                       '&url=' +
                       MY_URL,
-                    color: '#1DA1F2',
+                    color: 'colorTw',
                   },
                 ]}
               />

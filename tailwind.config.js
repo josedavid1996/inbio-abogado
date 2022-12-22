@@ -1,81 +1,84 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       zIndex: {
-        999: "999",
-        9999: "9999",
+        999: '999',
+        9999: '9999',
       },
       fontFamily: {
         customText: '"Roboto", Helvetica, Arial, sans-serif',
       },
       aspectRatio: {
-        custom: "1 / 1.1",
+        custom: '1 / 1.1',
       },
       colors: {
-        custom1: "#AD8E6D",
-        custom2: "#171A1D",
-        custon3: "#AD8E6D",
-        custon4: "#999187",
-        blacktranparente: "rgba(23,26,29,1) 30%",
-        blacktranparente30: "rgba(23,26,29,1) 0%",
-        customtranparente: "rgba(23,26,29,0) 100%)",
-        gradResumen1: "rgba(255,255,255,.1) 0%",
-        gradResumen2: "rgba(255,255,255,0) 100%)",
+        custom1: '#AD8E6D',
+        custom2: '#171A1D',
+        custon3: '#AD8E6D',
+        custon4: '#999187',
+        colorFb: '#1877F2',
+        colorWsp: '#25D366',
+        colorTw: '#1DA1F2',
+        blacktranparente: 'rgba(23,26,29,1) 30%',
+        blacktranparente30: 'rgba(23,26,29,1) 0%',
+        customtranparente: 'rgba(23,26,29,0) 100%)',
+        gradResumen1: 'rgba(255,255,255,.1) 0%',
+        gradResumen2: 'rgba(255,255,255,0) 100%)',
       },
       transitionTimingFunction: {
-        customtransition: "cubic-bezier(1, 0, 0.5, 1) forwards",
+        customtransition: 'cubic-bezier(1, 0, 0.5, 1) forwards',
       },
       animation: {
         renderprogresbar:
-          "renderprogresbarframe 0.6s 1s cubic-bezier(1,0,0.5,1) forwards",
-        renderimgabout: "renderimgaboutframeIzquierda 1s ",
-        renderimgabanner: "renderimgaboutframe 1.4s",
-        renderaboutme: "renderimgaboutframe 1s",
+          'renderprogresbarframe 0.6s 1s cubic-bezier(1,0,0.5,1) forwards',
+        renderimgabout: 'renderimgaboutframeIzquierda 1s ',
+        renderimgabanner: 'renderimgaboutframe 1.4s',
+        renderaboutme: 'renderimgaboutframe 1s',
       },
       keyframes: {
         renderprogresbarframe: {
-          "0%": {
-            transform: "scale(0)",
+          '0%': {
+            transform: 'scale(0)',
           },
-          "100%": {
-            transform: "scale(1)",
+          '100%': {
+            transform: 'scale(1)',
           },
         },
         renderimgaboutframe: {
-          "0%": {
-            opacity: "0",
-            transform: "translateX(200px)",
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(200px)',
           },
-          "70%": {
-            opacity: "0",
-            transform: "translateX(40px)",
+          '70%': {
+            opacity: '0',
+            transform: 'translateX(40px)',
           },
-          "100%": {
-            opacity: "1",
-            transform: "translateX(0)",
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)',
           },
         },
         renderimgaboutframeIzquierda: {
-          "0%": {
-            opacity: "0",
-            transform: "translateX(-200px)",
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-200px)',
           },
-          "70%": {
-            opacity: "0",
-            transform: "translateX(-40px)",
+          '70%': {
+            opacity: '0',
+            transform: 'translateX(-40px)',
           },
-          "100%": {
-            opacity: "1",
-            transform: "translateX(0)",
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)',
           },
         },
       },
     },
   },
-  plugins: [require("daisyui")],
-};
+  plugins: [require('daisyui')],
+}
 // const defaultTheme = require('tailwindcss/defaultTheme')
 // const { themes } = require('./@tailwind/theme')
 

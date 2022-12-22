@@ -43,7 +43,7 @@ export const ButtonShare = ({ MetaData, urlWeb, Icon, color }: IProps) => {
           target={'_blank'}
           className={` ${
             isMobile ? 'hidden' : ''
-          } bg-white hover:bg-[${color}] hrefEnlace `}
+          } bg-white hover:bg-custon4 hrefEnlace `}
         >
           <Icon className={`hrefIcon `} />
         </a>
