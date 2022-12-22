@@ -11,17 +11,21 @@ import Aos from 'aos'
 import useLoadTheme from '../hooks/useLoadTheme'
 import { useEffect } from 'react'
 import { NavbarProvider } from '@contexts/NavbarProvider'
-import { SeoProvider } from '@contexts/seo/SeoContext'
+// import { SeoProvider } from '@contexts/seo/SeoContext'
 import { ApolloProvider } from '@apollo/client'
 import { client } from '@apollo/index'
-// import { Wrapper } from '@Redux/store'
+import { AppState, Wrapper } from '@Redux/store'
 import {
   // Head,
   NavbarMobile,
   BannerForOtherPage,
   Footer,
 } from '@components/others/home'
+import { useSelector } from 'react-redux'
+import { OpenGraph } from '@components/seo/OpenGraph'
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const data = useSelector((Store: AppState) => Store.Meta)
+
   // Servicio para cargar el theme desde el LocalStorage
   useLoadTheme()
 
@@ -37,25 +41,26 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ApolloProvider client={client}>
-      <SeoProvider>
-        <NavbarProvider>
-          <main>
-            {/* <Head /> */}
-            {/* existen 2 navbar, dependiendo del screen se cambia  */}
-            {/* navbar solo  para mobile */}
-            <NavbarMobile />
+      {/* <SeoProvider> */}
+      <NavbarProvider>
+        <main>
+          <OpenGraph data={data} />
+          {/* <Head /> */}
+          {/* existen 2 navbar, dependiendo del screen se cambia  */}
+          {/* navbar solo  para mobile */}
+          <NavbarMobile />
 
-            {/* navbar para otras paginas */}
-            <BannerForOtherPage />
-            <Component {...pageProps} />
-            <ToastContainer />
-            <Footer />
-          </main>
-        </NavbarProvider>
-      </SeoProvider>
+          {/* navbar para otras paginas */}
+          <BannerForOtherPage />
+          <Component {...pageProps} />
+          <ToastContainer />
+          <Footer />
+        </main>
+      </NavbarProvider>
+      {/* </SeoProvider> */}
     </ApolloProvider>
   )
 }
 
-export default MyApp
-// export default Wrapper.withRedux(MyApp)
+// export default MyApp
+export default Wrapper.withRedux(MyApp)

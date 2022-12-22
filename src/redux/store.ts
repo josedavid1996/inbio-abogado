@@ -5,7 +5,8 @@ import { RootReducer } from './root-reducer'
 const MakeStore = () =>
   configureStore({
     reducer: RootReducer,
-    devTools: process.env.MODE !== 'produccion',
+    devTools: process.env.NEXT_PUBLIC_MODE !== 'produccion',
+    // devTools: false,
   })
 
 export type AppStore = ReturnType<typeof MakeStore>

@@ -2,7 +2,7 @@
 
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
-const mode: { [key: string]: string } = {
+export const mode: { [key: string]: string } = {
   /** ambiente de pruebas */
   desarrollo: process.env.NEXT_PUBLIC_DESARROLLO || '',
 

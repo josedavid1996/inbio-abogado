@@ -7,7 +7,7 @@ interface IProps {
   Data: BlogDTO[] | []
   loading?: boolean
 }
-export const AllBlogs = ({ Data, loading = true }: IProps) => {
+export const AllBlogs = ({ Data, loading = false }: IProps) => {
   return (
     <Show
       condition={!loading}

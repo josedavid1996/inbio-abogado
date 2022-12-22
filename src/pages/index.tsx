@@ -25,7 +25,7 @@ export interface SideMultistepComponentProps {
 const Home = () => {
   return (
     <>
-      <OpenGraph
+      {/* <OpenGraph
         data={{
           tittlePage: 'Kyros - Personal Website',
           link: 'Kyros',
@@ -36,7 +36,7 @@ const Home = () => {
           keywords: 'Comercial services, employment services, civil ligitation',
           url: DOMAIN_URL,
         }}
-      />
+      /> */}
       {/* <OpenGraph data={} /> */}
       {/* navbar solo  para desktop */}
       <WrapperBanner />

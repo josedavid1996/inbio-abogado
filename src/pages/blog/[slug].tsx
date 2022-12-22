@@ -27,18 +27,14 @@ import {
   FaTwitter,
 } from 'react-icons/fa'
 import { useRouter, NextRouter } from 'next/router'
+import { Wrapper } from '@Redux/store'
+import { Store } from '@reduxjs/toolkit'
+import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 interface IPropsSSP {
   slug: string
   data: BlogDTO
   router: NextRouter
 }
-const ButtonShare = dynamic(
-  () =>
-    import('../../components/others/blog/components/ButtonShare').then(
-      (data) => data.ButtonShare,
-    ),
-  { ssr: false },
-)
 const Index = ({ data, slug }: IPropsSSP) => {
   const router = useRouter()
   const Page = router.pathname.split('/')[1]
@@ -46,7 +42,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
 
   return (
     <>
-      <OpenGraph
+      {/* <OpenGraph
         data={{
           tittlePage: data.titulo,
           description: data.descripcionCorta,
@@ -55,7 +51,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
           url: DOMAIN_URL + 'blog/' + data.slug,
           domain: DOMAIN_URL + 'blog/' + data.slug,
         }}
-      />
+      /> */}
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container>
           <div className="flex flex-col gap-6 w-full py-4">
@@ -114,13 +110,46 @@ const Index = ({ data, slug }: IPropsSSP) => {
   )
 }
 
-export const getServerSideProps = async (a: GetServerSidePropsContext) => {
-  const { GetBlogSlug } = await request(URI, GET_SLUG_BLOG, {
-    slug: a.query.slug,
-  })
-  return {
-    props: { data: GetBlogSlug, slug: a.query.slug },
-  }
-}
+// export const getServerSideProps = async ({
+//   query,
+// }: GetServerSidePropsContext) => {
+//   const { GetBlogSlug }: { GetBlogSlug: BlogDTO } = await request(
+//     URI,
+//     GET_SLUG_BLOG,
+//     {
+//       slug: query.slug,
+//     },
+//   )
+//   return {
+//     props: { data: GetBlogSlug, slug: query.slug },
+//   }
+// }
 
 export default Index
+export const getServerSideProps = Wrapper.getServerSideProps(
+  (store: Store) => async ({ query }: GetServerSidePropsContext) => {
+    const { GetBlogSlug }: { GetBlogSlug: BlogDTO } = await request(
+      URI,
+      GET_SLUG_BLOG,
+      {
+        slug: query.slug,
+      },
+    )
+
+    store.dispatch(
+      SetDataMeta({
+        tittlePage: GetBlogSlug.titulo,
+        link: GetBlogSlug.titulo,
+        description: GetBlogSlug.descripcionCorta,
+        domain: DOMAIN_URL + 'blog/' + query.slug,
+        imgPrincipal: GetBlogSlug.imagenPrincipal.url,
+        imgSecundaria: GetBlogSlug.imagenSecundaria.url,
+        keywords: GetBlogSlug.keywords,
+        url: DOMAIN_URL + 'blog/' + query.slug,
+      }),
+    )
+    return {
+      props: { data: GetBlogSlug, slug: query.slug },
+    }
+  },
+)
