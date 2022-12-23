@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps
         link: 'Kyros',
         description: 'Somos los mejores en lo que hacemos',
         domain: DOMAIN_URL,
-        imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
+        imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
         imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
         keywords: 'Comercial services, employment services, civil ligitation',
         url: DOMAIN_URL,
