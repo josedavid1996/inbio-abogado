@@ -8,7 +8,7 @@ export interface ImagenDTO {
 export interface CategoriaBlogDTO {
   categoriaBlogId: string
   created_at: string
-  descripcion: string
+  descripcionCorta: string
   destacado: string
   estado: string
   imagenPrincipal: ImagenDTO

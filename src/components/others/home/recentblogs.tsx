@@ -7,28 +7,52 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import { CardBlog } from './cardBlog'
 import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
-import { useEffect } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
-import { useGetAllBlogs } from '@Services'
+import {
+  useGetAllBlogs,
+  useGetAllBlogsCategoriaSlug,
+  useGetAllCategoriaBlogs
+} from '@Services'
 import { FaAngleRight } from 'react-icons/fa'
+import { CategoriasBlogNavbar } from '../blog/components/CategoriasBlogNavbar'
+import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
   const { push: Push } = useRouter()
   const { ref, inView } = useInView({ threshold: 1 })
-  const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs({
+  // Filtro para las cards del slider de los blogs
+  const [isFilter, setIsFilter] = useState<string>('')
+  const [dataBlog, setDataBlog] = useState<(BlogDTO | CategoriaBlogDTO)[]>([])
+
+  const { data: AllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs({
     destacado: '',
     estado: 'Activado',
     pagina: 1,
-    numeroPagina: 6,
+    numeroPagina: 6
   })
-  console.log(DataAllBlogs)
 
   useEffect(() => {
     if (inView) setViewSecction('Blog')
   }, [inView])
+  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
+    useGetAllCategoriaBlogs()
 
+  const { data: categoryBlog, loading } = useGetAllBlogsCategoriaSlug({
+    estado: 'Activado',
+    numeroPagina: 6,
+    pagina: 1,
+    slug: isFilter
+  })
+
+  useEffect(() => {
+    categoryBlog?.length === 0
+      ? setDataBlog(AllBlogs)
+      : setDataBlog(categoryBlog)
+  }, [categoryBlog])
+  console.log(DataCategoryBlogs)
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -38,6 +62,11 @@ export const RecentBlogs = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
         >
+          <CategoriasBlogNavbar
+            Data={DataCategoryBlogs}
+            loading={loading}
+            onClick={(value: string) => setIsFilter(value)}
+          />
           <Swiper
             grabCursor={true}
             slidesPerView="auto"
@@ -48,29 +77,29 @@ export const RecentBlogs = () => {
               380: {
                 slidesPerView: 1,
                 spaceBetween: 5,
-                slidesPerGroup: 1,
+                slidesPerGroup: 1
               },
               640: {
                 slidesPerView: 2,
                 spaceBetween: 20,
-                slidesPerGroup: 3,
+                slidesPerGroup: 3
               },
               768: {
                 slidesPerView: 2,
                 spaceBetween: 10,
-                slidesPerGroup: 3,
+                slidesPerGroup: 3
               },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 10,
-                slidesPerGroup: 2,
-              },
+                slidesPerGroup: 2
+              }
             }}
             modules={[Pagination, Navigation]}
             className="mySwiper"
           >
-            {DataAllBlogs &&
-              DataAllBlogs.map((obj, k) => (
+            {dataBlog &&
+              dataBlog.map((obj, k) => (
                 <SwiperSlide key={k}>
                   <CardBlog data={obj} />
                 </SwiperSlide>
@@ -84,7 +113,11 @@ export const RecentBlogs = () => {
         >
           <button
             className="btn bg-custon4 border cursor-pointer"
-            onClick={() => Push('/blog')}
+            onClick={() =>
+              Push(
+                isFilter.length === 0 ? '/blog' : `blog/categoria/${isFilter}`
+              )
+            }
           >
             Ver Mas
             <FaAngleRight className="ml-2 animate-pulse" />

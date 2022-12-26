@@ -1,12 +1,13 @@
 import NextImage from 'next/image'
-import { BlogDTO } from '../blog/interfaces'
+import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
 import { useRouter } from 'next/router'
 interface Iprops {
-  data: BlogDTO
+  data: BlogDTO | CategoriaBlogDTO
 }
 
 export const CardBlog = ({ data }: Iprops) => {
   const { push } = useRouter()
+
   return (
     <div
       className="flex flex-col cursor-pointer"
@@ -24,7 +25,7 @@ export const CardBlog = ({ data }: Iprops) => {
           {data.titulo || ''}
         </h4>
         <h6 className="text-gray-300 font-medium text-center text-sm">
-          {data.descripcionCorta || ''}
+          {data.descripcionCorta}
         </h6>
       </div>
     </div>
