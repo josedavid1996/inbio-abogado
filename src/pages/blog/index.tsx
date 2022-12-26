@@ -3,7 +3,6 @@
 import { AllBlogs, CategoriasBlog } from '@components/others/blog'
 import { useGetAllBlogs, useGetAllCategoriaBlogs } from '@Services'
 import { Container } from '@components/others/home'
-import { DOMAIN_URL } from '@mock/etc'
 // import { OpenGraph } from '@components/seo/OpenGraph'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Store } from '@reduxjs/toolkit'
@@ -40,11 +39,11 @@ export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps
         tittlePage: 'Kyros - Blogs',
         link: 'Kyros',
         description: 'Vista de todos los blogs',
-        domain: DOMAIN_URL,
-        imgPrincipal: `${DOMAIN_URL}images/imgpageseo.webp`,
-        imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
+        domain: process.env.NEXT_PUBLIC_DOMAIN,
+        imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+        imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
         keywords: 'Comercial services, employment services, civil ligitation',
-        url: DOMAIN_URL + 'blog',
+        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog',
       }),
     )
     return { props: {} }

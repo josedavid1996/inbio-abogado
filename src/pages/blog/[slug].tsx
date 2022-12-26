@@ -14,7 +14,7 @@ import NextImage from 'next/image'
 import request from 'graphql-request'
 import { GetServerSidePropsContext } from 'next'
 import { Container } from '@components/others/home'
-import { DOMAIN_URL, IMG_404 } from '@mock/etc'
+import { IMG_404 } from '@mock/etc'
 import { URI } from '@Uri/index'
 import { GET_SLUG_BLOG } from '@ssr/index'
 import { CallSeoContext } from '@contexts/seo/SeoContext'
@@ -39,7 +39,7 @@ interface IPropsSSP {
 const Index = ({ data, slug }: IPropsSSP) => {
   const router = useRouter()
   const Page = router.pathname.split('/')[1]
-  const MY_URL = DOMAIN_URL + Page + '/' + slug
+  const MY_URL = process.env.NEXT_PUBLIC_DOMAIN + Page + '/' + slug
 
   return (
     <>
@@ -147,11 +147,11 @@ export const getServerSideProps = Wrapper.getServerSideProps(
         tittlePage: 'Kyros - ' + GetBlogSlug.titulo,
         link: GetBlogSlug.titulo,
         description: GetBlogSlug.descripcionCorta,
-        domain: DOMAIN_URL + 'blog/' + query.slug,
-        imgPrincipal: GetBlogSlug.imagenPrincipal.url,
+        domain: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + query.slug,
+        imgPrincipal: GetBlogSlug.imagenSecundaria.url,
         imgSecundaria: GetBlogSlug.imagenSecundaria.url,
         keywords: GetBlogSlug.keywords,
-        url: DOMAIN_URL + 'blog/' + query.slug,
+        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + query.slug,
       }),
     )
     return {

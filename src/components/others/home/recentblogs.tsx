@@ -23,8 +23,6 @@ export const RecentBlogs = () => {
     pagina: 1,
     numeroPagina: 6,
   })
-  console.log(DataAllBlogs)
-
   useEffect(() => {
     if (inView) setViewSecction('Blog')
   }, [inView])
