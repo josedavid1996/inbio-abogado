@@ -106,7 +106,7 @@ export const getServerSideProps = Wrapper.getServerSideProps(
         link: GetCategoriaBlogSlug.titulo,
         description: GetCategoriaBlogSlug.descripcion,
         domain: process.env.NEXT_PUBLIC_DOMAIN + 'blog/categoria/' + query.slug,
-        imgPrincipal: GetCategoriaBlogSlug.imagenPrincipal.url,
+        imgPrincipal: GetCategoriaBlogSlug.imagenSecundaria.url,
         imgSecundaria: GetCategoriaBlogSlug.imagenSecundaria.url,
         keywords: GetCategoriaBlogSlug.keywords,
         url: process.env.NEXT_PUBLIC_DOMAIN + 'blog/categoria/' + query.slug,
