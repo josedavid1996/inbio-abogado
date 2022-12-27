@@ -1,7 +1,12 @@
 import NextImage from 'next/image'
-import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
 import { useRouter } from 'next/router'
+
 import moment from 'moment'
+
+import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
+import { FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa'
+import { WrapperButtonShares } from '@components/shared/WrapperButtonShares'
+
 interface Iprops {
   data: BlogDTO | CategoriaBlogDTO
 }
@@ -25,7 +30,10 @@ export const CardBlog = ({ data }: Iprops) => {
     if (minutes >= 525960 && minutes < 1051920) return `Hace 1 año`
     if (minutes >= 1051920) return `Hace ${Math.floor(minutes / 525960)} años`
   }
-
+  const router = useRouter()
+  const Page = router.pathname.split('/')[1]
+  const MY_URL =
+    process.env.NEXT_PUBLIC_DOMAIN + Page + '/' + data.CategoriaBlog?.titulo
   return (
     <div
       className="flex flex-col cursor-pointer"
@@ -45,9 +53,47 @@ export const CardBlog = ({ data }: Iprops) => {
         <h4 className="text-white font-bold  mt-2 text-base uppercase">
           {data.titulo || ''}
         </h4>
-        <h6 className="text-custom1 text-[10px]">
-          {CalculateTiempoPasado(fechaActual.diff(fechaCreada, 'minutes'))}
-        </h6>
+        <div className="flex justify-between items-center mt-2 pr-2">
+          <h6 className="text-custom1 text-[10px]">
+            {CalculateTiempoPasado(fechaActual.diff(fechaCreada, 'minutes'))}
+          </h6>
+          <WrapperButtonShares
+            bg="bg-custom1"
+            colorIcon="text-white"
+            width="w-6"
+            height="h-6"
+            MetaData={{
+              text: data.descripcionCorta,
+              tittle: data.titulo,
+              url: MY_URL
+            }}
+            RedesSociales={[
+              {
+                Icon: FaFacebook,
+                color: 'colorFb',
+                url: 'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL
+              },
+              {
+                Icon: FaWhatsapp,
+                url:
+                  'https://web.whatsapp.com/send?text=' +
+                  data.titulo +
+                  ' ' +
+                  MY_URL,
+                color: 'colorWsp'
+              },
+              {
+                Icon: FaTwitter,
+                url:
+                  'http://TWITTER.com/share?text=' +
+                  data.titulo +
+                  '&url=' +
+                  MY_URL,
+                color: 'colorTw'
+              }
+            ]}
+          />
+        </div>
       </div>
     </div>
   )
