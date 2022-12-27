@@ -14,7 +14,7 @@ import {
 import { FaAngleRight } from 'react-icons/fa'
 import { CategoriasBlogNavbar } from '../blog/components/CategoriasBlogNavbar'
 import { BlogDTO } from '../blog/interfaces'
-import { Show, SkeltorCardBlog } from '@components/shared'
+import { Dropdown, Show, SkeltorCardBlog } from '@components/shared'
 import { IdDataNavbar } from '@mock/dataNavbar'
 import { useSecctionView } from '@hooks/useSeccionView'
 
@@ -72,7 +72,7 @@ export const RecentBlogs = () => {
       <Container>
         <TittleCustom tittle="Recent Blog" onClick={() => Push('/blog')} />
         <div
-          className="lg:p-6"
+          className="lg:p-6 "
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
         >
@@ -80,6 +80,11 @@ export const RecentBlogs = () => {
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
             onClick={(value: string | null) => setIsFilter(value)}
+          />
+          <Dropdown
+            data={DataCategoryBlogs || []}
+            filter={isFilter}
+            setFilter={setIsFilter}
           />
           <Show
             condition={!LoadingBlogSlug}
@@ -133,7 +138,7 @@ export const RecentBlogs = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
-          className="flex justify-center"
+          className="flex justify-center mt-3"
         >
           <button
             className="btn bg-custon4 border cursor-pointer"
