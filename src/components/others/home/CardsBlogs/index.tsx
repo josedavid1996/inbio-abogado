@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable */
 
 import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { Show, SkeltorCardBlog } from '@components/shared'

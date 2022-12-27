@@ -16,7 +16,7 @@ interface IVariables {
 // },
 
 export const useGetAllBlogsCategoriaSlug = (variables: IVariables) => {
-  const { data, loading } = useGetAllBlogsCategoriaSlugQuery({
+  const { data, loading, refetch } = useGetAllBlogsCategoriaSlugQuery({
     nextFetchPolicy: 'network-only',
     variables,
   })
@@ -44,5 +44,6 @@ export const useGetAllBlogsCategoriaSlug = (variables: IVariables) => {
   return {
     loading,
     data: data?.GetAllBlogsCategoriaSlug.data as BlogDTO[],
+    refetch,
   }
 }

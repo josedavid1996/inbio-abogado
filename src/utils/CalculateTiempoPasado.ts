@@ -1,3 +1,4 @@
+/* eslint-disable  */
 export const CalculateTiempoPasado = (minutes: number) => {
   if (minutes < 60) return `Hace ${minutes} minutos`
   if (minutes >= 60 && minutes < 120) return `Hace 1 hora`

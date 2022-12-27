@@ -1,4 +1,4 @@
-/* eslint-disable quotes */
+/* eslint-disable */
 import NextLink from 'next/link'
 import { IconType } from 'react-icons'
 interface Data {

@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import NextImage from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -36,22 +37,28 @@ export const CardBlog = ({ data }: Iprops) => {
   const MY_URL =
     process.env.NEXT_PUBLIC_DOMAIN + Page + '/' + data.CategoriaBlog?.titulo
   return (
-    <div
-      className="flex flex-col cursor-pointer"
-      onClick={() => push('/blog/' + data.slug)}
-    >
-      <div className="aspect-video relative object-cover">
+    <div className="flex flex-col ">
+      <div
+        className="aspect-square relative object-cover cursor-pointer overflow-hidden rounded-lg"
+        onClick={() => push('/blog/' + data.slug)}
+      >
         <NextImage
           src={data.imagenPrincipal.url}
           layout="fill"
-          className="absolute w-full h-full object-cover object-center rounded-lg  hover:scale-110 transition-all duration-500 ease-in-out"
+          className="absolute w-full h-full object-cover object-center hover:scale-110 transition-all duration-500 ease-in-out"
         />
       </div>
       <div className="flex flex-col justify-center gap-1 mt-6">
-        <h3 className="text-custom1 font-bold text-[12px] uppercase">
+        <h3
+          className="text-custom1 font-bold text-[12px] uppercase cursor-pointer"
+          onClick={() => push('/blog/' + data.slug)}
+        >
           {data.CategoriaBlog?.titulo || ''}
         </h3>
-        <h4 className="text-white font-bold  mt-2 text-base uppercase">
+        <h4
+          className="text-white font-bold  mt-2 text-base uppercase cursor-pointer"
+          onClick={() => push('/blog/' + data.slug)}
+        >
           {data.titulo || ''}
         </h4>
         <div className="flex justify-between items-center mt-2 pr-2">
@@ -66,13 +73,13 @@ export const CardBlog = ({ data }: Iprops) => {
             MetaData={{
               text: data.descripcionCorta,
               tittle: data.titulo,
-              url: MY_URL
+              url: MY_URL,
             }}
             RedesSociales={[
               {
                 Icon: FaFacebook,
                 color: 'colorFb',
-                url: 'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL
+                url: 'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
               },
               {
                 Icon: FaWhatsapp,
@@ -81,7 +88,7 @@ export const CardBlog = ({ data }: Iprops) => {
                   data.titulo +
                   ' ' +
                   MY_URL,
-                color: 'colorWsp'
+                color: 'colorWsp',
               },
               {
                 Icon: FaTwitter,
@@ -90,8 +97,8 @@ export const CardBlog = ({ data }: Iprops) => {
                   data.titulo +
                   '&url=' +
                   MY_URL,
-                color: 'colorTw'
-              }
+                color: 'colorTw',
+              },
             ]}
           />
         </div>

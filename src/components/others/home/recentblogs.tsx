@@ -1,61 +1,72 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable comma-dangle */
+/* eslint-disable  */
 import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import { CardBlog } from './CardsBlogs/cardBlog'
-import { NavbarContextConfig, IContext } from '@contexts/NavbarProvider'
-import { useEffect, useState, useMemo } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import {
   useGetAllBlogs,
   useGetAllBlogsCategoriaSlug,
-  useGetAllCategoriaBlogs
+  useGetAllCategoriaBlogs,
 } from '@Services'
 import { FaAngleRight } from 'react-icons/fa'
 import { CategoriasBlogNavbar } from '../blog/components/CategoriasBlogNavbar'
-import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
-import CardsBlogs from './CardsBlogs'
+import { BlogDTO } from '../blog/interfaces'
+import { Show, SkeltorCardBlog } from '@components/shared'
+import { IdDataNavbar } from '@mock/dataNavbar'
+import { useSecctionView } from '@hooks/useSeccionView'
 
 export const RecentBlogs = () => {
-  const { setViewSecction } = NavbarContextConfig() as IContext
+  const { ref } = useSecctionView(IdDataNavbar.Blog, 1)
   const { push: Push } = useRouter()
-  const { ref, inView } = useInView({ threshold: 1 })
   // Filtro para las cards del slider de los blogs
-  const [isFilter, setIsFilter] = useState<string>('')
-  //Estado para mostrar las cards
-  const [dataBlog, setDataBlog] = useState<(BlogDTO | CategoriaBlogDTO)[]>([])
-  //estado para determinar
+  const [isFilter, setIsFilter] = useState<string | null>(null)
 
-  const { data: AllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs({
+  const [Blogs, setDataBlogs] = useState<BlogDTO[] | []>([])
+  const { data: AllBlogs } = useGetAllBlogs({
     destacado: '',
     estado: 'Activado',
     pagina: 1,
-    numeroPagina: 6
+    numeroPagina: 6,
   })
-  useEffect(() => {
-    if (inView) setViewSecction('Blog')
-  }, [inView])
-  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
-    useGetAllCategoriaBlogs()
+  const { loading: LoadingBlogSlug, refetch } = useGetAllBlogsCategoriaSlug({
+    estado: 'Activado',
+    numeroPagina: 6,
+    pagina: 1,
+    slug: isFilter ?? '',
+  })
+  const {
+    data: DataCategoryBlogs,
+    loading: LoadingCategorysBlogs,
+  } = useGetAllCategoriaBlogs()
 
-  const { data: categoryBlog, loading: LoadingCategoryBlog } =
-    useGetAllBlogsCategoriaSlug({
+  const VolverAtraerSegunSlug = async () =>
+    await refetch({
       estado: 'Activado',
       numeroPagina: 6,
       pagina: 1,
-      slug: isFilter
-    })
+      slug: isFilter ?? '',
+    }).then(({ data }) =>
+      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[]),
+    )
+
+  // Preguntamos si el filter se cambio
+  //Si es null trae todos los blogs
+  // si es string,trae segun el slug obtenido
+  useEffect(() => {
+    if (isFilter === null) {
+      setDataBlogs(AllBlogs)
+    } else {
+      VolverAtraerSegunSlug()
+    }
+  }, [isFilter])
 
   useEffect(() => {
-    categoryBlog?.length === 0
-      ? setDataBlog(AllBlogs)
-      : setDataBlog(categoryBlog)
-  }, [categoryBlog])
-  console.log('LOADER', LoadingCategoryBlog)
+    setDataBlogs(AllBlogs)
+  }, [AllBlogs])
+
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -68,48 +79,56 @@ export const RecentBlogs = () => {
           <CategoriasBlogNavbar
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
-            onClick={(value: string) => setIsFilter(value)}
+            onClick={(value: string | null) => setIsFilter(value)}
           />
-          <Swiper
-            grabCursor={true}
-            slidesPerView="auto"
-            slidesPerGroup={3}
-            spaceBetween={0}
-            loopFillGroupWithBlank={true}
-            breakpoints={{
-              380: {
-                slidesPerView: 1,
-                spaceBetween: 5,
-                slidesPerGroup: 1
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-                slidesPerGroup: 3
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                slidesPerGroup: 3
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-                slidesPerGroup: 2
-              }
-            }}
-            modules={[Pagination, Navigation]}
-            className="mySwiper"
+          <Show
+            condition={!LoadingBlogSlug}
+            isDefault={
+              <div className="grid grid-cols-1 gap-2 w-full md:grid-cols-2 lg:grid-cols-3 mb-12">
+                <SkeltorCardBlog />
+                <SkeltorCardBlog ClassName="hidden md:block" />
+                <SkeltorCardBlog ClassName="hidden lg:block" />
+              </div>
+            }
           >
-            {dataBlog &&
-              dataBlog.map((obj, k) => (
+            <Swiper
+              grabCursor={true}
+              slidesPerView="auto"
+              slidesPerGroup={3}
+              spaceBetween={0}
+              loopFillGroupWithBlank={true}
+              breakpoints={{
+                380: {
+                  slidesPerView: 1,
+                  spaceBetween: 5,
+                  slidesPerGroup: 1,
+                },
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                  slidesPerGroup: 3,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                  slidesPerGroup: 3,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
+                  slidesPerGroup: 2,
+                },
+              }}
+              modules={[Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {Blogs?.map((obj, k) => (
                 <SwiperSlide key={k}>
-                  <CardsBlogs loading={LoadingCategoryBlog || LoadingAllBlogs}>
-                    <CardBlog data={obj} />
-                  </CardsBlogs>
+                  <CardBlog data={obj} />
                 </SwiperSlide>
               ))}
-          </Swiper>
+            </Swiper>
+          </Show>
         </div>
         <div
           data-aos="fade-up"
@@ -120,7 +139,9 @@ export const RecentBlogs = () => {
             className="btn bg-custon4 border cursor-pointer"
             onClick={() =>
               Push(
-                isFilter.length === 0 ? '/blog' : `blog/categoria/${isFilter}`
+                typeof isFilter === 'string'
+                  ? `/blog/categoria/${isFilter}`
+                  : '/blog',
               )
             }
           >
