@@ -15,7 +15,6 @@ import {
 } from '@ssr/index'
 import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
-import { DOMAIN_URL } from '@mock/etc'
 import { BreadCrumbs } from '@components/shared'
 
 // import Slug from '../[slug]'
@@ -106,11 +105,11 @@ export const getServerSideProps = Wrapper.getServerSideProps(
         tittlePage: 'Kyros - ' + GetCategoriaBlogSlug.titulo,
         link: GetCategoriaBlogSlug.titulo,
         description: GetCategoriaBlogSlug.descripcion,
-        domain: DOMAIN_URL + 'blog/categoria/' + query.slug,
-        imgPrincipal: GetCategoriaBlogSlug.imagenPrincipal.url,
+        domain: process.env.NEXT_PUBLIC_DOMAIN + 'blog/categoria/' + query.slug,
+        imgPrincipal: GetCategoriaBlogSlug.imagenSecundaria.url,
         imgSecundaria: GetCategoriaBlogSlug.imagenSecundaria.url,
         keywords: GetCategoriaBlogSlug.keywords,
-        url: DOMAIN_URL + 'blog/categoria/' + query.slug,
+        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog/categoria/' + query.slug,
       }),
     )
     return {

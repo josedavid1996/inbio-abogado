@@ -33,7 +33,6 @@ export const RecentBlogs = () => {
     pagina: 1,
     numeroPagina: 6
   })
-
   useEffect(() => {
     if (inView) setViewSecction('Blog')
   }, [inView])

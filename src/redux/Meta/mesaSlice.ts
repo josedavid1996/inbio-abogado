@@ -15,11 +15,11 @@ const InitialState: MetaType = {
   tittlePage: 'Kyros - Personal Website',
   link: 'Kyros',
   description: 'Somos los mejores en lo que hacemos',
-  domain: 'inbio-abogado.vercel.app',
-  imgPrincipal: 'https://inbio-abogado.vercel.app/images/imgpageseo.webp',
-  imgSecundaria: 'https://inbio-abogado.vercel.app/images/imgpageseo.webp',
+  domain: process.env.NEXT_PUBLIC_DOMAIN,
+  imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+  imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
   keywords: 'Comercial services, employment services, civil ligitation',
-  url: 'https://inbio-abogado.vercel.app/',
+  url: process.env.NEXT_PUBLIC_DOMAIN,
 }
 export const MetaSlice = createSlice({
   name: 'Meta',

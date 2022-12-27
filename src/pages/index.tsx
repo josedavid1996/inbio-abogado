@@ -51,11 +51,11 @@ export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps
         tittlePage: 'Kyros - Personal Website',
         link: 'Kyros',
         description: 'Somos los mejores en lo que hacemos',
-        domain: DOMAIN_URL,
+        domain: process.env.NEXT_PUBLIC_DOMAIN,
         imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-        imgSecundaria: `${DOMAIN_URL}images/imgpageseo.webp`,
+        imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
         keywords: 'Comercial services, employment services, civil ligitation',
-        url: DOMAIN_URL,
+        url: process.env.NEXT_PUBLIC_DOMAIN,
       }),
     )
     return { props: {} }
