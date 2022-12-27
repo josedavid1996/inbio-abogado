@@ -18,6 +18,7 @@ import {
 import { FaAngleRight } from 'react-icons/fa'
 import { CategoriasBlogNavbar } from '../blog/components/CategoriasBlogNavbar'
 import { BlogDTO, CategoriaBlogDTO } from '../blog/interfaces'
+import CardsBlogs from './CardsBlogs'
 
 export const RecentBlogs = () => {
   const { setViewSecction } = NavbarContextConfig() as IContext
@@ -25,7 +26,9 @@ export const RecentBlogs = () => {
   const { ref, inView } = useInView({ threshold: 1 })
   // Filtro para las cards del slider de los blogs
   const [isFilter, setIsFilter] = useState<string>('')
+  //Estado para mostrar las cards
   const [dataBlog, setDataBlog] = useState<(BlogDTO | CategoriaBlogDTO)[]>([])
+  //estado para determinar
 
   const { data: AllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs({
     destacado: '',
@@ -39,19 +42,20 @@ export const RecentBlogs = () => {
   const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
     useGetAllCategoriaBlogs()
 
-  const { data: categoryBlog, loading } = useGetAllBlogsCategoriaSlug({
-    estado: 'Activado',
-    numeroPagina: 6,
-    pagina: 1,
-    slug: isFilter
-  })
+  const { data: categoryBlog, loading: LoadingCategoryBlog } =
+    useGetAllBlogsCategoriaSlug({
+      estado: 'Activado',
+      numeroPagina: 6,
+      pagina: 1,
+      slug: isFilter
+    })
 
   useEffect(() => {
     categoryBlog?.length === 0
       ? setDataBlog(AllBlogs)
       : setDataBlog(categoryBlog)
   }, [categoryBlog])
-
+  console.log('LOADER', LoadingCategoryBlog)
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -63,7 +67,7 @@ export const RecentBlogs = () => {
         >
           <CategoriasBlogNavbar
             Data={DataCategoryBlogs}
-            loading={loading}
+            loading={LoadingCategorysBlogs}
             onClick={(value: string) => setIsFilter(value)}
           />
           <Swiper
@@ -100,7 +104,9 @@ export const RecentBlogs = () => {
             {dataBlog &&
               dataBlog.map((obj, k) => (
                 <SwiperSlide key={k}>
-                  <CardBlog data={obj} />
+                  <CardsBlogs loading={LoadingCategoryBlog || LoadingAllBlogs}>
+                    <CardBlog data={obj} />
+                  </CardsBlogs>
                 </SwiperSlide>
               ))}
           </Swiper>

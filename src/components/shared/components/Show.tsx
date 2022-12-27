@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable comma-dangle */
 interface Iprops {
-  children: any
+  children?: any
   condition: boolean
   isDefault?: any
 }
