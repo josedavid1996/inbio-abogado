@@ -52,7 +52,6 @@ export const RecentBlogs = () => {
       ? setDataBlog(AllBlogs)
       : setDataBlog(categoryBlog)
   }, [categoryBlog])
-  console.log(DataCategoryBlogs)
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>

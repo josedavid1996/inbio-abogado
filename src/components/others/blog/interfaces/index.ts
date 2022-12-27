@@ -6,7 +6,7 @@ export interface ImagenDTO {
   url: string
 }
 export interface CategoriaBlogDTO {
-  categoriaBlogId: string
+  CategoriaBlog?: CategoriaBlogDTO
   created_at: string
   descripcionCorta: string
   destacado: string
