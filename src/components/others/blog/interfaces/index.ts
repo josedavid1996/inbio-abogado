@@ -9,6 +9,7 @@ export interface CategoriaBlogDTO {
   CategoriaBlog?: CategoriaBlogDTO
   created_at: string
   descripcionCorta: string
+  descripcion?: string
   destacado: string
   estado: string
   imagenPrincipal: ImagenDTO

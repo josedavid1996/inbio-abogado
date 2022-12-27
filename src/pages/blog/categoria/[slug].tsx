@@ -98,12 +98,12 @@ export const getServerSideProps = Wrapper.getServerSideProps(
           slug: query.slug
         }
       )
-
+      console.log(GetCategoriaBlogSlug)
       store.dispatch(
         SetDataMeta({
           tittlePage: 'Kyros - ' + GetCategoriaBlogSlug.titulo,
           link: GetCategoriaBlogSlug.titulo,
-          description: GetCategoriaBlogSlug.descripcionCorta,
+          description: GetCategoriaBlogSlug.descripcion,
           domain:
             process.env.NEXT_PUBLIC_DOMAIN + 'blog/categoria/' + query.slug,
           imgPrincipal: GetCategoriaBlogSlug.imagenSecundaria.url,

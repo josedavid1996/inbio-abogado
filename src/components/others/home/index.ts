@@ -2,7 +2,7 @@
 import { About } from './abouts'
 import { Banner } from './banner'
 import { BgNegroTransparente } from './bgNegroTransparente'
-import { CardBlog } from './cardBlog'
+import { CardBlog } from './CardsBlogs/cardBlog'
 import { Contact } from './contact'
 import { Container } from './container'
 import { Footer } from './footer'
@@ -42,5 +42,5 @@ export {
   Services,
   Team,
   WrapperBanner,
-  BannerForOtherPage,
+  BannerForOtherPage
 }
