@@ -1,5 +1,16 @@
-query GetAllBlogs($pagina: Int, $numeroPagina: Int, $estado: String, $destacado: String) {
-  GetAllBlogs(pagina: $pagina, numeroPagina: $numeroPagina, estado: $estado, destacado: $destacado) {
+# Write your query or mutation here
+query GetAllBlogs(
+  $pagina: Int
+  $numeroPagina: Int
+  $estado: String
+  $destacado: String
+) {
+  GetAllBlogs(
+    pagina: $pagina
+    numeroPagina: $numeroPagina
+    estado: $estado
+    destacado: $destacado
+  ) {
     data {
       destacado
       CategoriaBlog {
@@ -26,29 +37,12 @@ query GetAllBlogs($pagina: Int, $numeroPagina: Int, $estado: String, $destacado:
         titulo
         updated_at
       }
-      User {
-        apellidos
-        apiToken
-        celular
-        cantidadComprada
-        customer_id
-        email
-        estado
-        fechaNacimiento
-        foto
-        genero
-        id
-        montoTotalComprado
-        nombres
-        numeroDocumento
-        tipoDocumento
-        tipoUsuario
-      }
+
       blogId
       categoriaBlogId
       descripcionCorta
       created_at
-      descripcionLarga
+
       estado
       imagenPrincipal {
         estado

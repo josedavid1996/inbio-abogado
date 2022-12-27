@@ -51,6 +51,7 @@ export const RecentBlogs = () => {
       ? setDataBlog(AllBlogs)
       : setDataBlog(categoryBlog)
   }, [categoryBlog])
+
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -96,6 +97,19 @@ export const RecentBlogs = () => {
             modules={[Pagination, Navigation]}
             className="mySwiper"
           >
+            {/* {categoryBlog?.length === 0
+              ? AllBlogs &&
+                AllBlogs.map((obj, k) => (
+                  <SwiperSlide key={k}>
+                    <CardBlog data={obj} />
+                  </SwiperSlide>
+                ))
+              : categoryBlog &&
+                categoryBlog.map((obj, k) => (
+                  <SwiperSlide key={k}>
+                    <CardBlog data={obj} />
+                  </SwiperSlide>
+                ))} */}
             {dataBlog &&
               dataBlog.map((obj, k) => (
                 <SwiperSlide key={k}>
