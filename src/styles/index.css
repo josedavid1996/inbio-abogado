@@ -82,3 +82,12 @@ body::-webkit-scrollbar-thumb {
 .hrefEnlace:hover > svg {
   @apply text-white;
 }
+
+.selectionItemNavbar {
+  @apply text-custom1;
+}
+
+.selectionItemNavbar::after {
+  bottom: 0 !important;
+  background-color: #ad8e6d !important;
+}

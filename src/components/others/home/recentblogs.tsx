@@ -9,10 +9,10 @@ import { useRouter } from 'next/router'
 import {
   useGetAllBlogs,
   useGetAllBlogsCategoriaSlug,
-  useGetAllCategoriaBlogs,
+  useGetAllCategoriaBlogs
 } from '@Services'
 import { FaAngleRight } from 'react-icons/fa'
-import { CategoriasBlogNavbar } from '../blog/components/CategoriasBlogNavbar'
+import { CategoriasBlogNavbar } from './CategoriasBlogNavbar'
 import { BlogDTO } from '../blog/interfaces'
 import { Dropdown, Show, SkeltorCardBlog } from '@components/shared'
 import { IdDataNavbar } from '@mock/dataNavbar'
@@ -29,27 +29,25 @@ export const RecentBlogs = () => {
     destacado: '',
     estado: 'Activado',
     pagina: 1,
-    numeroPagina: 6,
+    numeroPagina: 6
   })
   const { loading: LoadingBlogSlug, refetch } = useGetAllBlogsCategoriaSlug({
     estado: 'Activado',
     numeroPagina: 6,
     pagina: 1,
-    slug: isFilter ?? '',
+    slug: isFilter ?? ''
   })
-  const {
-    data: DataCategoryBlogs,
-    loading: LoadingCategorysBlogs,
-  } = useGetAllCategoriaBlogs()
+  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
+    useGetAllCategoriaBlogs()
 
   const VolverAtraerSegunSlug = async () =>
     await refetch({
       estado: 'Activado',
       numeroPagina: 6,
       pagina: 1,
-      slug: isFilter ?? '',
+      slug: isFilter ?? ''
     }).then(({ data }) =>
-      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[]),
+      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[])
     )
 
   // Preguntamos si el filter se cambio
@@ -67,6 +65,21 @@ export const RecentBlogs = () => {
     setDataBlogs(AllBlogs)
   }, [AllBlogs])
 
+  //Funcion para actulizar el valor del estado y ponerle el estilo de seleccionado
+
+  const SelectionItemNavbar = (value: string | null) => {
+    const selected: HTMLElement | null = document.getElementById(
+      value as string
+    )
+    let isClass
+    if (typeof window !== 'undefined') {
+      isClass = document.querySelectorAll('.selectionItemNavbar')
+    }
+    isClass?.forEach((item) => item.classList.remove('selectionItemNavbar'))
+    selected?.classList.add('selectionItemNavbar')
+    setIsFilter(value === 'todos' ? null : value)
+  }
+
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -79,7 +92,7 @@ export const RecentBlogs = () => {
           <CategoriasBlogNavbar
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
-            onClick={(value: string | null) => setIsFilter(value)}
+            onClick={SelectionItemNavbar}
           />
           <Dropdown
             data={DataCategoryBlogs || []}
@@ -106,23 +119,23 @@ export const RecentBlogs = () => {
                 380: {
                   slidesPerView: 1,
                   spaceBetween: 5,
-                  slidesPerGroup: 1,
+                  slidesPerGroup: 1
                 },
                 640: {
                   slidesPerView: 2,
                   spaceBetween: 20,
-                  slidesPerGroup: 3,
+                  slidesPerGroup: 3
                 },
                 768: {
                   slidesPerView: 2,
                   spaceBetween: 10,
-                  slidesPerGroup: 3,
+                  slidesPerGroup: 3
                 },
                 1024: {
                   slidesPerView: 3,
                   spaceBetween: 10,
-                  slidesPerGroup: 2,
-                },
+                  slidesPerGroup: 2
+                }
               }}
               modules={[Pagination, Navigation]}
               className="mySwiper"
@@ -146,7 +159,7 @@ export const RecentBlogs = () => {
               Push(
                 typeof isFilter === 'string'
                   ? `/blog/categoria/${isFilter}`
-                  : '/blog',
+                  : '/blog'
               )
             }
           >
