@@ -19,6 +19,7 @@ interface IProps {
   bg?: string
   colorIcon?: string
 }
+{/** Dipositivos que se considera desktop */}
 const Soported = ['Win32', 'MacIntel']
 export const ButtonShare = ({
   MetaData,
@@ -51,6 +52,7 @@ export const ButtonShare = ({
   }
   return (
     <>
+      {/** Icono solo para desktop */}
       <NextLink className={isMobile ? 'hidden' : ''} href={urlWeb}>
         <a
           target={'_blank'}
@@ -63,8 +65,9 @@ export const ButtonShare = ({
           <Icon className={`${colorIcon ? colorIcon : 'hrefIcon'}`} />
         </a>
       </NextLink>
+      {/** Icono solo para mobile */}
       <Icon
-        className={`w-[70%] h-[70%] ${colorIcon ? colorIcon : 'text-white'} ${
+        className={`w-5 h-5 ${colorIcon ? colorIcon : 'text-white'} ${
           isMobile ? '' : 'hidden'
         } `}
         onClick={() => ShareResponvie(MetaData)}
@@ -72,3 +75,4 @@ export const ButtonShare = ({
     </>
   )
 }
+
