@@ -8,13 +8,17 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { Wrapper } from '@Redux/store'
-import { BreadCrumbs } from '@components/shared'
+import { BreadCrumbs, Dropdown } from '@components/shared'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 const Index = () => {
-  const {
-    data: DataCategoryBlogs,
-    loading: LoadingCategorysBlogs,
-  } = useGetAllCategoriaBlogs()
+  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
+    useGetAllCategoriaBlogs()
   const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs()
+  const [isFilter, setIsFilter] = useState<string | null>(null)
+
+  const route = useRouter()
+
   return (
     <>
       <div className="bg-[#171A1D] min-h-screen h-full">
@@ -24,6 +28,15 @@ const Index = () => {
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
           />
+          {/* <Dropdown
+            data={DataCategoryBlogs || []}
+            filter={isFilter}
+            setFilter={setIsFilter}
+            onChange={(target) => {
+              setIsFilter(target.value !== '' ? target.value : null)
+              route.push('/blog/categoria/' + target.value)
+            }}
+          /> */}
           <AllBlogs Data={DataAllBlogs!} loading={LoadingAllBlogs} />
         </Container>
       </div>
@@ -32,20 +45,21 @@ const Index = () => {
 }
 export default Index
 
-export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps(
-  (store: Store) => async (ctx: GetServerSidePropsContext) => {
-    store.dispatch(
-      SetDataMeta({
-        tittlePage: 'Kyros - Blogs',
-        link: 'Kyros',
-        description: 'Vista de todos los blogs',
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
-        imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-        imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-        keywords: 'Comercial services, employment services, civil ligitation',
-        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog',
-      }),
-    )
-    return { props: {} }
-  },
-)
+export const getServerSideProps: GetServerSideProps =
+  Wrapper.getServerSideProps(
+    (store: Store) => async (ctx: GetServerSidePropsContext) => {
+      store.dispatch(
+        SetDataMeta({
+          tittlePage: 'Kyros - Blogs',
+          link: 'Kyros',
+          description: 'Vista de todos los blogs',
+          domain: process.env.NEXT_PUBLIC_DOMAIN,
+          imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+          imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+          keywords: 'Comercial services, employment services, civil ligitation',
+          url: process.env.NEXT_PUBLIC_DOMAIN + 'blog'
+        })
+      )
+      return { props: {} }
+    }
+  )

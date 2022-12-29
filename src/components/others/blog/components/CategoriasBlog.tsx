@@ -1,8 +1,10 @@
 /* eslint-disable indent */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { CategoriaBlogDTO } from '../interfaces'
-import { Show, SkeletorText } from '@components/shared'
+import { Dropdown, Show, SkeletorText } from '@components/shared'
 import NextLink from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 interface IProps {
   Data: CategoriaBlogDTO[] | []
   loading?: boolean
@@ -13,7 +15,9 @@ interface IListItem {
   slug: string
 }
 export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
-  // const { push } = useRouter()
+  const route = useRouter()
+  const [isFilter, setIsFilter] = useState<string | null>(null)
+
   const ListItem = ({ route, tittle, slug }: IListItem) => (
     <div
       // onClick={onClick}
@@ -27,29 +31,44 @@ export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
     </div>
   )
   return (
-    <Show
-      condition={!loading}
-      isDefault={
-        <div className="flex flex-row gap-4 w-full">
-          <SkeletorText />
-          <SkeletorText />
-          <SkeletorText />
-          <SkeletorText />
+    <>
+      <Show
+        condition={!loading}
+        isDefault={
+          <div className="hidden flex-row gap-4 w-full lg:flex">
+            <SkeletorText />
+            <SkeletorText />
+            <SkeletorText />
+            <SkeletorText />
+          </div>
+        }
+      >
+        <div className="hidden lg:flex w-full text-white font-medium  flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
+          <ListItem route={'/blog'} tittle="Todos" slug="Todos" />
+          {Data?.map((obj, k) => (
+            <ListItem
+              tittle={obj.titulo || ''}
+              slug={obj.slug}
+              route={'/blog/categoria/' + obj.slug}
+              // onClick={() => push('blog/categoria/' + obj.slug)}
+              key={k}
+            />
+          ))}
         </div>
-      }
-    >
-      <div className="hidden lg:flex w-full text-white font-medium  flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
-        <ListItem route={'/blog'} tittle="Todos" slug="Todos" />
-        {Data?.map((obj, k) => (
-          <ListItem
-            tittle={obj.titulo || ''}
-            slug={obj.slug}
-            route={'/blog/categoria/' + obj.slug}
-            // onClick={() => push('blog/categoria/' + obj.slug)}
-            key={k}
-          />
-        ))}
-      </div>
-    </Show>
+      </Show>
+      <Dropdown
+        data={Data || []}
+        filter={isFilter}
+        setFilter={setIsFilter}
+        onChange={(target) => {
+          setIsFilter(target.value !== '' ? target.value : null)
+          route.push(
+            target.value.length === 0
+              ? '/blog'
+              : '/blog/categoria/' + target.value
+          )
+        }}
+      />
+    </>
   )
 }

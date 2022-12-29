@@ -98,6 +98,9 @@ export const RecentBlogs = () => {
             data={DataCategoryBlogs || []}
             filter={isFilter}
             setFilter={setIsFilter}
+            onChange={(target) =>
+              setIsFilter(target.value !== '' ? target.value : null)
+            }
           />
           <Show
             condition={!LoadingBlogSlug}

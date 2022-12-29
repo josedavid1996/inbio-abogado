@@ -15,7 +15,9 @@ import {
 } from '@ssr/index'
 import { BlogDTO, CategoriaBlogDTO } from '@components/others/blog/interfaces'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
-import { BreadCrumbs } from '@components/shared'
+import { BreadCrumbs, Dropdown } from '@components/shared'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 // import Slug from '../[slug]'
 
@@ -27,6 +29,7 @@ interface IPropsSSP {
 const Index = ({ BlogsCategoriaSlug, GetCategoriaBlogSlug }: IPropsSSP) => {
   const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
     useGetAllCategoriaBlogs()
+  const route = useRouter()
   // const {
   //   data: BlogsCategoriaSlug,
   //   loading: LoadingBlosCategoriaSlug,
@@ -54,6 +57,7 @@ const Index = ({ BlogsCategoriaSlug, GetCategoriaBlogSlug }: IPropsSSP) => {
           Data={DataCategoryBlogs}
           loading={LoadingCategorysBlogs}
         />
+
         <AllBlogs
           Data={BlogsCategoriaSlug!}
           // loading={LoadingBlosCategoriaSlug}
