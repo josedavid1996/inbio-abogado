@@ -13,14 +13,15 @@ import { Numbers } from './numbers'
 import { Progressbar } from './progressbar'
 import { Quote } from './quote'
 import { RecentBlogs } from './recentblogs'
-import { Resumen } from './resumen'
+import { Resumen } from './components/resumen'
 import { Scroll } from './scroll'
 import { Services } from './services'
 import { Team } from './team'
 import { TittleCustom } from './tittleCustom'
 import { WrapperBanner } from './wrapperBanner'
 import { BannerForOtherPage } from './BannerForOtherPage'
-
+import { ItemTeam } from './components/itemTeam'
+import { ItemResumen } from './components/itemResumen'
 export {
   About,
   Banner,
@@ -42,5 +43,7 @@ export {
   Services,
   Team,
   WrapperBanner,
-  BannerForOtherPage
+  BannerForOtherPage,
+  ItemTeam,
+  ItemResumen,
 }
