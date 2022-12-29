@@ -62,7 +62,6 @@ export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
       <Dropdown
         data={Data || []}
         filter={isFilter}
-        setFilter={setIsFilter}
         onChange={(target) => {
           setIsFilter(target.value !== '' ? target.value : null)
           route.push(

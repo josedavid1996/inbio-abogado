@@ -97,7 +97,6 @@ export const RecentBlogs = () => {
           <Dropdown
             data={DataCategoryBlogs || []}
             filter={isFilter}
-            setFilter={setIsFilter}
             onChange={(target) =>
               setIsFilter(target.value !== '' ? target.value : null)
             }

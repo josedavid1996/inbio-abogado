@@ -5,11 +5,9 @@ import { Dispatch, SetStateAction, useState } from 'react'
 interface IProps {
   data: CategoriaBlogDTO[] | []
   filter: string | null
-  setFilter: Dispatch<SetStateAction<string | null>>
   onChange: (target: EventTarget & HTMLSelectElement) => void
 }
-export const Dropdown = ({ data, filter, setFilter, onChange }: IProps) => {
-  const [loader, setLoader] = useState(false)
+export const Dropdown = ({ data, filter, onChange }: IProps) => {
   return (
     <div className="w-full flex items-center justify-center my-4">
       <select
