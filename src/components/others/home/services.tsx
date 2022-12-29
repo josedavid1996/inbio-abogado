@@ -38,8 +38,9 @@ export const Services = () => {
             </div>
           </>
         </Container>
-      </section>
       <Quote />
+      </section>
+
     </>
   )
 }
