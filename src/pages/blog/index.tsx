@@ -9,13 +9,11 @@ import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { Wrapper } from '@Redux/store'
 import { BreadCrumbs, Dropdown } from '@components/shared'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 const Index = () => {
   const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
     useGetAllCategoriaBlogs()
   const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs()
-  const [isFilter, setIsFilter] = useState<string | null>(null)
 
   const route = useRouter()
 

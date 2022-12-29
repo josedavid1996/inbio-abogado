@@ -5,6 +5,8 @@ import { Dropdown, Show, SkeletorText } from '@components/shared'
 import NextLink from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
+
 interface IProps {
   Data: CategoriaBlogDTO[] | []
   loading?: boolean
@@ -16,7 +18,8 @@ interface IListItem {
 }
 export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
   const route = useRouter()
-  const [isFilter, setIsFilter] = useState<string | null>(null)
+  // const [isFilter, setIsFilter] = useState<string | null>(null)
+  const { isFilter, setIsFilter } = NavbarContextConfig() as IContext
 
   const ListItem = ({ route, tittle, slug }: IListItem) => (
     <div
