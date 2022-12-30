@@ -43,43 +43,43 @@ export const NavbarMobile = () => {
           <div className="flex flex-col gap-5  ">
             <div>
               <h3>
-                <a href="#Home">Home</a>
+                <a href="/#Home">Inicio</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#About">About Me</a>
+                <a href="/#About">Quien Soy</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#Services">My Services</a>
+                <a href="/#Services">Mis Servicios</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#Team">Meet The Team</a>
+                <a href="/#Team">Equipo</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#Resumen">My Resume</a>
+                <a href="/#Resumen">Resumen</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#Blog">Blog</a>
+                <a href="/#Blog">Blog</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
             <div>
               <h3>
-                <a href="#Contact">Contact</a>
+                <a href="/#Contact">Contactame</a>
               </h3>
               <span className="bg-[#999187] block w-full  h-[0.5px] mt-3" />
             </div>
