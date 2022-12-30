@@ -6,11 +6,11 @@ interface IDataNavbar {
 export const IdDataNavbar = {
   Home: 'Home',
   About: 'About',
-  Services: 'MisServicios',
+  Services: 'Services',
   Team: 'Team',
   Resumen: 'Resumen',
   Blog: 'Blog',
-  Contact: 'Contact',
+  Contact: 'Contact'
 }
 export const DataNavbar: IDataNavbar[] = [
   { id: '#' + IdDataNavbar.Home, tittle: 'Inicio' },
@@ -19,5 +19,5 @@ export const DataNavbar: IDataNavbar[] = [
   { id: '#' + IdDataNavbar.Team, tittle: 'Equipo' },
   { id: '#' + IdDataNavbar.Resumen, tittle: 'Resumen' },
   { id: '#' + IdDataNavbar.Blog, tittle: 'Blog' },
-  { id: '#' + IdDataNavbar.Contact, tittle: 'Contactame' },
+  { id: '#' + IdDataNavbar.Contact, tittle: 'Contactame' }
 ]
