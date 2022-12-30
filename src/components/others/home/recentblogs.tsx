@@ -1,22 +1,20 @@
 /* eslint-disable  */
 import { Container } from './container'
 import { TittleCustom } from './tittleCustom'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper'
-import { CardBlog } from './CardsBlogs/cardBlog'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import {
   useGetAllBlogs,
   useGetAllBlogsCategoriaSlug,
-  useGetAllCategoriaBlogs
+  useGetAllCategoriaBlogs,
 } from '@Services'
 import { FaAngleRight } from 'react-icons/fa'
 import { CategoriasBlogNavbar } from './CategoriasBlogNavbar'
 import { BlogDTO } from '../blog/interfaces'
-import { Dropdown, Show, SkeltorCardBlog } from '@components/shared'
+import { Dropdown, Show, SkeletorSwiperHomeBlogs } from '@components/shared'
 import { IdDataNavbar } from '@mock/dataNavbar'
 import { useSecctionView } from '@hooks/useSeccionView'
+import { SwiperHomeBlogs } from './components/SwiperHomeBlogs'
 
 export const RecentBlogs = () => {
   const { ref } = useSecctionView(IdDataNavbar.Blog, 1)
@@ -29,25 +27,27 @@ export const RecentBlogs = () => {
     destacado: '',
     estado: 'Activado',
     pagina: 1,
-    numeroPagina: 6
+    numeroPagina: 6,
   })
   const { loading: LoadingBlogSlug, refetch } = useGetAllBlogsCategoriaSlug({
     estado: 'Activado',
     numeroPagina: 6,
     pagina: 1,
-    slug: isFilter ?? ''
+    slug: isFilter ?? '',
   })
-  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
-    useGetAllCategoriaBlogs()
+  const {
+    data: DataCategoryBlogs,
+    loading: LoadingCategorysBlogs,
+  } = useGetAllCategoriaBlogs()
 
   const VolverAtraerSegunSlug = async () =>
     await refetch({
       estado: 'Activado',
       numeroPagina: 6,
       pagina: 1,
-      slug: isFilter ?? ''
+      slug: isFilter ?? '',
     }).then(({ data }) =>
-      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[])
+      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[]),
     )
 
   // Preguntamos si el filter se cambio
@@ -69,7 +69,7 @@ export const RecentBlogs = () => {
 
   const SelectionItemNavbar = (value: string | null) => {
     const selected: HTMLElement | null = document.getElementById(
-      value as string
+      value as string,
     )
     let isClass
     if (typeof window !== 'undefined') {
@@ -103,51 +103,9 @@ export const RecentBlogs = () => {
           />
           <Show
             condition={!LoadingBlogSlug}
-            isDefault={
-              <div className="grid grid-cols-1 gap-2 w-full sm:grid-cols-2 lg:grid-cols-3 mb-12">
-                <SkeltorCardBlog />
-                <SkeltorCardBlog ClassName="hidden sm:block" />
-                <SkeltorCardBlog ClassName="hidden lg:block" />
-              </div>
-            }
+            isDefault={<SkeletorSwiperHomeBlogs />}
           >
-            <Swiper
-              grabCursor={true}
-              slidesPerView="auto"
-              slidesPerGroup={3}
-              spaceBetween={0}
-              loopFillGroupWithBlank={true}
-              breakpoints={{
-                380: {
-                  slidesPerView: 1,
-                  spaceBetween: 5,
-                  slidesPerGroup: 1
-                },
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                  slidesPerGroup: 3
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                  slidesPerGroup: 3
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 10,
-                  slidesPerGroup: 2
-                }
-              }}
-              modules={[Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {Blogs?.map((obj, k) => (
-                <SwiperSlide key={k}>
-                  <CardBlog data={obj} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <SwiperHomeBlogs Blogs={Blogs} />
           </Show>
         </div>
         <div
@@ -161,7 +119,7 @@ export const RecentBlogs = () => {
               Push(
                 typeof isFilter === 'string'
                   ? `/blog/categoria/${isFilter}`
-                  : '/blog'
+                  : '/blog',
               )
             }
           >

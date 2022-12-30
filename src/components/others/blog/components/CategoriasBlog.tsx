@@ -1,5 +1,4 @@
-/* eslint-disable indent */
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable  */
 import { CategoriaBlogDTO } from '../interfaces'
 import { Dropdown, Show, SkeletorText } from '@components/shared'
 import NextLink from 'next/link'
@@ -13,25 +12,28 @@ interface IProps {
 interface IListItem {
   tittle: string
   route: string
-  slug: string
+  slug?: string
 }
 export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
-  const route = useRouter()
+  const { push, query } = useRouter()
   // const [isFilter, setIsFilter] = useState<string | null>(null)
   const { isFilter, setIsFilter } = NavbarContextConfig() as IContext
 
-  const ListItem = ({ route, tittle, slug }: IListItem) => (
-    <div
-      // onClick={onClick}
-      className={`cursor-pointer text-center ${
-        // Slug === slug
-        // ? 'text-custom1 after:absolute after:bottom-0 after:w-full after:h-[1px] after:bg-custom1'
-        'text-white'
-      }  after:bg-transparent relative flex flex-row after:absolute after:-bottom-2 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear`}
-    >
-      <NextLink href={route}>{tittle || ''}</NextLink>
-    </div>
-  )
+  const ListItem = ({ route, tittle, slug }: IListItem) => {
+    console.log(query.slug)
+    return (
+      <div
+        // onClick={onClick}
+        className={`cursor-pointer text-center ${
+          // Slug === slug
+          // ? 'text-custom1 after:absolute after:bottom-0 after:w-full after:h-[1px] after:bg-custom1'
+          slug == query.slug ? ' text-custom1 after:bg-custom1 after:bottom-0' : ''
+        }  after:bg-transparent text-white relative flex flex-row after:absolute after:-bottom-2 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear`}
+      >
+        <NextLink href={route}>{tittle || ''}</NextLink>
+      </div>
+    )
+  }
   return (
     <>
       <Show
@@ -46,7 +48,7 @@ export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
         }
       >
         <div className="hidden lg:flex w-full text-white font-medium  flex-row flex-wrap justify-around z-10 overflow-y-hidden gap-x-3 py-2">
-          <ListItem route={'/blog'} tittle="Todos" slug="Todos" />
+          <ListItem route={'/blog'} tittle="Todos" />
           {Data?.map((obj, k) => (
             <ListItem
               tittle={obj.titulo || ''}
@@ -63,10 +65,10 @@ export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
         filter={isFilter}
         onChange={(target) => {
           setIsFilter(target.value !== '' ? target.value : null)
-          route.push(
+          push(
             target.value.length === 0
               ? '/blog'
-              : '/blog/categoria/' + target.value
+              : '/blog/categoria/' + target.value,
           )
         }}
       />

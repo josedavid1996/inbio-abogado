@@ -22,6 +22,7 @@ import { WrapperBanner } from './wrapperBanner'
 import { BannerForOtherPage } from './BannerForOtherPage'
 import { ItemTeam } from './components/itemTeam'
 import { ItemResumen } from './components/itemResumen'
+import { SwiperHomeBlogs } from './components/SwiperHomeBlogs'
 export {
   About,
   Banner,
@@ -46,4 +47,5 @@ export {
   BannerForOtherPage,
   ItemTeam,
   ItemResumen,
+  SwiperHomeBlogs,
 }
