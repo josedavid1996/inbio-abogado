@@ -28,6 +28,8 @@
       "@apollo/*": ["./src/apollo/*"],
       "@Services": ["./src/services/index"],
       "@Redux/*": ["./src/redux/*"],
+      "@Util/*": ["./src/utils/*"],
+
 
     }
   },
