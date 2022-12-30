@@ -24,7 +24,6 @@ export const useScroll = (threshold?: number) => {
         ScroolAnterior = ScroolActual + 1
         setIsScrollBottom(false)
       }
-      console.log(ScroolActual, ScroolAnterior)
     })
   }, [])
 

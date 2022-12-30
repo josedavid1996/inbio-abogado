@@ -1,9 +1,8 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { AllBlogs, CategoriasBlog } from '@components/others/blog'
-import { useGetAllBlogs, useGetAllCategoriaBlogs } from '@Services'
+import { useGetAllBlogsCategoriaSlug, useGetAllCategoriaBlogs } from '@Services'
 import { Container } from '@components/others/home'
-// import { OpenGraph } from '@components/seo/OpenGraph'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
@@ -14,7 +13,15 @@ const Index = () => {
     data: DataCategoryBlogs,
     loading: LoadingCategorysBlogs,
   } = useGetAllCategoriaBlogs()
-  const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs()
+  const {
+    data: DataAllBlogs,
+    loading: LoadingAllBlogs,
+  } = useGetAllBlogsCategoriaSlug({
+    estado: 'Activado',
+    numeroPagina: 20,
+    pagina: 1,
+    slug: '',
+  })
 
   return (
     <>

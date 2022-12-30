@@ -20,7 +20,6 @@ export const CategoriasBlog = ({ Data, loading = true }: IProps) => {
   const { isFilter, setIsFilter } = NavbarContextConfig() as IContext
 
   const ListItem = ({ route, tittle, slug }: IListItem) => {
-    console.log(query.slug)
     return (
       <div
         // onClick={onClick}

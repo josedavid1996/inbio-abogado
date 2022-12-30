@@ -12,8 +12,6 @@ import {
   Contact,
   WrapperBanner,
 } from '@components/others/home'
-import { OpenGraph } from '@components/seo/OpenGraph'
-import { DOMAIN_URL } from '@mock/etc'
 import { Store } from '@reduxjs/toolkit'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 

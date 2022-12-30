@@ -21,14 +21,8 @@ export const RecentBlogs = () => {
   const { push: Push } = useRouter()
   // Filtro para las cards del slider de los blogs
   const [isFilter, setIsFilter] = useState<string | null>(null)
-
   const [Blogs, setDataBlogs] = useState<BlogDTO[] | []>([])
-  const { data: AllBlogs } = useGetAllBlogs({
-    destacado: '',
-    estado: 'Activado',
-    pagina: 1,
-    numeroPagina: 6,
-  })
+
   const { loading: LoadingBlogSlug, refetch } = useGetAllBlogsCategoriaSlug({
     estado: 'Activado',
     numeroPagina: 6,
@@ -50,20 +44,9 @@ export const RecentBlogs = () => {
       setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[]),
     )
 
-  // Preguntamos si el filter se cambio
-  //Si es null trae todos los blogs
-  // si es string,trae segun el slug obtenido
   useEffect(() => {
-    if (isFilter === null) {
-      setDataBlogs(AllBlogs)
-    } else {
-      VolverAtraerSegunSlug()
-    }
+    VolverAtraerSegunSlug()
   }, [isFilter])
-
-  useEffect(() => {
-    setDataBlogs(AllBlogs)
-  }, [AllBlogs])
 
   //Funcion para actulizar el valor del estado y ponerle el estilo de seleccionado
 

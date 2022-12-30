@@ -27,7 +27,6 @@ export const FadeUp = ({ children, threshold, className }: IProps) => {
 
 export const FadeRight = ({ children, threshold, className }: IProps) => {
   const { inView, isScrollBottom, ref } = useScroll(threshold)
-  console.log(inView, isScrollBottom)
   return (
     <div
       className={`
