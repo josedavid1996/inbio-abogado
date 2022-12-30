@@ -1,6 +1,4 @@
 import { CategoriaBlogDTO } from '@components/others/blog/interfaces'
-import { useRouter } from 'next/router'
-import { Dispatch, SetStateAction, useState } from 'react'
 
 interface IProps {
   data: CategoriaBlogDTO[] | []

@@ -8,14 +8,13 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Store } from '@reduxjs/toolkit'
 import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { Wrapper } from '@Redux/store'
-import { BreadCrumbs, Dropdown } from '@components/shared'
-import { useRouter } from 'next/router'
+import { BreadCrumbs } from '@components/shared'
 const Index = () => {
-  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
-    useGetAllCategoriaBlogs()
+  const {
+    data: DataCategoryBlogs,
+    loading: LoadingCategorysBlogs,
+  } = useGetAllCategoriaBlogs()
   const { data: DataAllBlogs, loading: LoadingAllBlogs } = useGetAllBlogs()
-
-  const route = useRouter()
 
   return (
     <>
@@ -43,21 +42,20 @@ const Index = () => {
 }
 export default Index
 
-export const getServerSideProps: GetServerSideProps =
-  Wrapper.getServerSideProps(
-    (store: Store) => async (ctx: GetServerSidePropsContext) => {
-      store.dispatch(
-        SetDataMeta({
-          tittlePage: 'Kyros - Blogs',
-          link: 'Kyros',
-          description: 'Vista de todos los blogs',
-          domain: process.env.NEXT_PUBLIC_DOMAIN,
-          imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-          imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-          keywords: 'Comercial services, employment services, civil ligitation',
-          url: process.env.NEXT_PUBLIC_DOMAIN + 'blog'
-        })
-      )
-      return { props: {} }
-    }
-  )
+export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps(
+  (store: Store) => async (ctx: GetServerSidePropsContext) => {
+    store.dispatch(
+      SetDataMeta({
+        tittlePage: 'Kyros - Blogs',
+        link: 'Kyros',
+        description: 'Vista de todos los blogs',
+        domain: process.env.NEXT_PUBLIC_DOMAIN,
+        imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+        imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+        keywords: 'Comercial services, employment services, civil ligitation',
+        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog',
+      }),
+    )
+    return { props: {} }
+  },
+)

@@ -12,7 +12,7 @@ export const InputArea = ({ label, value = '', placeholder, name }: Iprops) => {
     <div className="w-full h-[168px] relative">
       <textarea
         name={name || 'defautlNameTextArea'}
-        className="textarea bg-transparent border border-[#999187] w-full h-full peer px-5 py-5"
+        className="textarea bg-transparent border border-[#999187] w-full h-full peer px-5 py-5 text-gray-200"
         placeholder={placeholder || ''}
         value={valueInputArea}
         id={name || 'defautlNameTextArea'}
@@ -20,7 +20,7 @@ export const InputArea = ({ label, value = '', placeholder, name }: Iprops) => {
       />
       <label
         className={`absolute  ${
-          valueInputArea.length ? 'top-[20px] text-white' : 'top-[30px]'
+          valueInputArea.length ? 'top-[20px] text-white' : 'top-[30px] text-gray-500'
         } left-[15px] peer-focus:top-[20px]  duration-300 transition-all -translate-y-4 peer-focus:-translate-y-4`}
         htmlFor={name || 'defautlNameTextArea'}
       >

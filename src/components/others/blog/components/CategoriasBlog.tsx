@@ -3,7 +3,6 @@
 import { CategoriaBlogDTO } from '../interfaces'
 import { Dropdown, Show, SkeletorText } from '@components/shared'
 import NextLink from 'next/link'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { IContext, NavbarContextConfig } from '@contexts/NavbarProvider'
 

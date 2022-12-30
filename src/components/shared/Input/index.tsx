@@ -53,7 +53,7 @@ const Input = ({ label, icon: Icon, rightElement, ...props }: Props) => {
             error
               ? 'border-red-400 focus:border-red-600'
               : 'border-transparent focus:border-primary-500',
-            'peer bg-transparent outline-none w-full h-full pt-5 px-3 border-2 rounded transition-colors dark:text-white'
+            'peer bg-transparent outline-none w-full h-full pt-5 px-3 border-2 rounded transition-colors dark:text-white text-gray-200'
           ])}
         />
         <label
@@ -61,7 +61,7 @@ const Input = ({ label, icon: Icon, rightElement, ...props }: Props) => {
           className={classNames([
             isValueEmpty
               ? 'top-[19px] left-3 text-slate-500'
-              : 'top-1 left-2 text-primary-500 dark:text-primary-400 text-opacity-80',
+              : 'top-1 left-2 text-gray-200 dark:text-gray-200 text-opacity-80 ',
             error
               ? 'text-red-600'
               : 'peer-focus:text-primary-500 dark:peer-focus:text-primary-400',

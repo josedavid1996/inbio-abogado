@@ -34,17 +34,6 @@ export const Contact = () => {
             />
           </div>
           <InputArea />
-          {/* <div className="w-full h-[168px] relative">
-            <textarea
-              className="textarea bg-transparent border border-[#999187] w-full h-full peer p-5"
-              placeholder=""
-            />
-            <label
-              className="absolute top-[20px] left-[15px] text-slate-500 duration-300 transition-all peer-focus:-translate-y-4 peer-placeholder-shown:-translate-y-4"
-            >
-              Your Message
-            </label>
-          </div> */}
           <button className="w-[173px] h-[37px] bg-[#AD8E6D] text-white mx-auto rounded-md font-semibold text-[14px]">
             Send Message
           </button>
