@@ -21,7 +21,7 @@ export const BreadCrumbs = ({ history }: IProps) => {
   )
   return (
     <div className=" w-full flex justify-start px-4 ">
-      <div className="text-sm font-medium text-white font-customText flex flex-row items-center gap-2">
+      <div className="text-sm font-medium text-white font-customText flex flex-row items-center gap-2 flex-wrap">
         <Href url="/">
           <FaHome />
         </Href>
