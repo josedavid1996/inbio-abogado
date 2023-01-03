@@ -21,9 +21,13 @@ export const RecentBlogs = () => {
   const { push: Push } = useRouter()
   // Filtro para las cards del slider de los blogs
   const [isFilter, setIsFilter] = useState<string | null>(null)
-  const [Blogs, setDataBlogs] = useState<BlogDTO[] | []>([])
+  // const [Blogs, setDataBlogs] = useState<BlogDTO[] | []>([])
 
-  const { loading: LoadingBlogSlug, refetch } = useGetAllBlogsCategoriaSlug({
+  const {
+    data: dataBlog,
+    loading: LoadingBlogSlug
+    // refetch
+  } = useGetAllBlogsCategoriaSlug({
     estado: 'Activado',
     numeroPagina: 6,
     pagina: 1,
@@ -31,35 +35,22 @@ export const RecentBlogs = () => {
   })
   const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
     useGetAllCategoriaBlogs()
-  const VolverAtraerSegunSlug = async () =>
-    await refetch({
-      estado: 'Activado',
-      numeroPagina: 6,
-      pagina: 1,
-      slug: isFilter ?? ''
-    }).then(({ data }) =>
-      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[])
-    )
 
-  useEffect(() => {
-    VolverAtraerSegunSlug()
-  }, [isFilter])
+  //?Revizar
+  // const VolverAtraerSegunSlug = async () =>
+  //   await refetch({
+  //     estado: 'Activado',
+  //     numeroPagina: 6,
+  //     pagina: 1,
+  //     slug: isFilter ?? ''
+  //   }).then(({ data }) =>
+  //     setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[])
+  //   )
 
-  //Funcion para actulizar el valor del estado y ponerle el estilo de seleccionado
+  // useEffect(() => {
+  //   VolverAtraerSegunSlug()
+  // }, [isFilter])
 
-  const SelectionItemNavbar = (value: string | null) => {
-    // const selected: HTMLElement | null = document.getElementById(
-    //   value as string
-    // )
-    // let isClass
-    // if (typeof window !== 'undefined') {
-    //   isClass = document.querySelectorAll('.selectionItemNavbar')
-    // }
-    // isClass?.forEach((item) => item.classList.remove('selectionItemNavbar'))
-    // selected?.classList.add('selectionItemNavbar')
-    setIsFilter(value === 'todos' ? null : value)
-    console.log(isFilter)
-  }
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -72,7 +63,7 @@ export const RecentBlogs = () => {
           <CategoriasBlogNavbar
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
-            onClick={SelectionItemNavbar}
+            onClick={(value) => setIsFilter(value === 'todos' ? null : value)}
             isFilter={isFilter}
           />
           <Dropdown
@@ -86,7 +77,7 @@ export const RecentBlogs = () => {
             condition={!LoadingBlogSlug}
             isDefault={<SkeletorSwiperHomeBlogs />}
           >
-            <SwiperHomeBlogs Blogs={Blogs} />
+            <SwiperHomeBlogs Blogs={dataBlog} />
           </Show>
         </div>
         <div
