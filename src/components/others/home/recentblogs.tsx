@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import {
   useGetAllBlogs,
   useGetAllBlogsCategoriaSlug,
-  useGetAllCategoriaBlogs,
+  useGetAllCategoriaBlogs
 } from '@Services'
 import { FaAngleRight } from 'react-icons/fa'
 import { CategoriasBlogNavbar } from './CategoriasBlogNavbar'
@@ -27,21 +27,18 @@ export const RecentBlogs = () => {
     estado: 'Activado',
     numeroPagina: 6,
     pagina: 1,
-    slug: isFilter ?? '',
+    slug: isFilter ?? ''
   })
-  const {
-    data: DataCategoryBlogs,
-    loading: LoadingCategorysBlogs,
-  } = useGetAllCategoriaBlogs()
-
+  const { data: DataCategoryBlogs, loading: LoadingCategorysBlogs } =
+    useGetAllCategoriaBlogs()
   const VolverAtraerSegunSlug = async () =>
     await refetch({
       estado: 'Activado',
       numeroPagina: 6,
       pagina: 1,
-      slug: isFilter ?? '',
+      slug: isFilter ?? ''
     }).then(({ data }) =>
-      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[]),
+      setDataBlogs(data?.GetAllBlogsCategoriaSlug.data as BlogDTO[])
     )
 
   useEffect(() => {
@@ -51,18 +48,18 @@ export const RecentBlogs = () => {
   //Funcion para actulizar el valor del estado y ponerle el estilo de seleccionado
 
   const SelectionItemNavbar = (value: string | null) => {
-    const selected: HTMLElement | null = document.getElementById(
-      value as string,
-    )
-    let isClass
-    if (typeof window !== 'undefined') {
-      isClass = document.querySelectorAll('.selectionItemNavbar')
-    }
-    isClass?.forEach((item) => item.classList.remove('selectionItemNavbar'))
-    selected?.classList.add('selectionItemNavbar')
+    // const selected: HTMLElement | null = document.getElementById(
+    //   value as string
+    // )
+    // let isClass
+    // if (typeof window !== 'undefined') {
+    //   isClass = document.querySelectorAll('.selectionItemNavbar')
+    // }
+    // isClass?.forEach((item) => item.classList.remove('selectionItemNavbar'))
+    // selected?.classList.add('selectionItemNavbar')
     setIsFilter(value === 'todos' ? null : value)
+    console.log(isFilter)
   }
-
   return (
     <div className="bg-[#171A1D] py-[90px] z-30" id="Blog" ref={ref}>
       <Container>
@@ -76,6 +73,7 @@ export const RecentBlogs = () => {
             Data={DataCategoryBlogs}
             loading={LoadingCategorysBlogs}
             onClick={SelectionItemNavbar}
+            isFilter={isFilter}
           />
           <Dropdown
             data={DataCategoryBlogs || []}
@@ -102,7 +100,7 @@ export const RecentBlogs = () => {
               Push(
                 typeof isFilter === 'string'
                   ? `/blog/categoria/${isFilter}`
-                  : '/blog',
+                  : '/blog'
               )
             }
           >

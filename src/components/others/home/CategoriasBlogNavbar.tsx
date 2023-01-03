@@ -7,11 +7,13 @@ interface IProps {
   Data: CategoriaBlogDTO[] | []
   loading?: boolean
   onClick: (value: string | null) => void
+  isFilter: string | null
 }
 export const CategoriasBlogNavbar = ({
   Data,
   loading = true,
-  onClick
+  onClick,
+  isFilter
 }: IProps) => {
   return (
     <Show
@@ -29,7 +31,11 @@ export const CategoriasBlogNavbar = ({
         <p
           id="todos"
           onClick={() => onClick('todos')}
-          className={`selectionItemNavbar cursor-pointer text-center ${'text-white'}  after:bg-transparent relative flex flex-row after:absolute after:-bottom-0 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear 
+          className={`${
+            isFilter === null || isFilter.length === 0
+              ? 'selectionItemNavbar'
+              : ''
+          }  cursor-pointer text-center ${'text-white'}  after:bg-transparent relative flex flex-row after:absolute after:-bottom-0 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear 
         `}
         >
           Todos
@@ -38,7 +44,9 @@ export const CategoriasBlogNavbar = ({
           <div
             key={k}
             id={obj.slug}
-            className={`cursor-pointer text-center ${'text-white'}  after:bg-transparent relative flex flex-row after:absolute after:-bottom-2 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear`}
+            className={`${
+              obj.slug === isFilter ? 'selectionItemNavbar' : ''
+            } cursor-pointer text-center ${'text-white'}  after:bg-transparent relative flex flex-row after:absolute after:-bottom-2 after:w-full after:h-[1px] after:hover:bottom-0 hover:after:bg-custom1 hover:text-custom1 after:transition-all  after:duration-300 after:ease-linear`}
           >
             <p onClick={() => onClick(obj.slug)}>{obj.titulo || ''}</p>
           </div>
