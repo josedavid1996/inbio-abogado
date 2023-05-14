@@ -18,7 +18,6 @@ import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { BreadCrumbs, Dropdown } from '@components/shared'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { GetAllBlogsCategoriaSlugQuery } from '@Generated'
 
 // import Slug from '../[slug]'
 
@@ -85,15 +84,10 @@ export const getServerSideProps = Wrapper.getServerSideProps(
       {
         /** llamamos la api, este metodo solo funciona para ssr */
       }
-      const res: GetAllBlogsCategoriaSlugQuery = await request(
+      const { GetAllBlogsCategoriaSlug } = await request(
         uri,
         GET_ALL_BLOG_CATEGORIA_SLUG,
-        {
-          estado: 'Activado',
-          numeroPagina: 20,
-          pagina: 1,
-          slug: query.slug
-        }
+        { estado: 'Activado', numeroPagina: 20, pagina: 1, slug: query.slug }
       )
 
       {
@@ -109,7 +103,6 @@ export const getServerSideProps = Wrapper.getServerSideProps(
         }
       )
 
-      console.log('hola', res)
       store.dispatch(
         SetDataMeta({
           tittlePage: 'Kyros - ' + GetCategoriaBlogSlug.titulo,
@@ -125,7 +118,7 @@ export const getServerSideProps = Wrapper.getServerSideProps(
       )
       return {
         props: {
-          BlogsCategoriaSlug: res.GetAllBlogsCategoriaSlug.data,
+          BlogsCategoriaSlug: GetAllBlogsCategoriaSlug.data,
           GetCategoriaBlogSlug
         }
       }
