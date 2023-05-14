@@ -18,6 +18,7 @@ import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { BreadCrumbs, Dropdown } from '@components/shared'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { GetAllBlogsCategoriaSlugQuery } from '@Generated'
 
 // import Slug from '../[slug]'
 
@@ -84,11 +85,12 @@ export const getServerSideProps = Wrapper.getServerSideProps(
       {
         /** llamamos la api, este metodo solo funciona para ssr */
       }
-      const { GetAllBlogsCategoriaSlug } = await request(
-        uri,
-        GET_ALL_BLOG_CATEGORIA_SLUG,
-        { estado: 'Activado', numeroPagina: 20, pagina: 1, slug: query.slug }
-      )
+      const { GetAllBlogsCategoriaSlug } =
+        await request<GetAllBlogsCategoriaSlugQuery>(
+          uri,
+          GET_ALL_BLOG_CATEGORIA_SLUG,
+          { estado: 'Activado', numeroPagina: 20, pagina: 1, slug: query.slug }
+        )
 
       {
         /** usamos este query para actualizar el open graph */
