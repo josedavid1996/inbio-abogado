@@ -1,21 +1,21 @@
 /* eslint-disable comma-dangle */
 import { useState, useEffect } from 'react'
 import { BgNegroTransparente } from './bgNegroTransparente'
-import CountUp from 'react-countup/build'
 import { useInView } from 'react-intersection-observer'
 import { DataNumber, IDataNumber } from '@mock/dataNumber'
+import AnimedCount from '@components/shared/AnimedCount'
 
 export const Numbers = () => {
   const [isEffect, setIsEffect] = useState<boolean>(false)
 
   const { ref, inView } = useInView({
-    threshold: 0,
+    threshold: 0
   })
 
   const Item = ({ count, tittle }: IDataNumber) => (
     <div className=" flex flex-col items-center ">
       <h4 className="text-[32px] text-white font-semibold">
-        {isEffect && <CountUp end={count || 1000} duration={1} />}
+        {inView && <AnimedCount n={count || 1000} />}
       </h4>
       <span className="text-[12px] text-custon4">{tittle}</span>
     </div>
