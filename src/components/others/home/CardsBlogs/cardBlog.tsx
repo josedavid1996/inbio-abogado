@@ -43,7 +43,7 @@ export const CardBlog = ({ data }: Iprops) => {
           {data.CategoriaBlog?.titulo || ''}
         </h3>
         <h4
-          className="text-white font-bold  mt-2 text-base uppercase cursor-pointer"
+          className="text-white font-bold  mt-2 text-base uppercase cursor-pointer transition-all duration-500 hover:text-custom1"
           onClick={() => push('/blog/' + data.slug)}
         >
           {data.titulo || ''}

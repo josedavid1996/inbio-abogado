@@ -38,7 +38,11 @@ const Navbar = () => {
           : ''
       }
     >
-      <a href={id} onClick={() => setSecctionView(id)}>
+      <a
+        className="transition-all duration-500 hover:text-custom1"
+        href={id}
+        onClick={() => setSecctionView(id)}
+      >
         {tittle}
       </a>
     </div>
@@ -63,7 +67,7 @@ const Navbar = () => {
         <nav className="flex justify-between items-center  h-full">
           <div className="">
             <NextLink href="/">
-              <div className="relative w-[212px] h-[36px]">
+              <div className="relative w-[212px] h-[36px] cursor-pointer">
                 <NextImage
                   src="/images/logonavbar.webp"
                   layout="fill"
