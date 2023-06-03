@@ -6,7 +6,6 @@ import { CardBlog } from './CardsBlogs/cardBlog'
 import { Contact } from './contact'
 import { Container } from './container'
 import { Footer } from './footer'
-import { Head } from './head'
 import { IconsFloats } from './iconsfloats'
 import { NavbarMobile } from './navbarMobile'
 import { Numbers } from './numbers'
@@ -31,7 +30,6 @@ export {
   Contact,
   Container,
   Footer,
-  Head,
   IconsFloats,
   NavbarMobile,
   Numbers,
@@ -47,5 +45,5 @@ export {
   BannerForOtherPage,
   ItemTeam,
   ItemResumen,
-  SwiperHomeBlogs,
+  SwiperHomeBlogs
 }

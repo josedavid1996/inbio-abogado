@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable comma-dangle */
-import { SetDataMeta } from '@Redux/Meta/mesaSlice'
-import { Wrapper } from '@Redux/store'
 import {
   About,
   Services,
@@ -10,12 +5,11 @@ import {
   Resumen,
   RecentBlogs,
   Contact,
-  WrapperBanner,
+  WrapperBanner
 } from '@components/others/home'
-import { Store } from '@reduxjs/toolkit'
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
-// import { OpenGraph } from '@components/seo/OpenGraph'
+import { Seo } from '@components/shared/Seo/Index'
+
 export interface SideMultistepComponentProps {
   stepper: number
   isLast: boolean
@@ -25,8 +19,20 @@ export interface SideMultistepComponentProps {
 }
 
 const Home = () => {
+  const dataSeo = {
+    tittlePage: 'Kyros - Personal Website',
+    description: 'Somos los mejores en lo que hacemos',
+    url: process.env.NEXT_PUBLIC_DOMAIN!,
+    keywords: 'Comercial services, employment services, civil ligitation',
+    imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+    domain: process.env.NEXT_PUBLIC_DOMAIN,
+    imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
+    link: 'Kyros'
+  }
+
   return (
     <>
+      <Seo data={dataSeo} />
       {/* navbar solo  para desktop */}
       <WrapperBanner />
       {/* Secciones separadas por componentes */}
@@ -41,21 +47,3 @@ const Home = () => {
 }
 
 export default Home
-
-export const getServerSideProps: GetServerSideProps = Wrapper.getServerSideProps(
-  (store: Store) => async (ctx: GetServerSidePropsContext) => {
-    store.dispatch(
-      SetDataMeta({
-        tittlePage: 'Kyros - Personal Website',
-        link: 'Kyros',
-        description: 'Somos los mejores en lo que hacemos',
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
-        imgPrincipal: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-        imgSecundaria: `${process.env.NEXT_PUBLIC_DOMAIN}images/imgpageseo.webp`,
-        keywords: 'Comercial services, employment services, civil ligitation',
-        url: process.env.NEXT_PUBLIC_DOMAIN,
-      }),
-    )
-    return { props: {} }
-  },
-)

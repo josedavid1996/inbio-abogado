@@ -11,21 +11,15 @@ import Aos from 'aos'
 import useLoadTheme from '../hooks/useLoadTheme'
 import { useEffect } from 'react'
 import { NavbarProvider } from '@contexts/NavbarProvider'
-// import { SeoProvider } from '@contexts/seo/SeoContext'
 import { ApolloProvider } from '@apollo/client'
 import { client } from '@apollo/index'
-import { AppState, Wrapper } from '@Redux/store'
 import {
   // Head,
   NavbarMobile,
   BannerForOtherPage,
-  Footer,
+  Footer
 } from '@components/others/home'
-import { useSelector } from 'react-redux'
-import { OpenGraph } from '@components/seo/OpenGraph'
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const data = useSelector((Store: AppState) => Store.Meta)
-
   // Servicio para cargar el theme desde el LocalStorage
   useLoadTheme()
 
@@ -34,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       // once: false,
       offset: 10,
       duration: 1000,
-      delay: 500,
+      delay: 500
       // data-aos-anchor-placement="center-center"
     })
   }, [])
@@ -44,7 +38,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       {/* <SeoProvider> */}
       <NavbarProvider>
         <main>
-          <OpenGraph data={data} />
           {/* <Head /> */}
           {/* existen 2 navbar, dependiendo del screen se cambia  */}
           {/* navbar solo  para mobile */}
@@ -63,4 +56,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 }
 
 // export default MyApp
-export default Wrapper.withRedux(MyApp)
+export default MyApp

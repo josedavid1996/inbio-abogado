@@ -1,22 +1,27 @@
-/* eslint-disable  */
+import { GetServerSidePropsContext } from 'next'
+import NextImage from 'next/image'
+import { useRouter, NextRouter } from 'next/router'
+
+import request from 'graphql-request'
 
 import { WrapperButtonShares } from '@components/others/blog'
 import { BlogDTO } from '@components/others/blog/interfaces'
-import NextImage from 'next/image'
-import request from 'graphql-request'
-import { GetServerSidePropsContext } from 'next'
 import { Container } from '@components/others/home'
-import { IMG_404 } from '@mock/etc'
-import { URI } from '@Uri/index'
-import { GET_SLUG_BLOG } from '@ssr/index'
-import { FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa'
-import { useRouter, NextRouter } from 'next/router'
-import { Wrapper } from '@Redux/store'
-import { Store } from '@reduxjs/toolkit'
-import { SetDataMeta } from '@Redux/Meta/mesaSlice'
 import { BreadCrumbs } from '@components/shared'
+import { Seo } from '@components/shared/Seo/Index'
+
+import { FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa'
+
+import { IMG_404 } from '@mock/etc'
+
+import { URI } from '@Uri/index'
+
+import { GET_SLUG_BLOG } from '@ssr/index'
+
 import moment from 'moment'
+
 import { CalculateTiempoPasado } from '@Util/CalculateTiempoPasado'
+
 interface IPropsSSP {
   slug: string
   data: BlogDTO
@@ -29,44 +34,56 @@ const Index = ({ data, slug }: IPropsSSP) => {
   const fechaCreada = moment(data.created_at)
   const fechaActual = moment(new Date())
 
+  const dataSeo = {
+    tittlePage: 'Kyros - ' + data.titulo,
+    link: data.titulo,
+    description: data.descripcionCorta,
+    domain: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + data.slug,
+    imgPrincipal: data.imagenPrincipal.url,
+    imgSecundaria: data.imagenSecundaria.url,
+    keywords: data.keywords,
+    url: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + data.slug
+  }
+
   const GroupBotom = () => (
     <WrapperButtonShares
       MetaData={{
         text: data.descripcionCorta,
         tittle: data.titulo,
-        url: MY_URL,
+        url: MY_URL
       }}
       RedesSociales={[
         {
           Icon: FaFacebook,
           color: 'colorFb',
-          url: 'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL,
+          url: 'https://www.facebook.com/sharer/sharer.php?u=' + MY_URL
         },
         {
           Icon: FaWhatsapp,
           url:
             'https://web.whatsapp.com/send?text=' + data.titulo + ' ' + MY_URL,
-          color: 'colorWsp',
+          color: 'colorWsp'
         },
         {
           Icon: FaTwitter,
           url:
             'http://TWITTER.com/share?text=' + data.titulo + '&url=' + MY_URL,
-          color: 'colorTw',
-        },
+          color: 'colorTw'
+        }
       ]}
     />
   )
   return (
     <>
+      <Seo data={dataSeo} />
       <div className="bg-[#171A1D] min-h-screen h-full">
         <Container>
           <BreadCrumbs
             history={[
               { description: 'Blog', url: '/blog' },
               {
-                description: data.titulo || '',
-              },
+                description: data.titulo || ''
+              }
             ]}
           />
           <div className="flex flex-row items-center justify-between mt-4">
@@ -104,7 +121,7 @@ const Index = ({ data, slug }: IPropsSSP) => {
               </div>
               <p className="text-gray-200 font-bold flex  justify-end">
                 {CalculateTiempoPasado(
-                  fechaActual.diff(fechaCreada, 'minutes'),
+                  fechaActual.diff(fechaCreada, 'minutes')
                 )}
               </p>
             </div>
@@ -115,46 +132,19 @@ const Index = ({ data, slug }: IPropsSSP) => {
   )
 }
 
-// export const getServerSideProps = async ({
-//   query,
-// }: GetServerSidePropsContext) => {
-//   const { GetBlogSlug }: { GetBlogSlug: BlogDTO } = await request(
-//     URI,
-//     GET_SLUG_BLOG,
-//     {
-//       slug: query.slug,
-//     },
-//   )
-//   return {
-//     props: { data: GetBlogSlug, slug: query.slug },
-//   }
-// }
-
 export default Index
-export const getServerSideProps = Wrapper.getServerSideProps(
-  (store: Store) => async ({ query }: GetServerSidePropsContext) => {
-    const { GetBlogSlug }: { GetBlogSlug: BlogDTO } = await request(
-      URI,
-      GET_SLUG_BLOG,
-      {
-        slug: query.slug,
-      },
-    )
-
-    store.dispatch(
-      SetDataMeta({
-        tittlePage: 'Kyros - ' + GetBlogSlug.titulo,
-        link: GetBlogSlug.titulo,
-        description: GetBlogSlug.descripcionCorta,
-        domain: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + query.slug,
-        imgPrincipal: GetBlogSlug.imagenPrincipal.url,
-        imgSecundaria: GetBlogSlug.imagenSecundaria.url,
-        keywords: GetBlogSlug.keywords,
-        url: process.env.NEXT_PUBLIC_DOMAIN + 'blog/' + query.slug,
-      }),
-    )
-    return {
-      props: { data: GetBlogSlug, slug: query.slug },
+export const getServerSideProps = async ({
+  query
+}: GetServerSidePropsContext) => {
+  const { GetBlogSlug }: { GetBlogSlug: BlogDTO } = await request(
+    URI,
+    GET_SLUG_BLOG,
+    {
+      slug: query.slug
     }
-  },
-)
+  )
+
+  return {
+    props: { data: GetBlogSlug, slug: query.slug }
+  }
+}
